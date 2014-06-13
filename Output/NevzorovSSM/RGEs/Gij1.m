@@ -1,0 +1,12 @@
+{{{Sq[{lef1}][{gen1, col1}], Sq[{lef2}][{gen2, col2}]}, 0, 0}, 
+ {{Sl[{lef1}][{gen1}], Sl[{lef2}][{gen2}]}, 0, 0}, 
+ {{SHd[{lef1}][{gen1}], SHd[{lef2}][{gen2}]}, 0, 0}, 
+ {{SHu[{lef1}][{gen1}], SHu[{lef2}][{gen2}]}, 0, 0}, 
+ {{SdR[{gen1, col1}], SdR[{gen2, col2}]}, 0, 0}, 
+ {{SuR[{gen1, col1}], SuR[{gen2, col2}]}, 0, 0}, 
+ {{SeR[{gen1}], SeR[{gen2}]}, 0, 0}, {{SsR, SsR}, 0, 0}, 
+ {{SsbarR, SsbarR}, 0, 0}, {{SDxL[{gen1, col1}], SDxL[{gen2, col2}]}, 0, 0}, 
+ {{SDxbarR[{gen1, col1}], SDxbarR[{gen2, col2}]}, 0, 0}, 
+ {{SHp[{lef1}][{gen1}], SHp[{lef2}][{gen2}]}, 0, 0}, 
+ {{SHpbar[{lef1}][{gen1}], SHpbar[{lef2}][{gen2}]}, 0, 0}, 
+ {{SphiR, SphiR}, 0, 0}}

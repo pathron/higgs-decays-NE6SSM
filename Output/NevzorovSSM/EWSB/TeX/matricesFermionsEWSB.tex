@@ -1,0 +1,143 @@
+\subsubsection{Mass Matrices for Fermions}
+\begin{itemize} 
+\item {\bf Mass matrix for Neutralinos}, Basis: \( \left(\lambda_{\tilde{B}}, \tilde{W}^0, \tilde{H}_d^0, \tilde{H}_u^0, \tilde{S}, \text{FsbarR}, \text{FphiR}, \lambda_Bp\right), \left(\lambda_{\tilde{B}}, \tilde{W}^0, \tilde{H}_d^0, \tilde{H}_u^0, \tilde{S}, \text{FsbarR}, \text{FphiR}, \lambda_Bp\right) \) 
+ 
+\begin{equation} 
+m_{\tilde{\chi}^0} = \left( 
+\begin{array}{cccccccc}
+M_1 &0 &-\frac{1}{2} g_1 v_1  &\frac{1}{2} g_1 v_2  &0 &0 &0 &0\\ 
+0 &M_2 &\frac{1}{2} g_2 v_1  &-\frac{1}{2} g_2 v_2  &0 &0 &0 &0\\ 
+-\frac{1}{2} g_1 v_1  &\frac{1}{2} g_2 v_1  &0 &- \frac{1}{\sqrt{2}} v_s \lambda  &- \frac{1}{\sqrt{2}} v_2 \lambda  &0 &0 &-3 g_1' v_1 \\ 
+\frac{1}{2} g_1 v_2  &-\frac{1}{2} g_2 v_2  &- \frac{1}{\sqrt{2}} v_s \lambda  &0 &- \frac{1}{\sqrt{2}} v_1 \lambda  &0 &0 &-2 g_1' v_2 \\ 
+0 &0 &- \frac{1}{\sqrt{2}} v_2 \lambda  &- \frac{1}{\sqrt{2}} v_1 \lambda  &0 &- \frac{1}{\sqrt{2}} vphi \sigma  &- \frac{1}{\sqrt{2}} vsb \sigma  &g_1' Q_{S} v_s \\ 
+0 &0 &0 &0 &- \frac{1}{\sqrt{2}} vphi \sigma  &0 &m_{\text{FphiR}\text{FsbarR}} &- g_1' Q_{S} vsb \\ 
+0 &0 &0 &0 &- \frac{1}{\sqrt{2}} vsb \sigma  &m_{\text{FsbarR}\text{FphiR}} &m_{\text{FphiR}\text{FphiR}} &0\\ 
+0 &0 &-3 g_1' v_1  &-2 g_1' v_2  &g_1' Q_{S} v_s  &- g_1' Q_{S} vsb  &0 &M_1'\end{array} 
+\right) 
+ \end{equation} 
+\begin{align} 
+m_{\text{FsbarR}\text{FphiR}} &= - \frac{1}{\sqrt{2}} v_s \sigma \\ 
+m_{\text{FphiR}\text{FphiR}} &= \sqrt{2} vphi \kappa^\prime  + Mu_{phi}
+\end{align} 
+This matrix is diagonalized by \(N\): 
+\begin{equation} 
+N^* m_{\tilde{\chi}^0} N^{\dagger} = m^{dia}_{\tilde{\chi}^0} 
+\end{equation} 
+with 
+\begin{align} 
+\lambda_{\tilde{B}} = \sum_{j}N^*_{j 1}\lambda^0_{{j}}\,, \hspace{1cm} 
+\tilde{W}^0 = \sum_{j}N^*_{j 2}\lambda^0_{{j}}\,, \hspace{1cm} 
+\tilde{H}_d^0 = \sum_{j}N^*_{j 3}\lambda^0_{{j}}\\ 
+\tilde{H}_u^0 = \sum_{j}N^*_{j 4}\lambda^0_{{j}}\,, \hspace{1cm} 
+\tilde{S} = \sum_{j}N^*_{j 5}\lambda^0_{{j}}\,, \hspace{1cm} 
+\text{FsbarR} = \sum_{j}N^*_{j 6}\lambda^0_{{j}}\\ 
+\text{FphiR} = \sum_{j}N^*_{j 7}\lambda^0_{{j}}\,, \hspace{1cm} 
+\lambda_Bp = \sum_{j}N^*_{j 8}\lambda^0_{{j}}
+\end{align} 
+\item {\bf Mass matrix for Charginos}, Basis: \( \left(\tilde{W}^-, \tilde{H}_d^-\right), \left(\tilde{W}^+, \tilde{H}_u^+\right) \) 
+ 
+\begin{equation} 
+m_{\tilde{\chi}^-} = \left( 
+\begin{array}{cc}
+M_2 &\frac{1}{\sqrt{2}} g_2 v_2 \\ 
+\frac{1}{\sqrt{2}} g_2 v_1  &\frac{1}{\sqrt{2}} v_s \lambda \end{array} 
+\right) 
+ \end{equation} 
+This matrix is diagonalized by \(U\) and \(V\) 
+\begin{equation} 
+U^* m_{\tilde{\chi}^-} V^{\dagger} = m^{dia}_{\tilde{\chi}^-} 
+\end{equation} 
+with 
+\begin{align} 
+\tilde{W}^- = \sum_{t_2}U^*_{j 1}\lambda^-_{{j}}\,, \hspace{1cm} 
+\tilde{H}_d^- = \sum_{t_2}U^*_{j 2}\lambda^-_{{j}}\\ 
+\tilde{W}^+ = \sum_{t_2}V^*_{1 j}\lambda^+_{{j}}\,, \hspace{1cm} 
+\tilde{H}_u^+ = \sum_{t_2}V^*_{2 j}\lambda^+_{{j}}
+\end{align} 
+\item {\bf Mass matrix for Leptons}, Basis: \( \left(e_L\right), \left(e_R^*\right) \) 
+ 
+\begin{equation} 
+m_{e} = \left( 
+\begin{array}{c}
+\frac{1}{\sqrt{2}} {\bf 1} v_1 Y_{e}^{T} \end{array} 
+\right) 
+ \end{equation} 
+This matrix is diagonalized by \(U^e_L\) and \(U^e_R\) 
+\begin{equation} 
+U^{e,*}_L m_{e} U_{R}^{e,\dagger} = m^{dia}_{e} 
+\end{equation} 
+with 
+\begin{align} 
+e_{L,{i}} = \sum_{t_2}U^{e,*}_{L,{j i}}E_{L,{j}}\\ 
+e_{R,{i}} = \sum_{t_2}U_{R,{i j}}^{e}E^*_{R,{j}}
+\end{align} 
+\item {\bf Mass matrix for Down-Quarks}, Basis: \( \left(d_{L,{{\alpha_1}}}\right), \left(d^*_{R,{{\beta_1}}}\right) \) 
+ 
+\begin{equation} 
+m_{d} = \left( 
+\begin{array}{c}
+\frac{1}{\sqrt{2}} {\bf 1} v_1 \delta_{{\alpha_1} {\beta_1}} Y_{d}^{T} \end{array} 
+\right) 
+ \end{equation} 
+This matrix is diagonalized by \(U^d_L\) and \(U^d_R\) 
+\begin{equation} 
+U^{d,*}_L m_{d} U_{R}^{d,\dagger} = m^{dia}_{d} 
+\end{equation} 
+with 
+\begin{align} 
+d_{L,{i \alpha}} = \sum_{t_2}U^{d,*}_{L,{j i}}D_{L,{j \alpha}}\\ 
+d_{R,{i \alpha}} = \sum_{t_2}U_{R,{i j}}^{d}D^*_{R,{j \alpha}}
+\end{align} 
+\item {\bf Mass matrix for Up-Quarks}, Basis: \( \left(u_{L,{{\alpha_1}}}\right), \left(u^*_{R,{{\beta_1}}}\right) \) 
+ 
+\begin{equation} 
+m_{u} = \left( 
+\begin{array}{c}
+\frac{1}{\sqrt{2}} {\bf 1} v_2 \delta_{{\alpha_1} {\beta_1}} Y_{u}^{T} \end{array} 
+\right) 
+ \end{equation} 
+This matrix is diagonalized by \(U^u_L\) and \(U^u_R\) 
+\begin{equation} 
+U^{u,*}_L m_{u} U_{R}^{u,\dagger} = m^{dia}_{u} 
+\end{equation} 
+with 
+\begin{align} 
+u_{L,{i \alpha}} = \sum_{t_2}U^{u,*}_{L,{j i}}U_{L,{j \alpha}}\\ 
+u_{R,{i \alpha}} = \sum_{t_2}U_{R,{i j}}^{u}U^*_{R,{j \alpha}}
+\end{align} 
+\item {\bf Mass matrix for Exotics}, Basis: \( \left(\text{FDxL}\Big(\{\text{cm1}\}\Big)\right), \left(\text{conj}\Big(\text{FDxbarR}\Big(\{\text{cn1}\}\Big)\Big)\right) \) 
+ 
+\begin{equation} 
+m_{x} = \left( 
+\begin{array}{c}
+\frac{1}{\sqrt{2}} {\bf 1} v_s \kappa \delta_{{\alpha_1} {\beta_1}} \end{array} 
+\right) 
+ \end{equation} 
+This matrix is diagonalized by \(ZDXL\) and \(ZDXR\) 
+\begin{equation} 
+ZDXL^* m_{x} ZDXR^{\dagger} = m^{dia}_{x} 
+\end{equation} 
+with 
+\begin{align} 
+\text{FDxL}\Big(\{\text{gt1},\text{ct1}\}\Big) = \sum_{t_2}ZDXL^*_{j i}X_{L,{j \alpha}}\\ 
+\text{FDxbarR}\Big(\{\text{gt1},\text{ct1}\}\Big) = \sum_{t_2}ZDXR_{{i j}}X^*_{L,{j \alpha}}
+\end{align} 
+\item {\bf Mass matrix for Prime Neutralinos}, Basis: \( \left(\tilde{h'}^{0}, \tilde{\bar{h'}}^{0}\right), \left(\tilde{h'}^{0}, \tilde{\bar{h'}}^{0}\right) \) 
+ 
+\begin{equation} 
+m_{\tilde{\chi}^{'0}} = \left( 
+\begin{array}{cc}
+0 &- \mu' \\ 
+- \mu'  &0\end{array} 
+\right) 
+ \end{equation} 
+This matrix is diagonalized by \(ZNp\): 
+\begin{equation} 
+ZNp^* m_{\tilde{\chi}^{'0}} ZNp^{\dagger} = m^{dia}_{\tilde{\chi}^{'0}} 
+\end{equation} 
+with 
+\begin{align} 
+\tilde{h'}^{0} = \sum_{j}ZNp^*_{j 1}\text{L0p}\Big(\{\text{gt2}\}\Big)\,, \hspace{1cm} 
+\tilde{\bar{h'}}^{0} = \sum_{j}ZNp^*_{j 2}\text{L0p}\Big(\{\text{gt2}\}\Big)
+\end{align} 
+\end{itemize} 
