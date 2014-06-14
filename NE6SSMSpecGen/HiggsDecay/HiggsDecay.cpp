@@ -207,12 +207,67 @@ void higgs_decay_example() {
    input.QS = 5;
    NE6SSM<Two_scale> ne6ssm(input);
    setup(ne6ssm);
+   // apply EWSB constraint
+   ne6ssm.solve_ewsb_tree_level();
+   // calculate tree-level spectrum
    ne6ssm.calculate_DRbar_parameters();
+   //Print tree spectrum for comparison
+   ne6ssm.print(std::cout);
+   // get hAA coupling
+   // Need to know:
+   // mass ordering to avoid the goldstone boson 
+   // this will vary as aim is to lower the cp odd mass such
+   // that light higgs will decay into pseudo scalars.
+   //   Eigen::Array<double,3,1> Ggauge;
+   //Eigen::VectorXd Ggauge(3);
+   
+   Eigen::Array<double,5,1> mhiggs;
+   Eigen::Array<double,5,1> mAhiggs;
+   Eigen::Matrix<double,5,5> Uhiggs;
+   Eigen::Matrix<double,5,5> MHmatrix;
+   
+   mhiggs = ne6ssm.get_Mhh();
+   mAhiggs = ne6ssm.get_MAh();
+   Uhiggs =  ne6ssm.get_ZH();
+   MHmatrix =  ne6ssm.get_mass_matrix_hh();
+   
+   std::cout << "mhiggs = " << mhiggs << std::endl;
+   std::cout << "mAhiggs = " << mAhiggs << std::endl;
+   
+   
+   std::cout << "Diagonalise 1: " << std::endl;
+   std::cout << Uhiggs.transpose() *  MHmatrix * Uhiggs
+             << std::endl;
+   std::cout << "Diagonalise 2: "  << std::endl;
+   std::cout << Uhiggs *  MHmatrix * Uhiggs.transpose()
+             << std::endl;
+   
+   
+   for(int j=0; j<=4; j++){
+      for(int i=0; i<=4; i++){
+         std::cout << "ne6ssm.CpUhhAhAh(" <<i << "," <<j << "," << j << ") = " << ne6ssm.CpUhhAhAh(i,j,j) <<std::endl;
+      }
+   }
+   // std::cout << "Ggauge = " << Ggauge << std::endl;
+   
 
 
+// For *this* point we want Ah(1) not Ah(0).
+// From above Diagonalisatio2 applies so the convention is h = UH
+// where h is mass egenstate and H is gauge eigenstate
+// Can write gauge eigenstate couplings with j as G^H dot h A_jA_j(no sum on j)
+//                                                = (G^H)^T h A_j A_j(no j sum)
+// So (G^H)^T HAA = (G^H)^T U^T hAA = (U G^H)^T hAA = G hAA
+Eigen::Matrix<std::complex<double>,5,1> GHA1A1;
+for(int j=0; j<=4; j++){
+   GHA1A1(j) = ne6ssm.CpUhhAhAh(j,1,1);
+   }
+
+ std::cout << "GHA1A1 = " << GHA1A1 << std::endl;
+ std::cout << "GhA1A1 = " << (Uhiggs * GHA1A1).transpose() << std::endl;
+ 
 
 }
-
 
 int main()
 {
