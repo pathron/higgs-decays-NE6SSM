@@ -58,19 +58,18 @@ void setup(NE6SSM<Two_scale>& ne6ssm)
    vu = 242.968;
 
    // soft parameters
-   TYu << -0.0144387, 0, 0,
-                   0, -7.64037, 0,
-                   0, 0, -759.305;
+   TYu <<  -1.78213613E-02, 0, 0,
+                   0, -9.43028819E+00 , 0,
+                   0, 0, -8.84140948E+02 ;
 
-   TYd << -0.336207, 0, 0,
-                  0, -7.36109, 0,
-                  0, 0, -250.124;
+   TYd << -4.34942067E-01, 0, 0,
+                  0, -9.52281881E+00, 0,
+                  0, 0, -3.17568217E+02;
 
-   TYe << -0.00825134, 0, 0,
-                    0, -1.70609, 0,
-                    0, 0, -29.4466;
+   TYe << -8.72744876E-03, 0, 0,
+                    0, -1.80452101E+00 , 0,
+                    0, 0, -3.11090181E+01;
 
-   BMu = 52140.8;
 
    mq2 << 1.03883e+06, 0, 0,
                     0, 1.03881e+06, 0,
@@ -98,6 +97,83 @@ void setup(NE6SSM<Two_scale>& ne6ssm)
    MassB = 210.328;
    MassWB = 389.189;
    MassG = 1114.45;
+
+   double xiF = 0.0;
+   double muPhi = 0.0;
+   double kapPr = 0.03;
+   double sigPr = 0.1;
+   Eigen::Matrix<double,3,3> kap;
+
+   kap << 0.5,0,   0,
+          0,  0.5, 0,
+          0,  0,   0.5;  
+   
+   Eigen::Matrix<double,3,3> Tkap;
+
+   Tkap << 500,0,   0,
+          0,  500, 0,
+      0,  0,   500; 
+
+   Eigen::Matrix<double,3,3>  mDx2;
+
+   mDx2 << 1.29059458E+06, 0.00000000E+00, 0.00000000E+00,   
+      0.00000000E+00,  1.29056775E+06, 0.00000000E+00,   
+      0.00000000E+00,  0.00000000E+00, 1.08191301E+06;
+
+    Eigen::Matrix<double,3,3>  mDxBar2;
+
+   mDxBar2 << 1.29059458E+06, 0.00000000E+00, 0.00000000E+00,   
+      0.00000000E+00,  1.29056775E+06, 0.00000000E+00,   
+      0.00000000E+00,  0.00000000E+00, 1.08191301E+06;
+
+   
+
+      
+
+   double lam =0.1;
+   double vs = 5916.8425;
+   double vsb = 5384.32672;
+   double vphi = 6000;
+   double gN = 0.47;
+   double MuPr = 10000.0;
+   double LXiF = 0.0;
+   // double ms2 This will be fixed by EWSB  
+
+   double TkapPr = 27.9;
+   double Tsig = 120.0;
+   double Tlam = 60.0;
+   double BMuPr = 10000.0;
+   double BMuPhi = 0.0;
+   double mHp2 = 1.0E+08;
+   double mHpBar2 = 1.0E+08;
+   double MassBp = 600.0;
+
+   ne6ssm.set_XiF(xiF);
+   ne6ssm.set_MuPhi(muPhi);
+   ne6ssm.set_KappaPr(kapPr);
+   ne6ssm.set_Sigmax(sigPr);
+   ne6ssm.set_Kappa(kap);
+   ne6ssm.set_Lambdax(lam);
+   ne6ssm.set_vs(vs);
+   ne6ssm.set_vsb(vsb);
+   ne6ssm.set_vphi(vphi);
+   ne6ssm.set_g1p(gN);
+   ne6ssm.set_MuPr(MuPr);
+
+   ne6ssm.set_TKappaPr(TkapPr);
+   ne6ssm.set_TSigmax(Tsig);
+   ne6ssm.set_TKappa(Tkap);
+   ne6ssm.set_TLambdax(Tlam);
+   ne6ssm.set_BMuPr(BMuPr);
+   ne6ssm.set_BMuPhi(BMuPhi);
+   ne6ssm.set_LXiF(LXiF);
+   //ne6ssm.set_ms2(ms2); This will be fixed by EWSB  
+   ne6ssm.set_mDx2(mDx2);
+   ne6ssm.set_mDxbar2(mDxBar2);
+   ne6ssm.set_mHp2(mHp2); 
+   ne6ssm.set_mHpbar2(mHpBar2); 
+   ne6ssm.set_MassBp(MassBp);
+
 
    // set parameters
    ne6ssm.set_scale(Electroweak_constants::MZ);
@@ -128,8 +204,9 @@ void setup(NE6SSM<Two_scale>& ne6ssm)
 
 
 void higgs_decay_example() {
-
-   NE6SSM<Two_scale> ne6ssm;
+   NE6SSM_input_parameters input;
+   input.QS = 5;
+   NE6SSM<Two_scale> ne6ssm(input);
    setup(ne6ssm);
    ne6ssm.calculate_DRbar_parameters();
 
