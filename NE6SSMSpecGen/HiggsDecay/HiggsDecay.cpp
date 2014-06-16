@@ -53,8 +53,13 @@ void setup(NE6SSM<Two_scale>& ne6ssm)
    g1 = 3.70201899E-01/sqrt(0.6);
    g2 = 6.48596334E-01;
    g3 = 1.23250696E+00;
-   vd = 2.46858401E+01;
-   vu = 2.37406676E+02;
+   double cosb = cos(atan(10));
+   double sinb = sin(atan(10));
+   // vd =  2.46858401E+01;
+   // vu = 2.37406676E+02;
+   
+   vd = 243.404 * cosb;
+   vu = 243.404 * sinb;
 
    std::cout << "sqrt(vu*vu + vd*vd) = " <<  sqrt(vu*vu + vd*vd) <<std::endl;
    // soft parameters
@@ -233,7 +238,7 @@ void higgs_decay_example() {
    
    std::cout << "mhiggs = " << mhiggs << std::endl;
    std::cout << "mAhiggs = " << mAhiggs << std::endl;
-   
+   std::cout << "Uhiggs = " << Uhiggs << std::endl;
    
    std::cout << "Diagonalise 1: " << std::endl;
    std::cout << Uhiggs.transpose() *  MHmatrix * Uhiggs
