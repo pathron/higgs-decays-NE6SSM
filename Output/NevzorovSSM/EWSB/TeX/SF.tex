@@ -29,8 +29,8 @@ SF & Spin 0 & Spin \(\frac{1}{2}\) & Generations & \((U(1)\otimes\, \text{SU}(2)
 \(\text{SF}\Big(\text{sbar}\Big)\) & \(\bar{S}_R\) & \(\text{FsbarR}\) & 1 & \((0,{\bf 1},{\bf 1},- Q_{S} ) \) \\ 
 \(\hat{Dx}\) & \(\tilde{Dx}_L\) & \(\text{FDxL}\) & 3 & \((-\frac{1}{3},{\bf 1},{\bf 3},-2) \) \\ 
 \(\hat{\bar{Dx}}\) & \(\tilde{Dx}_R^*\) & \(\text{conj}\Big(\text{FDxbarR}\Big)\) & 3 & \((\frac{1}{3},{\bf 1},{\bf \overline{3}},-3) \) \\ 
-\(\hat{H'}\) & \(H'\) & \(\text{FHp}\) & 1 & \((-\frac{1}{2},{\bf 2},{\bf 1},2) \) \\ 
-\(\hat{\bar{H'}}\) & \(\bar{H'}\) & \(\text{FHpbar}\) & 1 & \((\frac{1}{2},{\bf 2},{\bf 1},-2) \) \\ 
+\(\hat{HPR}\) & \(HPR\) & \(\text{FHp}\) & 1 & \((-\frac{1}{2},{\bf 2},{\bf 1},2) \) \\ 
+\(\hat{\bar{HPR}}\) & \(\bar{HPR}\) & \(\text{FHpbar}\) & 1 & \((\frac{1}{2},{\bf 2},{\bf 1},-2) \) \\ 
 \(\text{SF}\Big(\phi \Big)\) & \(\phi_R\) & \(\text{FphiR}\) & 1 & \((0,{\bf 1},{\bf 1},0) \) \\ 
 \hline \hline
 \end{tabular} 
@@ -38,7 +38,7 @@ SF & Spin 0 & Spin \(\frac{1}{2}\) & Generations & \((U(1)\otimes\, \text{SU}(2)
 \section{Superpotential and Lagrangian} 
 \subsection{Superpotential} 
 \begin{align} 
-\nonumber W = & \,  XiF_1\,\text{SF}\Big(\phi \Big)\,+\mu'\,\hat{\bar{H'}}\,\hat{H'}\,+\frac{1}{2} Mu_{phi} \,\text{SF}\Big(\phi \Big)\,\text{SF}\Big(\phi \Big)\,- Y_d \,\hat{d}\,\hat{q}\,\hat{H}_d\,- Y_e \,\hat{e}\,\hat{l}\,\hat{H}_d\,+\frac{1}{3} \kappa^\prime \,\text{SF}\Big(\phi \Big)\,\text{SF}\Big(\phi \Big)\,\text{SF}\Big(\phi \Big)\,- \sigma \,\text{SF}\Big(\phi \Big)\,\hat{s}\,\text{SF}\Big(\text{sbar}\Big)\,\\ 
+\nonumber W = & \,  XiF_1\,\text{SF}\Big(\phi \Big)\,+\mu'\,\hat{\bar{HPR}}\,\hat{HPR}\,+\frac{1}{2} Mu_{phi} \,\text{SF}\Big(\phi \Big)\,\text{SF}\Big(\phi \Big)\,- Y_d \,\hat{d}\,\hat{q}\,\hat{H}_d\,- Y_e \,\hat{e}\,\hat{l}\,\hat{H}_d\,+\frac{1}{3} \kappa^\prime \,\text{SF}\Big(\phi \Big)\,\text{SF}\Big(\phi \Big)\,\text{SF}\Big(\phi \Big)\,- \sigma \,\text{SF}\Big(\phi \Big)\,\hat{s}\,\text{SF}\Big(\text{sbar}\Big)\,\\ 
  & +\kappa\,\hat{s}\,\hat{Dx}\,\hat{\bar{Dx}}\,+\lambda\,\hat{s}\,\hat{H}_u\,\hat{H}_d\,+Y_u\,\hat{u}\,\hat{q}\,\hat{H}_u\,\end{align} 
 \subsection{Softbreaking terms} 
 \begin{align} 
@@ -46,7 +46,7 @@ SF & Spin 0 & Spin \(\frac{1}{2}\) & Generations & \((U(1)\otimes\, \text{SU}(2)
  &+H_d^0 \tilde{d}^*_{R,{i \alpha}} \delta_{\alpha \beta} \delta_{i j} \tilde{d}_{L,{j \beta}} T_{d,{i j}} - H_d^- \tilde{d}^*_{R,{i \alpha}} \delta_{\alpha \beta} \delta_{i j} \tilde{u}_{L,{j \beta}} T_{d,{i j}} +H_d^0 \tilde{e}^*_{R,{i}} \delta_{i j} \tilde{e}_{L,{j}} T_{e,{i j}} \nonumber \\ 
  &- H_d^- \tilde{e}^*_{R,{i}} \delta_{i j} \tilde{\nu}_{L,{j}} T_{e,{i j}} - H_u^+ \tilde{u}^*_{R,{i \alpha}} \delta_{\alpha \beta} \delta_{i j} \tilde{d}_{L,{j \beta}} T_{u,{i j}} +H_u^0 \tilde{u}^*_{R,{i \alpha}} \delta_{\alpha \beta} \delta_{i j} \tilde{u}_{L,{j \beta}} T_{u,{i j}} \nonumber \\ 
  &+S \tilde{Dx}^*_{R,{k \gamma}} \delta_{\beta \gamma} \delta_{j k} \tilde{Dx}_{L,{j \beta}} T_{\kappa,{j k}} + \mbox{h.c.} \\ 
-- L_{SB,\phi} = \, & +m_{h_{13}}^2 |H_d^0|^2 +m_{h_{13}}^2 |H_d^-|^2 +m_{h'}^2 |H^{'0}|^2 +m_{h'}^2 |H^{'-}|^2 +m_{\bar{h'}}^2 |\bar{H}^{'0}|^2 +m_{\bar{h'}}^2 |\bar{H}^{'+}|^2 +m_{h_{23}}^2 |H_u^0|^2 \nonumber \\ 
+- L_{SB,\phi} = \, & +m_{h_{13}}^2 |H_d^0|^2 +m_{h_{13}}^2 |H_d^-|^2 +m_{hPr}^2 |H^{'0}|^2 +m_{hPr}^2 |H^{'-}|^2 +m_{\bar{hPr}}^2 |\bar{H}^{'0}|^2 +m_{\bar{hPr!}}^2 |\bar{H}^{'+}|^2 +m_{h_{23}}^2 |H_u^0|^2 \nonumber \\ 
  &+m_{h_{23}}^2 |H_u^+|^2 +m_{phi}^2 |\phi_R|^2 +m_{sbar_3}^2 |\bar{S}_R|^2 +m_{s_3}^2 |S|^2 +\tilde{d}^*_{L,{i \alpha}} \delta_{\alpha \beta} m_{q,{i j}}^{2} \tilde{d}_{L,{j \beta}} +\tilde{d}^*_{R,{i \alpha}} \delta_{\alpha \beta} m_{d,{i j}}^{2} \tilde{d}_{R,{j \beta}} \nonumber \\ 
  &+\tilde{Dx}^*_{R,{i \alpha}} \delta_{\alpha \beta} \delta_{i j} m_{\bar{X},{i j}}^{2} \tilde{Dx}_{R,{j \beta}} +\tilde{Dx}^*_{L,{i \alpha}} \delta_{\alpha \beta} \delta_{i j} m_{X,{i j}}^{2} \tilde{Dx}_{L,{j \beta}} +\tilde{e}^*_{L,{i}} m_{l,{i j}}^{2} \tilde{e}_{L,{j}} +\tilde{e}^*_{R,{i}} m_{e,{i j}}^{2} \tilde{e}_{R,{j}} \nonumber \\ 
  &+\tilde{u}^*_{L,{i \alpha}} \delta_{\alpha \beta} m_{q,{i j}}^{2} \tilde{u}_{L,{j \beta}} +\tilde{u}^*_{R,{i \alpha}} \delta_{\alpha \beta} m_{u,{i j}}^{2} \tilde{u}_{R,{j \beta}} +\tilde{\nu}^*_{L,{i}} m_{l,{i j}}^{2} \tilde{\nu}_{L,{j}} \\ 
