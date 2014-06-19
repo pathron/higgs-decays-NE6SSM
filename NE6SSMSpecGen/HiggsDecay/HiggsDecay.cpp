@@ -319,7 +319,7 @@ int main(int argc, char **argv)
    double TkapPr =  strtod(argv[2], NULL);
    higgs_decay_example(kapPr, TkapPr);
    
-   std::cout << "This calculation is entirely wrong and it is all Roman's fault"  << std::endl;
+   std::cout << "End of calculation."  << std::endl;
    
    return 0;
 }
