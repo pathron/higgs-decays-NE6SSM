@@ -206,18 +206,39 @@ void setup(NE6SSM<Two_scale>& ne6ssm)
    ne6ssm.set_MassG(MassG);
 }
 
+double Gamma_2body_scalar(double m1, double m2, double coup) {
+   if (m2 > 0.5 * m1) return 0;
 
-void higgs_decay_example() {
+   double rt = sqrt(1 - 4.0 *  m2 * m2 / ( m1 * m1));
+   double pf = coup * coup / (16.0 * PI * m1);
+   return rt+pf;
+}
+
+void tunepars(NE6SSM<Two_scale>& ne6ssm)
+{
+   double kapPr = 0.025;
+   double TkapPr = 27.9;
+   ne6ssm.set_TKappaPr(TkapPr);
+   ne6ssm.set_KappaPr(kapPr);
+}
+void higgs_decay_example(double kapPr, double TkapPr) {
    NE6SSM_input_parameters input;
    input.QS = 5;
    NE6SSM<Two_scale> ne6ssm(input);
    setup(ne6ssm);
+   // //routine in which I'll vary parameters to alter default settings 
+   // tunepars(ne6ssm);
+   //adjust kapPr and TkapPR tpo values from command line
+   ne6ssm.set_TKappaPr(TkapPr);
+   ne6ssm.set_KappaPr(kapPr);
    // apply EWSB constraint
    ne6ssm.solve_ewsb_tree_level();
    // calculate tree-level spectrum
    ne6ssm.calculate_DRbar_parameters();
    //Print tree spectrum for comparison
    ne6ssm.print(std::cout);
+
+
    // get hAA coupling
    // Need to know:
    // mass ordering to avoid the goldstone boson 
@@ -231,11 +252,12 @@ void higgs_decay_example() {
    Eigen::Matrix<double,5,5> Uhiggs;
    Eigen::Matrix<double,5,5> MHmatrix;
    
+   int A = 0;  //index for lightest physical pseodo scalar
    mhiggs = ne6ssm.get_Mhh();
    mAhiggs = ne6ssm.get_MAh();
-   Uhiggs =  ne6ssm.get_ZH();
-   MHmatrix =  ne6ssm.get_mass_matrix_hh();
-   
+   Uhiggs = ne6ssm.get_ZH();
+   MHmatrix = ne6ssm.get_mass_matrix_hh();
+   if(mAhiggs(0) -  90.882  < 1e-3) A = 1;
    std::cout << "mhiggs = " << mhiggs << std::endl;
    std::cout << "mAhiggs = " << mAhiggs << std::endl;
    std::cout << "Uhiggs = " << Uhiggs << std::endl;
@@ -253,33 +275,46 @@ void higgs_decay_example() {
          std::cout << "ne6ssm.CpUhhAhAh(" <<i << "," <<j << "," << j << ") = " << ne6ssm.CpUhhAhAh(i,j,j) <<std::endl;
       }
    }
-   // std::cout << "Ggauge = " << Ggauge << std::endl;
-   
-
-
+ 
+   std::cout << "A = " <<A << std::endl;  
 // For *this* point we want Ah(1) not Ah(0).
 // From above Diagonalisatio2 applies so the convention is h = UH
 // where h is mass egenstate and H is gauge eigenstate
 // Can write gauge eigenstate couplings with j as G^H dot h A_jA_j(no sum on j)
 //                                                = (G^H)^T h A_j A_j(no j sum)
 // So (G^H)^T HAA = (G^H)^T U^T hAA = (U G^H)^T hAA = G hAA
-Eigen::Matrix<std::complex<double>,5,1> GHA1A1;
+   Eigen::Matrix<std::complex<double>,5,1> GHA1A1; //gauge basis
+   Eigen::Matrix<std::complex<double>,5,1> GhphysA1A1; //mass basis
 for(int j=0; j<=4; j++){
-   GHA1A1(j) = ne6ssm.CpUhhAhAh(j,1,1);
-   }
-
+   GHA1A1(j) = ne6ssm.CpUhhAhAh(j,A,A);
+ }
+ GhphysA1A1 = Uhiggs * GHA1A1;
  std::cout << "GHA1A1 = " << GHA1A1 << std::endl;
  std::cout << "GhA1A1 = " << (Uhiggs * GHA1A1).transpose() << std::endl;
- 
+ std::cout << "GhphysA1A1 =" << GhphysA1A1  << std::endl;
+ //From table 4 of arXiv::1201.2671 for mh = 126 GeV
+ double GamSM = 4.085e-03; 
 
+// Note the GHA1A1 is the Feynman rule -- which is a factor two larger
+// than the term in the Lagrangian which Roman calculates
+// and coupling \xi_{hAA} which is written in Eq C28a and C28b on p530 
+// of Baer & Tata weak scale supersymmetry 
+ double GamhA1A1 = Gamma_2body_scalar( mhiggs(0), mAhiggs(A), Re(GhphysA1A1(0)));
+ double GamTot = GamSM + GamhA1A1;
+ double BRhA1A1 = GamhA1A1 / GamTot;
+ std::cout << "GamhA1A1 = " << GamhA1A1 << std::endl;
+ std::cout << "GamTot = " << GamTot << std::endl;
+ std::cout << "BRhA1A1 =" << BRhA1A1 << std::endl;
 }
 
-int main()
+
+int main(int argc, char **argv)
 {
    INFO("=============================");
    INFO("running higgs_decay_example()");
    INFO("=============================");
-
-   higgs_decay_example();
+   double kapPr = strtod(argv[1], NULL);
+   double TkapPr =  strtod(argv[2], NULL);
+   higgs_decay_example(kapPr, TkapPr);
    return 0;
 }
