@@ -211,7 +211,7 @@ double Gamma_2body_scalar(double m1, double m2, double coup) {
 
    double rt = sqrt(1 - 4.0 *  m2 * m2 / ( m1 * m1));
    double pf = coup * coup / (16.0 * PI * m1);
-   return rt+pf;
+   return rt*pf;
 }
 
 void tunepars(NE6SSM<Two_scale>& ne6ssm)
