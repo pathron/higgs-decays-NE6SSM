@@ -210,7 +210,7 @@ double Gamma_2body_scalar(double m1, double m2, double coup) {
    if (m2 > 0.5 * m1) return 0;
 
    double rt = sqrt(1 - 4.0 *  m2 * m2 / ( m1 * m1));
-   double pf = coup * coup / (16.0 * PI * m1);
+   double pf = coup * coup / (32.0 * PI * m1);
    return rt*pf;
 }
 
