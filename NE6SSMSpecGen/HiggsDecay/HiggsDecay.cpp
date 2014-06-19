@@ -292,6 +292,7 @@ for(int j=0; j<=4; j++){
  std::cout << "GHA1A1 = " << GHA1A1 << std::endl;
  std::cout << "GhA1A1 = " << (Uhiggs * GHA1A1).transpose() << std::endl;
  std::cout << "GhphysA1A1 =" << GhphysA1A1  << std::endl;
+ std::cout << "0.5 * GhphysA1A1 = "  << 0.5 * GhphysA1A1  << std::endl;
  //From table 4 of arXiv::1201.2671 for mh = 126 GeV
  double GamSM = 4.085e-03; 
 
