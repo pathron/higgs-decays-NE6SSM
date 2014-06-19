@@ -257,7 +257,8 @@ void higgs_decay_example(double kapPr, double TkapPr) {
    mAhiggs = ne6ssm.get_MAh();
    Uhiggs = ne6ssm.get_ZH();
    MHmatrix = ne6ssm.get_mass_matrix_hh();
-   if(mAhiggs(0) -  90.882  < 1e-3) A = 1;
+   if(fabs(mAhiggs(0) -  90.882)/ mAhiggs(0)  < 1e-3) A = 1;
+   
    std::cout << "mhiggs = " << mhiggs << std::endl;
    std::cout << "mAhiggs = " << mAhiggs << std::endl;
    std::cout << "Uhiggs = " << Uhiggs << std::endl;
