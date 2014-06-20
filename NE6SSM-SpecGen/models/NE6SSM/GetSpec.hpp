@@ -14,8 +14,6 @@
 #include <iostream>
 #include <cstdlib>
 
-class Two_scale;
-
 namespace flexiblesusy {
 
 class GetSpec {
