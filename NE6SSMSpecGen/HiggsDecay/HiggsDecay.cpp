@@ -228,7 +228,7 @@ void higgs_decay_example(double kapPr, double TkapPr) {
    setup(ne6ssm);
    // //routine in which I'll vary parameters to alter default settings 
    // tunepars(ne6ssm);
-   //adjust kapPr and TkapPR tpo values from command line
+   //adjust kapPr and TkapPR values from command line
    ne6ssm.set_TKappaPr(TkapPr);
    ne6ssm.set_KappaPr(kapPr);
    // apply EWSB constraint

@@ -10,19 +10,8 @@
 #include "wrappers.hpp"
 #include "GetSpec.hpp"
 #include "NE6SSM_slha_io.hpp"
-// #include "two_scale_model.hpp"
-// #include "two_scale_solver.hpp"
-//#include "NE6SSM_model.hpp"
-
 
 using namespace flexiblesusy;
-//template <class T> class NE6SSM;
-//class Two_scale;
-//template<class T> class flexiblesusy::NE6SSM;
-//typedef NE6SSM<Two_scale> NE6SSM_two_scale;
-
-
-
 
 double Gamma_2body_scalar(double m1, double m2, double coup) {
    if (m2 > 0.5 * m1) return 0;
@@ -32,10 +21,6 @@ double Gamma_2body_scalar(double m1, double m2, double coup) {
    return rt*pf;
 }
 
-// template<class T>
-//void higgs_decay_example(NE6SSM<T> & ne6ssm) {
-//template<class T>
-//void higgs_decay_example(NE6SSM_two_scale) {
 void higgs_decay_example(NE6SSM<Two_scale>& ne6ssm) {
    //print to see what we have
    ne6ssm.print(std::cout);
