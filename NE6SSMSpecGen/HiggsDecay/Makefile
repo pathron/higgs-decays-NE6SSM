@@ -17,12 +17,16 @@ CONFIGDIR       := $(ABSBASEDIR)/config
 FLEXIDIR        := $(ABSBASEDIR)/src
 LEGACYDIR       := $(ABSBASEDIR)/legacy
 FFLITEDIR       := $(ABSBASEDIR)/fflite
+SLHAEADIR       := $(ABSBASEDIR)/slhaea
+
 
 INCMODEL        := -I$(MODELDIR)
 INCCONFIG       := -I$(CONFIGDIR)
 INCFLEXI        := -I$(FLEXIDIR)
 INCLEGACY       := -I$(LEGACYDIR)
 INCFFLITE       := -I$(FFLITEDIR)
+INCSLHAEA       := -I$(SLHAEADIR)
+
 LIBMODEL        := $(MODELDIR)/lib$(MODEL)$(LIBEXT)
 LIBFLEXI        := $(FLEXIDIR)/libflexisusy$(LIBEXT)
 LIBLEGACY       := $(LEGACYDIR)/liblegacy$(LIBEXT)
@@ -31,7 +35,7 @@ LIBFFLITE       := $(FFLITEDIR)/libfflite$(LIBEXT)
 # Variables for compilation
 CXX             := g++
 CPPFLAGS        :=  -I. $(INCCONFIG) $(INCFLEXI) $(INCLEGACY) \
-                   $(INCMODEL)
+                   $(INCMODEL) $(INCSLHAEA)
 CXXFLAGS        := -std=c++11 -O2
 CXX_DEP_GEN     := g++
 CXXFLAGS_DEP_GEN:= -std=c++11
@@ -62,15 +66,27 @@ endif
 HIGGSDECAY_SRC := \
 		HiggsDecay.cpp
 
+HIGGSDECAY2_SRC := \
+		HiggsDecay2.cpp
+
 HIGGSDECAY_OBJ := \
 		$(patsubst %.cpp, %.o, $(filter %.cpp, $(HIGGSDECAY_SRC))) \
 		$(patsubst %.f, %.o, $(filter %.f, $(HIGGSDECAY_SRC)))
 
+HIGGSDECAY2_OBJ := \
+		$(patsubst %.cpp, %.o, $(filter %.cpp, $(HIGGSDECAY2_SRC))) \
+		$(patsubst %.f, %.o, $(filter %.f, $(HIGGSDECAY2_SRC)))
+
 HIGGSDECAY_DEP := \
 		$(HIGGSDECAY_OBJ:.o=.d)
+HIGGSDECAY2_DEP := \
+		$(HIGGSDECAY2_OBJ:.o=.d)
 
 HIGGSDECAY_EXE := \
 		higgsdecay.x
+
+HIGGSDECAY2_EXE := \
+		higgsdecay2.x
 
 # returns file name with absolute path, taking whitespace in directory
 # names into account
@@ -79,21 +95,23 @@ abspathx        = $(foreach name,$(1),\
 
 .PHONY:         all clean clean-dep clean-obj distclean showbuild
 
-all: $(HIGGSDECAY_EXE)
+all: $(HIGGSDECAY_EXE) $(HIGGSDECAY2_EXE)
 
 clean-dep:
-		-rm -f $(HIGGSDECAY_DEP)
+		-rm -f $(HIGGSDECAY_DEP) $(HIGGSDECAY2_DEP)
 
 clean-obj:
-		-rm -f $(HIGGSDECAY_OBJ)
+		-rm -f $(HIGGSDECAY_OBJ) $(HIGGSDECAY2_OBJ)
 
 clean: clean-dep clean-obj
-		-rm -f $(HIGGSDECAY_EXE)
+		-rm -f $(HIGGSDECAY_EXE) $(HIGGSDECAY2_EXE)
 
 distclean: clean
 		-rm -f Makefile
 
 $(HIGGSDECAY_DEP) $(HIGGSDECAY_OBJ): CPPFLAGS += $(GSLFLAGS) $(EIGENFLAGS) $(BOOSTFLAGS)
+
+$(HIGGSDECAY2_DEP) $(HIGGSDECAY2_OBJ): CPPFLAGS += $(GSLFLAGS) $(EIGENFLAGS) $(BOOSTFLAGS)
 
 ifneq (,$(findstring yes,$(ENABLE_LOOPTOOLS)$(ENABLE_FFLITE)))
 $(HIGGSDECAY_DEP) $(HIGGSDECAY_OBJ): CPPFLAGS += $(LOOPFUNCFLAGS)
@@ -101,13 +119,15 @@ endif
 
 $(HIGGSDECAY_EXE): $(HIGGSDECAY_OBJ) $(LIBMODEL) $(LIBFLEXI) $(LIBLEGACY) $(filter-out -%,$(LOOPFUNCLIBS))
 		$(CXX) -o $@ $(call abspathx,$^) $(filter -%,$(LOOPFUNCLIBS)) $(GSLLIBS) $(BOOSTTHREADLIBS) $(THREADLIBS) $(LAPACKLIBS) $(FLIBS)
+$(HIGGSDECAY2_EXE): $(HIGGSDECAY2_OBJ) $(LIBMODEL) $(LIBFLEXI) $(LIBLEGACY) $(filter-out -%,$(LOOPFUNCLIBS))
+		$(CXX) -o $@ $(call abspathx,$^) $(filter -%,$(LOOPFUNCLIBS)) $(GSLLIBS) $(BOOSTTHREADLIBS) $(THREADLIBS) $(LAPACKLIBS) $(FLIBS)
 
 ifneq ($(MAKECMDGOALS),clean)
 ifneq ($(MAKECMDGOALS),clean-dep)
 ifneq ($(MAKECMDGOALS),clean-obj)
 ifneq ($(MAKECMDGOALS),distclean)
 ifneq ($(MAKECMDGOALS),showbuild)
--include $(HIGGSDECAY_DEP)
+-include $(HIGGSDECAY_DEP) $(HIGGSDECAY2_DEP)
 endif
 endif
 endif
