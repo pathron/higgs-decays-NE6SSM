@@ -779,14 +779,9 @@ void CLASSNAME::reorder_DRbar_masses()
 
 void CLASSNAME::reorder_pole_masses()
 {
-   std::cout << "In reorder_pole_masses. about to call move_goldstone_to for Ah and MZ." << std::endl;
-   std::cout << "PHYSICAL(MVZ) = " << PHYSICAL(MVZ) << std::endl;
    move_goldstone_to(0, MVZ, PHYSICAL(MAh), PHYSICAL(ZA));
-   std::cout << "after call move_goldstone_to for Ah and MZ." << std::endl;
    move_goldstone_to(1, MVZp, PHYSICAL(MAh), PHYSICAL(ZA));
-   std::cout << "after call move_goldstone_to for Ah and MZPrime." << std::endl;
    move_goldstone_to(0, MVWm, PHYSICAL(MHpm), PHYSICAL(ZP));
-
 }
 
 void CLASSNAME::calculate_spectrum()
