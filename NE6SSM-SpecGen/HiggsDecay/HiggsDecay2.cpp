@@ -38,12 +38,13 @@ void higgs_decay_example(NE6SSM<Two_scale>& ne6ssm) {
    Eigen::Matrix<double,5,5> Uhiggs;
    Eigen::Matrix<double,5,5> MHmatrix;
    
-   int A = 0;  //index for lightest physical pseodo scalar
+   int A = 2;  //index for lightest physical pseudo scalar
+   //(0 and 1 are goldstones)
    mhiggs = ne6ssm.get_Mhh();
    mAhiggs = ne6ssm.get_MAh();
    Uhiggs = ne6ssm.get_ZH();
    MHmatrix = ne6ssm.get_mass_matrix_hh();
-   if(fabs(mAhiggs(0) -  90.882)/ mAhiggs(0)  < 1e-3) A = 1;
+   //   if(fabs(mAhiggs(0) -  90.882)/ mAhiggs(0)  < 1e-3) A = 1;
    
    std::cout << "mhiggs = " << mhiggs << std::endl;
    std::cout << "mAhiggs = " << mAhiggs << std::endl;
