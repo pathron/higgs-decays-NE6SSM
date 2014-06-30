@@ -37,7 +37,9 @@ void higgs_decay_example(NE6SSM<Two_scale>& ne6ssm) {
    Eigen::Array<double,5,1> mAhiggs;
    Eigen::Matrix<double,5,5> Uhiggs;
    Eigen::Matrix<double,5,5> MHmatrix;
-   
+   Eigen::Array<double,5,1> mhiggs_pole;
+   Eigen::Array<double,5,1> mAhiggs_pole;
+
    int A = 2;  //index for lightest physical pseudo scalar
    //(0 and 1 are goldstones)
    mhiggs = ne6ssm.get_Mhh();
@@ -45,7 +47,9 @@ void higgs_decay_example(NE6SSM<Two_scale>& ne6ssm) {
    Uhiggs = ne6ssm.get_ZH();
    MHmatrix = ne6ssm.get_mass_matrix_hh();
    //   if(fabs(mAhiggs(0) -  90.882)/ mAhiggs(0)  < 1e-3) A = 1;
-   
+   mhiggs_pole = ne6ssm.get_physical().Mhh;
+   mAhiggs_pole = ne6ssm.get_physical().MAh;
+
    std::cout << "mhiggs = " << mhiggs << std::endl;
    std::cout << "mAhiggs = " << mAhiggs << std::endl;
    std::cout << "Uhiggs = " << Uhiggs << std::endl;
@@ -88,7 +92,7 @@ for(int j=0; j<=4; j++){
 // than the term in the Lagrangian which Roman calculates
 // and coupling \xi_{hAA} which is written in Eq C28a and C28b on p530 
 // of Baer & Tata weak scale supersymmetry 
- double GamhA1A1 = Gamma_2body_scalar( mhiggs(0), mAhiggs(A), Re(GhphysA1A1(0)));
+ double GamhA1A1 = Gamma_2body_scalar( mhiggs_pole(0), mAhiggs_pole(A), Re(GhphysA1A1(0)));
  double GamTot = GamSM + GamhA1A1;
  double BRhA1A1 = GamhA1A1 / GamTot;
  std::cout << "GamhA1A1 = " << GamhA1A1 << std::endl;
@@ -108,7 +112,7 @@ int main(int argc, const char *argv[])
    NE6SSM_slha_io slha;
 
    gs.findSpectrum(argc,argv,ne6ssm, slha);
-
+   
    higgs_decay_example(ne6ssm);
    
    std::cout << "End of calculation."  << std::endl;
