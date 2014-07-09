@@ -34,6 +34,7 @@ LIBNE6SSM_SRC += \
 		$(DIR)/NE6SSM_two_scale_initial_guesser.cpp \
 		$(DIR)/NE6SSM_two_scale_low_scale_constraint.cpp \
 		$(DIR)/NE6SSM_two_scale_model.cpp \
+		$(DIR)/GetSpec.cpp \
 		$(DIR)/NE6SSM_two_scale_susy_parameters.cpp \
 		$(DIR)/NE6SSM_two_scale_soft_parameters.cpp \
 		$(DIR)/NE6SSM_two_scale_susy_scale_constraint.cpp
@@ -51,6 +52,7 @@ LIBNE6SSM_HDR += \
 		$(DIR)/NE6SSM_physical.hpp \
 		$(DIR)/NE6SSM_slha_io.hpp \
 		$(DIR)/NE6SSM_spectrum_generator.hpp \
+		$(DIR)/GetSpec.hpp \
 		$(DIR)/NE6SSM_susy_scale_constraint.hpp \
 		$(DIR)/NE6SSM_utilities.hpp \
 		$(DIR)/NE6SSM_two_scale_convergence_tester.hpp \
