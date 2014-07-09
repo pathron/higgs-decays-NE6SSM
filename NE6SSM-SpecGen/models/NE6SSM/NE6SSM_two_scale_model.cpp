@@ -190,7 +190,7 @@ int CLASSNAME::tadpole_equations(const gsl_vector* x, void* params, gsl_vector* 
    const unsigned ewsb_loop_order = ewsb_parameters->ewsb_loop_order;
 
    double tadpole[number_of_ewsb_equations];
-
+   
    model->set_mHd2(gsl_vector_get(x, 0));
    model->set_mHu2(gsl_vector_get(x, 1));
    model->set_ms2(gsl_vector_get(x, 2));
@@ -202,7 +202,7 @@ int CLASSNAME::tadpole_equations(const gsl_vector* x, void* params, gsl_vector* 
    tadpole[2] = model->get_ewsb_eq_hh_3();
    tadpole[3] = model->get_ewsb_eq_hh_4();
    tadpole[4] = model->get_ewsb_eq_hh_5();
-
+  
    if (ewsb_loop_order > 0) {
       model->calculate_DRbar_parameters();
       tadpole[0] -= Re(model->tadpole_hh(0));
@@ -210,14 +210,15 @@ int CLASSNAME::tadpole_equations(const gsl_vector* x, void* params, gsl_vector* 
       tadpole[2] -= Re(model->tadpole_hh(2));
       tadpole[3] -= Re(model->tadpole_hh(3));
       tadpole[4] -= Re(model->tadpole_hh(4));
-
-      if (ewsb_loop_order > 1) {
+      
+     if (ewsb_loop_order > 1) {
          double two_loop_tadpole[3];
          model->tadpole_hh_2loop(two_loop_tadpole);
          tadpole[0] -= two_loop_tadpole[0];
          tadpole[1] -= two_loop_tadpole[1];
          tadpole[2] -= two_loop_tadpole[2];
-      }
+        
+     }
    }
 
    for (std::size_t i = 0; i < number_of_ewsb_equations; ++i)
@@ -248,7 +249,9 @@ int CLASSNAME::solve_ewsb_iteratively()
    int status;
    for (std::size_t i = 0; i < sizeof(solvers)/sizeof(*solvers); ++i) {
       VERBOSE_MSG("\tStarting EWSB iteration using solver " << i);
+      std::cout << "Starting EWSB iteration using solver " << i << std::endl;;
       status = solve_ewsb_iteratively_with(solvers[i], x_init);
+      std::cout << "after calling ewb solver status = " << status << std::endl;
       if (status == GSL_SUCCESS) {
          VERBOSE_MSG("\tSolver " << i << " finished successfully!");
          break;
@@ -276,10 +279,12 @@ int CLASSNAME::solve_ewsb_iteratively()
 
 int CLASSNAME::solve_ewsb_iteratively(unsigned loop_order)
 {
+     
    // temporarily set `ewsb_loop_order' to `loop_order' and do
-   // iteration
+   // iteration 
    const unsigned old_loop_order = ewsb_loop_order;
    ewsb_loop_order = loop_order;
+   
    const int status = solve_ewsb_iteratively();
    ewsb_loop_order = old_loop_order;
    return status;
@@ -288,7 +293,7 @@ int CLASSNAME::solve_ewsb_iteratively(unsigned loop_order)
 int CLASSNAME::solve_ewsb_tree_level()
 {
    int error = 0;
-
+  
    const auto QS = LOCALINPUT(QS);
 
    const double old_mHu2 = mHu2;
@@ -445,7 +450,6 @@ int CLASSNAME::solve_ewsb()
 
    if (ewsb_loop_order == 0)
       return solve_ewsb_tree_level();
-
    return solve_ewsb_iteratively(ewsb_loop_order);
 }
 
@@ -469,7 +473,7 @@ int CLASSNAME::solve_ewsb_iteratively_with(const gsl_multiroot_fsolver_type* sol
                               ewsb_iteration_precision);
    root_finder.set_solver_type(solver);
    const int status = root_finder.find_root(x_init);
-
+  
    return status;
 }
 
@@ -612,20 +616,18 @@ void CLASSNAME::calculate_DRbar_parameters()
    calculate_MSHp0();
    calculate_MSHpp();
    calculate_MChiP();
-
    mHd2 = old_mHd2;
    mHu2 = old_mHu2;
    ms2 = old_ms2;
    msbar2 = old_msbar2;
    mphi2 = old_mphi2;
-
+   
 }
 
 void CLASSNAME::calculate_pole_masses()
 {
 #ifdef ENABLE_THREADS
    thread_exception = 0;
-
    std::thread thread_MGlu(Thread(this, &CLASSNAME::calculate_MGlu_pole));
    std::thread thread_MChaP(Thread(this, &CLASSNAME::calculate_MChaP_pole));
    std::thread thread_MVZp(Thread(this, &CLASSNAME::calculate_MVZp_pole));
@@ -789,13 +791,12 @@ void CLASSNAME::calculate_spectrum()
    calculate_DRbar_parameters();
    if (pole_mass_loop_order > 0)
       calculate_pole_masses();
-  
+ 
    // move goldstone bosons to the front
    reorder_DRbar_masses();
     if(pole_mass_loop_order == 0) 
        copy_DRbar_masses_to_pole_masses();
     if (pole_mass_loop_order > 0){
-       std::cout << "reordering the pole masses" << std::endl;
        reorder_pole_masses();
     }
    if (problems.have_serious_problem()) {
@@ -1512,7 +1513,7 @@ Eigen::Matrix<double,2,2> CLASSNAME::get_mass_matrix_Hpm() const
       Sqr(vd) + 0.125*Sqr(g2)*Sqr(vd) + 0.5*AbsSqr(Lambdax)*Sqr(vs) - 0.025*QS*
       Sqr(g1p)*Sqr(vs) + 0.025*QS*Sqr(g1p)*Sqr(vsb) + 0.075*Sqr(g1)*Sqr(vu) +
       0.05*Sqr(g1p)*Sqr(vu) + 0.375*Sqr(g2)*Sqr(vu);
-
+   
    return mass_matrix_Hpm;
 }
 
@@ -1527,6 +1528,7 @@ void CLASSNAME::calculate_MHpm()
       problems.unflag_tachyon(Hpm);
 
    MHpm = AbsSqrt(MHpm);
+  
 }
 
 Eigen::Matrix<double,8,8> CLASSNAME::get_mass_matrix_Chi() const
@@ -30236,6 +30238,7 @@ void CLASSNAME::tadpole_hh_2loop(double result[3]) const
       result[0] = (- s1s - s1t - s1b - s1tau) * vd;
       result[1] = (- s2s - s2t - s2b - s2tau) * vu;
       result[2] = (- sss - ssb) * vs;
+      
    } else {
       result[0] = 0.;
       result[1] = 0.;
@@ -30246,7 +30249,7 @@ void CLASSNAME::tadpole_hh_2loop(double result[3]) const
 
 
 void CLASSNAME::calculate_Mhh_pole()
-{
+{ 
    if (problems.is_tachyon(hh))
       return;
    // diagonalization with high precision
@@ -30367,6 +30370,13 @@ void CLASSNAME::calculate_MAh_pole()
 
 void CLASSNAME::calculate_MHpm_pole()
 {
+   const auto old_mHd2 = mHd2;
+   const auto old_mHu2 = mHu2;
+   const auto old_ms2 = ms2;
+   const auto old_msbar2 = msbar2;
+   const auto old_mphi2 = mphi2;
+   solve_ewsb_one_loop();
+   
    if (problems.is_tachyon(Hpm))
       return;
    // diagonalization with high precision
@@ -30377,7 +30387,7 @@ void CLASSNAME::calculate_MHpm_pole()
    do {
       Eigen::Matrix<double,2,2> self_energy;
       const Eigen::Matrix<double,2,2> M_tree(get_mass_matrix_Hpm());
-
+      
       for (unsigned es = 0; es < 2; ++es) {
          const double p = Abs(old_MHpm(es));
          for (unsigned i1 = 0; i1 < 2; ++i1) {
@@ -30393,21 +30403,27 @@ void CLASSNAME::calculate_MHpm_pole()
          Eigen::Array<double,2,1> eigen_values;
          Eigen::Matrix<double,2,2> mix_ZP;
          fs_diagonalize_hermitian(M_1loop, eigen_values, mix_ZP);
-
          if (eigen_values(es) < 0.)
             problems.flag_tachyon(Hpm);
-
          PHYSICAL(MHpm(es)) = AbsSqrt(eigen_values(es));
          if (es == 0)
             PHYSICAL(ZP) = mix_ZP;
       }
-
+      
       new_MHpm = PHYSICAL(MHpm);
+      
       diff = MaxRelDiff(new_MHpm, old_MHpm);
       old_MHpm = new_MHpm;
       iteration++;
    } while (diff > precision
             && iteration < number_of_mass_iterations);
+   
+   mHd2 = old_mHd2;
+   mHu2 = old_mHu2;
+   ms2 = old_ms2;
+   msbar2 = old_msbar2;
+   mphi2 = old_mphi2;
+
 }
 
 void CLASSNAME::calculate_MChi_pole()

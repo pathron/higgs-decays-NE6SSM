@@ -142,7 +142,6 @@ void NE6SSM_susy_scale_constraint<Two_scale>::apply()
    MODEL->set_MassG(MassGInput);
    MODEL->set_MassBp(MassBpInput);
 
-
    // the parameters, which are fixed by the EWSB eqs., will now be
    // defined at this scale (at the EWSB loop level defined in the
    // model)
@@ -185,8 +184,9 @@ void NE6SSM_susy_scale_constraint<Two_scale>::initialize()
 
 void NE6SSM_susy_scale_constraint<Two_scale>::update_scale()
 {
-   scale = 1000;
-
+   //   scale = 1000;
+   const auto MSu = MODELPARAMETER(MSu);
+   scale = Sqrt(MSu(0)*MSu(5));
 
 }
 
