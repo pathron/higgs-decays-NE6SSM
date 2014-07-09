@@ -1,40 +1,11 @@
-// ====================================================================
-// This file is part of FlexibleSUSY.
-//
-// FlexibleSUSY is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published
-// by the Free Software Foundation, either version 3 of the License,
-// or (at your option) any later version.
-//
-// FlexibleSUSY is distributed in the hope that it will be useful, but
-// WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with FlexibleSUSY.  If not, see
-// <http://www.gnu.org/licenses/>.
-// ====================================================================
+#include "GetSpec.hpp"
 
-// File generated at Wed 9 Jul 2014 14:07:20
+using namespace flexiblesusy;
+  
+int GetSpec::findSpectrum(int argc, const char* argv[], 
+                            NE6SSM<Two_scale> & model, 
+                            NE6SSM_slha_io  & slha_io) {
 
-#include "NE6SSM_input_parameters.hpp"
-#include "NE6SSM_slha_io.hpp"
-#include "NE6SSM_spectrum_generator.hpp"
-
-#include "error.hpp"
-#include "spectrum_generator_settings.hpp"
-#include "lowe.h"
-#include "command_line_options.hpp"
-
-#include <iostream>
-#include <cstdlib>
-
-int main(int argc, const char* argv[])
-{
-   using namespace flexiblesusy;
-   using namespace softsusy;
-   typedef Two_scale algorithm_type;
 
    Command_line_options options(argc, argv);
    if (options.must_print_model_info())
@@ -46,7 +17,7 @@ int main(int argc, const char* argv[])
    const std::string slha_input_file(options.get_slha_input_file());
    const std::string slha_output_file(options.get_slha_output_file());
    const std::string spectrum_file(options.get_spectrum_file());
-   NE6SSM_slha_io slha_io;
+   //NE6SSM_slha_io slha_io;
    Spectrum_generator_settings spectrum_generator_settings;
    QedQcd oneset;
    NE6SSM_input_parameters input;
@@ -69,7 +40,7 @@ int main(int argc, const char* argv[])
 
    oneset.toMz(); // run SM fermion masses to MZ
 
-   NE6SSM_spectrum_generator<algorithm_type> spectrum_generator;
+   //   NE6SSM_spectrum_generator<algorithm_type> spectrum_generator;
    spectrum_generator.set_precision_goal(
       spectrum_generator_settings.get(Spectrum_generator_settings::precision));
    spectrum_generator.set_max_iterations(
@@ -91,8 +62,7 @@ int main(int argc, const char* argv[])
 
    spectrum_generator.run(oneset, input);
 
-   const NE6SSM<algorithm_type>& model
-      = spectrum_generator.get_model();
+   model = spectrum_generator.get_model();
    const Problems<NE6SSM_info::NUMBER_OF_PARTICLES>& problems
       = spectrum_generator.get_problems();
 
@@ -118,5 +88,7 @@ int main(int argc, const char* argv[])
 
    const int exit_code = spectrum_generator.get_exit_code();
 
+
    return exit_code;
+
 }
