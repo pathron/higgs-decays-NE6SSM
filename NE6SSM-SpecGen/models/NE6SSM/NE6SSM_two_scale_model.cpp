@@ -190,7 +190,7 @@ int CLASSNAME::tadpole_equations(const gsl_vector* x, void* params, gsl_vector* 
    const unsigned ewsb_loop_order = ewsb_parameters->ewsb_loop_order;
 
    double tadpole[number_of_ewsb_equations];
-   std::cout <<"inside tadpole_equations " << std::endl;
+   
    model->set_mHd2(gsl_vector_get(x, 0));
    model->set_mHu2(gsl_vector_get(x, 1));
    model->set_ms2(gsl_vector_get(x, 2));
@@ -202,11 +202,7 @@ int CLASSNAME::tadpole_equations(const gsl_vector* x, void* params, gsl_vector* 
    tadpole[2] = model->get_ewsb_eq_hh_3();
    tadpole[3] = model->get_ewsb_eq_hh_4();
    tadpole[4] = model->get_ewsb_eq_hh_5();
-   std::cout <<"tree level tadpole[0] " << tadpole[0] << std::endl;
-   std::cout <<"tree level tadpole[1] " << tadpole[1] << std::endl;
-   std::cout <<"tree level tadpole[2] " << tadpole[2] << std::endl;
-   std::cout <<"tree level tadpole[3] " << tadpole[3] << std::endl;
-   std::cout <<"tree level tadpole[4] " << tadpole[4] << std::endl;
+  
    if (ewsb_loop_order > 0) {
       model->calculate_DRbar_parameters();
       tadpole[0] -= Re(model->tadpole_hh(0));
@@ -215,22 +211,13 @@ int CLASSNAME::tadpole_equations(const gsl_vector* x, void* params, gsl_vector* 
       tadpole[3] -= Re(model->tadpole_hh(3));
       tadpole[4] -= Re(model->tadpole_hh(4));
       
-       std::cout <<"one loop tadpole[0] " << tadpole[0] << std::endl;
-       std::cout <<"one loop tadpole[1] " << tadpole[1] << std::endl;
-       std::cout <<"one loop tadpole[2] " << tadpole[2] << std::endl;
-       std::cout <<"one loop tadpole[3] " << tadpole[3] << std::endl;
-       std::cout <<"one loop tadpole[4] " << tadpole[4] << std::endl;
      if (ewsb_loop_order > 1) {
          double two_loop_tadpole[3];
          model->tadpole_hh_2loop(two_loop_tadpole);
          tadpole[0] -= two_loop_tadpole[0];
          tadpole[1] -= two_loop_tadpole[1];
          tadpole[2] -= two_loop_tadpole[2];
-         std::cout <<"two loop tadpole[0] " << tadpole[0] << std::endl;
-         std::cout <<"two loop tadpole[1] " << tadpole[1] << std::endl;
-         std::cout <<"two loop tadpole[2] " << tadpole[2] << std::endl;
-         std::cout <<"two loop tadpole[3] " << tadpole[3] << std::endl;
-         std::cout <<"two loop tadpole[4] " << tadpole[4] << std::endl;
+        
      }
    }
 
@@ -292,17 +279,13 @@ int CLASSNAME::solve_ewsb_iteratively()
 
 int CLASSNAME::solve_ewsb_iteratively(unsigned loop_order)
 {
-     std::cout <<"In solve ewsb iteratively  " << std::endl;
-   // temporarily set `ewsb_loop_order' to `loop_order' and do
-   // iteration
-     std::cout << "loop_order = "  << loop_order << std::endl;
-     std::cout << "ewsb_loop_order = "  << ewsb_loop_order << std::endl;
      
+   // temporarily set `ewsb_loop_order' to `loop_order' and do
+   // iteration 
    const unsigned old_loop_order = ewsb_loop_order;
    ewsb_loop_order = loop_order;
    
    const int status = solve_ewsb_iteratively();
-   std::cout << "after calling splve_ewsb_iteratively() status = " << status << std::endl;
    ewsb_loop_order = old_loop_order;
    return status;
 }
@@ -310,8 +293,7 @@ int CLASSNAME::solve_ewsb_iteratively(unsigned loop_order)
 int CLASSNAME::solve_ewsb_tree_level()
 {
    int error = 0;
-   std::cout << "inside solve_ewsb_tree_level " << std::endl;
-   
+  
    const auto QS = LOCALINPUT(QS);
 
    const double old_mHu2 = mHu2;
@@ -385,18 +367,6 @@ int CLASSNAME::solve_ewsb_tree_level_via_soft_higgs_masses()
    int error = 0;
 
    const auto QS = LOCALINPUT(QS);
-   std::cout << "TLambdax = "  << TLambdax << std::endl;
-   std::cout << "Lambdax = "  << Lambdax << std::endl;
-   std::cout << "vs = "  << vs << std::endl;
-   std::cout << "vsb = "  << vsb << std::endl;
-   std::cout << "vu = "  << vu << std::endl;
-   std::cout << "vphi = "  << vphi << std::endl;
-   std::cout << "Sigmax = "  << Sigmax << std::endl;
-   std::cout << "g1 = "  << g1 << std::endl;
-   std::cout << "g2 = "  << g2 << std::endl;
-   std::cout << "g1p = "  << g1p << std::endl;
-   std::cout << "QS = "  <<QS << std::endl;
-
 
    const double new_mHd2 = (0.0125*(28.284271247461902*vs*vu*Conj(TLambdax) -
       20*vphi*vsb*vu*Conj(Sigmax)*Lambdax - 20*vphi*vsb*vu*Conj(Lambdax)*Sigmax -
@@ -480,7 +450,6 @@ int CLASSNAME::solve_ewsb()
 
    if (ewsb_loop_order == 0)
       return solve_ewsb_tree_level();
-   std::cout << "inside solve_ewsb() " << std::endl;
    return solve_ewsb_iteratively(ewsb_loop_order);
 }
 
@@ -502,10 +471,9 @@ int CLASSNAME::solve_ewsb_iteratively_with(const gsl_multiroot_fsolver_type* sol
                               &params,
                               number_of_ewsb_iterations,
                               ewsb_iteration_precision);
-   std::cout << "set root_finder."  << std::endl;
    root_finder.set_solver_type(solver);
    const int status = root_finder.find_root(x_init);
-   std::cout << "called root_finder.find_root and returned status = " << status  << std::endl;
+  
    return status;
 }
 
@@ -654,15 +622,12 @@ void CLASSNAME::calculate_DRbar_parameters()
    msbar2 = old_msbar2;
    mphi2 = old_mphi2;
    
-   print(cout);
 }
 
 void CLASSNAME::calculate_pole_masses()
 {
 #ifdef ENABLE_THREADS
    thread_exception = 0;
-    std::cout << "inside calculate_pole_masses "  << std::endl;
-   std::cout << " mHu2 = "  << mHu2 << std::endl;
    std::thread thread_MGlu(Thread(this, &CLASSNAME::calculate_MGlu_pole));
    std::thread thread_MChaP(Thread(this, &CLASSNAME::calculate_MChaP_pole));
    std::thread thread_MVZp(Thread(this, &CLASSNAME::calculate_MVZp_pole));
@@ -671,12 +636,8 @@ void CLASSNAME::calculate_pole_masses()
    std::thread thread_MSu(Thread(this, &CLASSNAME::calculate_MSu_pole));
    std::thread thread_MSe(Thread(this, &CLASSNAME::calculate_MSe_pole));
    std::thread thread_MSDX(Thread(this, &CLASSNAME::calculate_MSDX_pole));
-    std::cout << "inside calculate_pole_masses before getting higgs masses"  << std::endl;
-   std::cout << " mHu2 = "  << mHu2 << std::endl;
    std::thread thread_Mhh(Thread(this, &CLASSNAME::calculate_Mhh_pole));
    std::thread thread_MAh(Thread(this, &CLASSNAME::calculate_MAh_pole));
-    std::cout << "inside calculate_pole_masses before getting Hpm masses"  << std::endl;
-   std::cout << " mHu2 = "  << mHu2 << std::endl;
    std::thread thread_MHpm(Thread(this, &CLASSNAME::calculate_MHpm_pole));
    std::thread thread_MChi(Thread(this, &CLASSNAME::calculate_MChi_pole));
    std::thread thread_MCha(Thread(this, &CLASSNAME::calculate_MCha_pole));
@@ -827,15 +788,10 @@ void CLASSNAME::reorder_pole_masses()
 
 void CLASSNAME::calculate_spectrum()
 {
-   std::cout << "inside calculate_spectrum() "  << std::endl; 
-   std::cout << " mHu2 = "  << mHu2 << std::endl;
    calculate_DRbar_parameters();
-   std::cout << "inside calculate_spectrum() after calculating DRbar masses "  << std::endl;
-   std::cout << " mHu2 = "  << mHu2 << std::endl;
    if (pole_mass_loop_order > 0)
       calculate_pole_masses();
-   std::cout << "inside calculate_spectrum() after calculating pole masses "  << std::endl;
-   std::cout << " mHu2 = "  << mHu2 << std::endl;
+ 
    // move goldstone bosons to the front
    reorder_DRbar_masses();
     if(pole_mass_loop_order == 0) 
@@ -1557,19 +1513,6 @@ Eigen::Matrix<double,2,2> CLASSNAME::get_mass_matrix_Hpm() const
       Sqr(vd) + 0.125*Sqr(g2)*Sqr(vd) + 0.5*AbsSqr(Lambdax)*Sqr(vs) - 0.025*QS*
       Sqr(g1p)*Sqr(vs) + 0.025*QS*Sqr(g1p)*Sqr(vsb) + 0.075*Sqr(g1)*Sqr(vu) +
       0.05*Sqr(g1p)*Sqr(vu) + 0.375*Sqr(g2)*Sqr(vu);
-   std::cout << "get_scale() = "  << get_scale() << std::endl;
-   std::cout << "mHd2 = "  << mHd2 << std::endl;
-   std::cout << "mHu2 = "  << mHu2 << std::endl;
-   std::cout << "g1 = "  << g1 << std::endl;
-   std::cout << "vd = "  << vd << std::endl;
-   std::cout << "g1p = "  << g1p << std::endl;
-   std::cout << "g2 = "  << g2 << std::endl;
-   std::cout << "Lambdax = "  << Lambdax << std::endl;
-   std::cout << "vs= "  << vs << std::endl;
-   std::cout << "Sigmax = "  << Sigmax << std::endl;
-   std::cout << "QS = "  << QS << std::endl;
-   std::cout << "vsb= "  << vsb << std::endl;
-   std::cout << "mass_matrix_Hpm = "  << mass_matrix_Hpm << std::endl;
    
    return mass_matrix_Hpm;
 }
@@ -1577,9 +1520,7 @@ Eigen::Matrix<double,2,2> CLASSNAME::get_mass_matrix_Hpm() const
 void CLASSNAME::calculate_MHpm()
 {
    const auto mass_matrix_Hpm(get_mass_matrix_Hpm());
-   std::cout << " mass_matrix_Hpm = "  <<  mass_matrix_Hpm << std::endl;
    fs_diagonalize_hermitian(mass_matrix_Hpm, MHpm, ZP);
-   std::cout << "MHpm^2 = " << MHpm  << std::endl;
 
    if (MHpm.minCoeff() < 0.)
       problems.flag_tachyon(Hpm);
@@ -1587,7 +1528,7 @@ void CLASSNAME::calculate_MHpm()
       problems.unflag_tachyon(Hpm);
 
    MHpm = AbsSqrt(MHpm);
-   std::cout << "MHpm = " << MHpm  << std::endl;
+  
 }
 
 Eigen::Matrix<double,8,8> CLASSNAME::get_mass_matrix_Chi() const
@@ -1890,22 +1831,6 @@ double CLASSNAME::get_ewsb_eq_hh_1() const
       Sqr(g1)*Sqr(vu) + 0.075*vd*Sqr(g1p)*Sqr(vu) - 0.125*vd*Sqr(g2)*Sqr(vu) -
       0.35355339059327373*vs*vu*TLambdax;
 
-   std::cout << "Inside get_ewsb_eq_hh_1()" << std::endl;
-   std::cout << "get_scale() = "  << get_scale() << std::endl;
-   std::cout << "mHd2 = "  << mHd2 << std::endl;
-   std::cout << "mHu2 = "  << mHu2 << std::endl;
-   std::cout << "g1 = "  << g1 << std::endl;
-   std::cout << "vd = "  << vd << std::endl;
-   std::cout << "vu = "  << vu << std::endl;
-   std::cout << "g1p = "  << g1p << std::endl;
-   std::cout << "g2 = "  << g2 << std::endl;
-   std::cout << "Lambdax = "  << Lambdax << std::endl;
-   std::cout << "TLambdax = "  << TLambdax << std::endl;
-   std::cout << "vs= "  << vs << std::endl;
-   std::cout << "Sigmax = "  << Sigmax << std::endl;
-   std::cout << "QS = "  << QS << std::endl;
-   std::cout << "vsb= "  << vsb << std::endl;
-   std::cout << "vphi= "  << vphi << std::endl;
    return result;
 }
 
@@ -30313,23 +30238,7 @@ void CLASSNAME::tadpole_hh_2loop(double result[3]) const
       result[0] = (- s1s - s1t - s1b - s1tau) * vd;
       result[1] = (- s2s - s2t - s2b - s2tau) * vu;
       result[2] = (- sss - ssb) * vs;
-      std::cout << "result[0] = "  << result[0] << std::endl;
-      std::cout << "result[1] = "  << result[1] << std::endl;
-      std::cout << "result[2] = "  << result[2] << std::endl;
-      std::cout << "s1s = "  << s1s << std::endl;
-      std::cout << "s2s = "  << s2s << std::endl;
-      std::cout << "sss = "  << sss << std::endl;
-      std::cout << "ssb = "  << ssb << std::endl;
-      std::cout << "s1t = "  << s1t << std::endl;
-      std::cout << "s1b = "  << s1b << std::endl;
-      std::cout << "s1tau = "  << s1tau << std::endl;
-      std::cout << "s2t = "  << s2t << std::endl;
-      std::cout << "s2b = "  << s2b << std::endl;
-      std::cout << "s2tau = "  << s2tau << std::endl;
       
-   
-      
-
    } else {
       result[0] = 0.;
       result[1] = 0.;
@@ -30477,11 +30386,8 @@ void CLASSNAME::calculate_MHpm_pole()
 
    do {
       Eigen::Matrix<double,2,2> self_energy;
-      std::cout << "about to get tree level mass matrix" << std::endl; 
       const Eigen::Matrix<double,2,2> M_tree(get_mass_matrix_Hpm());
       
-std::cout << " MHpm_tree_mtraix = "  << M_tree << std::endl; 
-    
       for (unsigned es = 0; es < 2; ++es) {
          const double p = Abs(old_MHpm(es));
          for (unsigned i1 = 0; i1 < 2; ++i1) {
@@ -30494,12 +30400,9 @@ std::cout << " MHpm_tree_mtraix = "  << M_tree << std::endl;
          Symmetrize(self_energy);
          const Eigen::Matrix<double,2,2> M_1loop(M_tree -
             self_energy);
-         std::cout << "M_1loop = " << M_1loop << std::endl;
-         std::cout << "self_energy = " << self_energy << std::endl;
          Eigen::Array<double,2,1> eigen_values;
          Eigen::Matrix<double,2,2> mix_ZP;
          fs_diagonalize_hermitian(M_1loop, eigen_values, mix_ZP);
-         std::cout << "MHpm^2 = " << eigen_values  << std::endl;
          if (eigen_values(es) < 0.)
             problems.flag_tachyon(Hpm);
          PHYSICAL(MHpm(es)) = AbsSqrt(eigen_values(es));
@@ -30507,7 +30410,6 @@ std::cout << " MHpm_tree_mtraix = "  << M_tree << std::endl;
             PHYSICAL(ZP) = mix_ZP;
       }
       
-      std::cout << "MHpm = " << MHpm  << std::endl;
       new_MHpm = PHYSICAL(MHpm);
       
       diff = MaxRelDiff(new_MHpm, old_MHpm);
@@ -30516,7 +30418,6 @@ std::cout << " MHpm_tree_mtraix = "  << M_tree << std::endl;
    } while (diff > precision
             && iteration < number_of_mass_iterations);
    
-   std::cout << "resetting to two loop higgs soft masses."  << std::endl;
    mHd2 = old_mHd2;
    mHu2 = old_mHu2;
    ms2 = old_ms2;
