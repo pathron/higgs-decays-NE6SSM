@@ -38,6 +38,21 @@ int GetSpec::findSpectrum(int argc, const char* argv[],
       return EXIT_FAILURE;
    }
 
+   std::cout << "After reading in from SLHA file we now do scan." << std::endl;
+   cout << "# "
+        << std::setw(12) << std::left << "KapPr" << ' '
+        << std::setw(12) << std::left << "TKapPr" << ' '
+        << std::setw(12) << std::left << "Mhh(1)" << ' '
+        << std::setw(12) << std::left << "MAh(2)" << ' '
+        << std::setw(12) << std::left << "BR(h1-> A1 A1)"
+        << '\n';
+   for(int i = 0; i<= 1000; i++ ){
+      for(int j = 1; j<= 100; j++ ){
+         input.KappaPrInput = 5e-5 + i*1e-4;
+         input.TKappaPrInput = 1 + j;
+   
+  
+
    oneset.toMz(); // run SM fermion masses to MZ
 
    //   NE6SSM_spectrum_generator<algorithm_type> spectrum_generator;
@@ -74,21 +89,42 @@ int GetSpec::findSpectrum(int argc, const char* argv[],
    if (!problems.have_serious_problem())
       slha_io.set_spectrum(model);
 
-   if (slha_output_file.empty()) {
-      slha_io.write_to_stream(std::cout);
-   } else {
-      slha_io.write_to_file(slha_output_file);
-   }
+   // if (slha_output_file.empty()) {
+   //    slha_io.write_to_stream(std::cout);
+   // } else {
+   //    slha_io.write_to_file(slha_output_file);
+   // }
 
-   if (!spectrum_file.empty())
-      spectrum_generator.write_spectrum(spectrum_file);
+   // if (!spectrum_file.empty())
+   //    spectrum_generator.write_spectrum(spectrum_file);
 
-   if (!rgflow_file.empty())
-      spectrum_generator.write_running_couplings(rgflow_file);
+   // if (!rgflow_file.empty())
+   //    spectrum_generator.write_running_couplings(rgflow_file);
 
    const int exit_code = spectrum_generator.get_exit_code();
 
+   const NE6SSM_physical& pole_masses = model.get_physical();
+   const double higgs = pole_masses.Mhh(0);
+   const double mA = pole_masses.MAh(2);
+   const double mHu2 = model.get_mHu2();
+   const double mHd2 = model.get_mHd2();
+   const double yt = model.get_Yu(2,2);
+   const double at = model.get_TYu(2,2);
+   const double mQ3sq = model.get_mq2(2,2);
+   const double mU3sq = model.get_mu2(2,2);
+    
+   // //this must be positive to evade colour or cahrge breaking minima
+   const double ccbfac =  Sqr(yt)*(mQ3sq + mU3sq + mHu2)- Sqr(at);
+   cout << "  "
+        << std::setw(12) << std::left <<model.get_KappaPr() << ' '
+        << std::setw(12) << std::left << model.get_TKappaPr()  << ' '
+        << std::setw(12) << std::left << ccbfac << ' '
+        << std::setw(12) << std::left << mHu2 << ' '
+        << std::setw(12) << std::left << mA << ' '
+        << std::setw(12) << std::left << higgs;
 
-   return exit_code;
+      }
+   }
+   return 0;
 
 }
