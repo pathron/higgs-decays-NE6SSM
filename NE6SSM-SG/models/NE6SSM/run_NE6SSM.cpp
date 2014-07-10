@@ -75,9 +75,9 @@ int main(int argc, const char* argv[])
         << std::setw(12) << std::left << "MAh(2)"
         << '\n';
    double StartTB = 1;  //double endTB = 50;
-   for(int i = 0; i<= 10; i++ ){
+   for(int i = 0; i<= 100; i++ ){
       for(int j = 0; j<= 20; j++ ){
-         for(int k = 0; k<= 10; k++ ){
+         for(int k = 0; k<= 20; k++ ){
    // for (std::vector<double>::const_iterator it = range.begin(),
    //         end = range.end(); it != end; ++it) {
       
