@@ -66,8 +66,32 @@ int main(int argc, const char* argv[])
       ERROR(error.what());
       return EXIT_FAILURE;
    }
+   std::cout << "After reading in from SLHA file we now do scan." << std::endl;
+   // const std::vector<double> range (float_range(0., 100., 10));
 
-   oneset.toMz(); // run SM fermion masses to MZ
+   cout << "# "
+        << std::setw(12) << std::left << "mU3sq" << ' '
+        << std::setw(12) << std::left << "Mhh(1)/GeV" << ' '
+        << std::setw(12) << std::left << "MAh(2)"
+        << '\n';
+   double StartTB = 1;  //double endTB = 50;
+   for(int i = 0; i<= 10; i++ ){
+      for(int j = 0; j<= 20; j++ ){
+         for(int k = 0; k<= 10; k++ ){
+   // for (std::vector<double>::const_iterator it = range.begin(),
+   //         end = range.end(); it != end; ++it) {
+      
+      //input.TanBeta = StartTB + i;
+      // input.TYuInput(2,2) = -1.73e+03 - i*1e+01;
+      // std::cout << "TYu YAMA is "   <<input.TYuInput << std::endl;
+            double at =-1.0e+03 - i*2.0e+02; 
+            double mU3sq =5e+05 + j*5e+05; 
+            double mQ3sq = 5e+05 + k*1e+06; 
+            input.mu2Input(2,2)=mU3sq;
+            input.mq2Input(2,2)=mQ3sq;
+            input.TYuInput(2,2)=at;
+            
+      oneset.toMz(); // run SM fermion masses to MZ
 
    NE6SSM_spectrum_generator<algorithm_type> spectrum_generator;
    spectrum_generator.set_precision_goal(
@@ -104,19 +128,37 @@ int main(int argc, const char* argv[])
    if (!problems.have_serious_problem())
       slha_io.set_spectrum(model);
 
-   if (slha_output_file.empty()) {
-      slha_io.write_to_stream(std::cout);
-   } else {
-      slha_io.write_to_file(slha_output_file);
-   }
+   // if (slha_output_file.empty()) {
+   //    slha_io.write_to_stream(std::cout);
+   // } else {
+   //    slha_io.write_to_file(slha_output_file);
+   // }
 
-   if (!spectrum_file.empty())
-      spectrum_generator.write_spectrum(spectrum_file);
+   // if (!spectrum_file.empty())
+   //    spectrum_generator.write_spectrum(spectrum_file);
 
-   if (!rgflow_file.empty())
-      spectrum_generator.write_running_couplings(rgflow_file);
-
+   // if (!rgflow_file.empty())
+   //    spectrum_generator.write_running_couplings(rgflow_file);
+   const NE6SSM_physical& pole_masses = model.get_physical();
+   const double higgs = pole_masses.Mhh(0);
+   const double mA = pole_masses.MAh(2);
+   const double mHu2 = model.get_mHu2();
+   const double mHd2 = model.get_mHd2();
+   const double yt = model.get_Yu(2,2);
+   //this must be positive to evade colour or cahrge breaking minima
+   const double ccbfac = Sqr(at) - Sqr(yt)*(mQ3sq + mU3sq + mHu2);
    const int exit_code = spectrum_generator.get_exit_code();
-
-   return exit_code;
+    cout << "  "
+         << std::setw(12) << std::left << mU3sq << ' '
+        << std::setw(12) << std::left << mQ3sq << ' '
+        << std::setw(12) << std::left << at << ' '
+        << std::setw(12) << std::left << ccbfac << ' '
+         << std::setw(12) << std::left << mA << ' '
+         << std::setw(12) << std::left << higgs << endl;
+       
+         }
+      }   
+   }
+   //   return exit_codo;
+   return 0;
 }
