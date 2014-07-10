@@ -39,7 +39,7 @@ void higgs_decay_example(NE6SSM<Two_scale>& ne6ssm, bool speak) {
    Eigen::Matrix<double,5,5> MHmatrix;
    Eigen::Array<double,5,1> mhiggs_pole;
    Eigen::Array<double,5,1> mAhiggs_pole;
-
+   Eigen::Matrix<double,5,5> Uhiggs_pole;
    int A = 2;  //index for lightest physical pseudo scalar
    //(0 and 1 are goldstones)
    mhiggs = ne6ssm.get_Mhh();
@@ -49,6 +49,7 @@ void higgs_decay_example(NE6SSM<Two_scale>& ne6ssm, bool speak) {
    //   if(fabs(mAhiggs(0) -  90.882)/ mAhiggs(0)  < 1e-3) A = 1;
    mhiggs_pole = ne6ssm.get_physical().Mhh;
    mAhiggs_pole = ne6ssm.get_physical().MAh;
+   Uhiggs_pole =  ne6ssm.get_physical().ZH;
    if(speak){
    std::cout << "mhiggs = " << mhiggs << std::endl;
    std::cout << "mAhiggs = " << mAhiggs << std::endl;
@@ -81,10 +82,10 @@ void higgs_decay_example(NE6SSM<Two_scale>& ne6ssm, bool speak) {
 for(int j=0; j<=4; j++){
    GHA1A1(j) = ne6ssm.CpUhhAhAh(j,A,A);
  }
- GhphysA1A1 = Uhiggs * GHA1A1;
+ GhphysA1A1 = Uhiggs_pole * GHA1A1;
  if(speak){
  std::cout << "GHA1A1 = " << GHA1A1 << std::endl;
- std::cout << "GhA1A1 = " << (Uhiggs * GHA1A1).transpose() << std::endl;
+ std::cout << "GhA1A1 = " << (Uhiggs_pole * GHA1A1).transpose() << std::endl;
  std::cout << "GhphysA1A1 =" << GhphysA1A1  << std::endl;
  std::cout << "0.5 * GhphysA1A1 = "  << 0.5 * GhphysA1A1  << std::endl;
  }
@@ -136,7 +137,7 @@ bool BenchMark =false;
     std::cout << "\\tan\\theta                    & \t";
     std::cout <<   ne6ssm.get_vsb() / ne6ssm.get_vs() << std::endl;
 
-    std::cout << "M_1 = M_1^\prime (GeV) \t & \t";
+    std::cout << "M_1 = M_1^\\prime (GeV) \t & \t";
     std::cout <<   ne6ssm.get_MassB() << std::endl;
 
     std::cout << "m_{\\chi_1^0} (GeV)                    & \t";
@@ -201,7 +202,24 @@ bool BenchMark =false;
 
  }
 
+ const NE6SSM_physical& pole_masses = ne6ssm.get_physical();
+
+ const double mHu2 =  ne6ssm.get_mHu2();
+ const double yt =  ne6ssm.get_Yu(2,2);
+ const double at =  ne6ssm.get_TYu(2,2);
+ const double mQ3sq =  ne6ssm.get_mq2(2,2);
+ const double mU3sq =  ne6ssm.get_mu2(2,2);
+ //this must be positive to evade colour or cahrge breaking minima
+ const double ccbfac =  Sqr(yt)*(mQ3sq + mU3sq + mHu2)- Sqr(at);
+ 
  cout << "   "  << BRhA1A1 << std::endl;
+ cout << "  "
+      << std::setw(12) << std::left <<ne6ssm.get_KappaPr() << ' '
+        << std::setw(12) << std::left << ne6ssm.get_TKappaPr()  << ' '
+        << std::setw(12) << std::left << ccbfac << ' '
+        << std::setw(12) << std::left << mHu2 << ' '
+        << std::setw(12) << std::left << mAhiggs_pole(A) << ' '
+         << std::setw(12) << std::left <<  mhiggs_pole(0);
 
 
 }
