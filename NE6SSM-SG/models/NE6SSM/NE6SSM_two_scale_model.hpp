@@ -1202,8 +1202,15 @@ public:
    std::complex<double> self_energy_Fu_PL_heavy_rotated(double p , unsigned gO1, unsigned gO2) const;
    std::complex<double> tadpole_hh(unsigned gO1) const;
 
-
-
+   /// 3rd gen sfermion routines needed for two-loop calc
+   void calculate_MSFu_3rd_generation(double&, double&, double&) const;
+   void calculate_MSFd_3rd_generation(double&, double&, double&) const;
+   void calculate_MSFv_3rd_generation(double&, double&, double&) const;
+   void calculate_MSFe_3rd_generation(double&, double&, double&) const;
+   /// two-loop routines added by hand
+   void self_energy_hh_2loop(double result[6]) const;
+   void self_energy_Ah_2loop(double result[6]) const;
+   void tadpole_hh_2loop(double result[3]) const;
 
    void calculate_MVG_pole();
    void calculate_MGlu_pole();

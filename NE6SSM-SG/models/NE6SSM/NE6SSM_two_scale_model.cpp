@@ -54204,6 +54204,11 @@ void CLASSNAME::calculate_Mhh_pole()
    unsigned iteration = 0;
    double diff = 0.0;
    decltype(Mhh) old_Mhh(Mhh), new_Mhh(Mhh);
+   ///Adding two-loop pieces by hand.
+   // two-loop Higgs self-energy contributions
+   double two_loop[6] = { 0. };
+   if (pole_mass_loop_order > 1)
+      self_energy_hh_2loop(two_loop);
 
    do {
       Eigen::Matrix<double,5,5> self_energy;
@@ -54217,7 +54222,8 @@ void CLASSNAME::calculate_Mhh_pole()
                   ));
             }
          }
-         ///Adding two-loop pieces by hand.
+         
+
          if (pole_mass_loop_order > 1) {
             self_energy(0, 0) += two_loop[0];
             self_energy(0, 1) += two_loop[1];
@@ -54259,6 +54265,12 @@ void CLASSNAME::calculate_MAh_pole()
    unsigned iteration = 0;
    double diff = 0.0;
    decltype(MAh) old_MAh(MAh), new_MAh(MAh);
+   
+   /// Adding by hand.
+   // two-loop Higgs self-energy contributions
+   double two_loop[6] = { 0. };
+   if (pole_mass_loop_order > 1)
+      self_energy_Ah_2loop(two_loop);
 
    do {
       Eigen::Matrix<double,5,5> self_energy;
@@ -54274,6 +54286,7 @@ void CLASSNAME::calculate_MAh_pole()
          }
 
          /// Adding two-loop pieces by hand.
+         // two-loop Higgs self-energy contributions
           if (pole_mass_loop_order > 1) {
             self_energy(0, 0) += two_loop[0];
             self_energy(0, 1) += two_loop[1];
