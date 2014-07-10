@@ -21,9 +21,9 @@ double Gamma_2body_scalar(double m1, double m2, double coup) {
    return rt*pf;
 }
 
-void higgs_decay_example(NE6SSM<Two_scale>& ne6ssm) {
+void higgs_decay_example(NE6SSM<Two_scale>& ne6ssm, bool speak) {
    //print to see what we have
-   ne6ssm.print(std::cout);
+   if(speak) ne6ssm.print(std::cout);
 
    // get hAA coupling
    // Need to know:
@@ -49,7 +49,7 @@ void higgs_decay_example(NE6SSM<Two_scale>& ne6ssm) {
    //   if(fabs(mAhiggs(0) -  90.882)/ mAhiggs(0)  < 1e-3) A = 1;
    mhiggs_pole = ne6ssm.get_physical().Mhh;
    mAhiggs_pole = ne6ssm.get_physical().MAh;
-
+   if(speak){
    std::cout << "mhiggs = " << mhiggs << std::endl;
    std::cout << "mAhiggs = " << mAhiggs << std::endl;
    std::cout << "Uhiggs = " << Uhiggs << std::endl;
@@ -69,6 +69,7 @@ void higgs_decay_example(NE6SSM<Two_scale>& ne6ssm) {
    }
  
    std::cout << "A = " <<A << std::endl;  
+   }
 // For *this* point we want Ah(1) not Ah(0).
 // From above Diagonalisatio2 applies so the convention is h = UH
 // where h is mass egenstate and H is gauge eigenstate
@@ -81,10 +82,12 @@ for(int j=0; j<=4; j++){
    GHA1A1(j) = ne6ssm.CpUhhAhAh(j,A,A);
  }
  GhphysA1A1 = Uhiggs * GHA1A1;
+ if(speak){
  std::cout << "GHA1A1 = " << GHA1A1 << std::endl;
  std::cout << "GhA1A1 = " << (Uhiggs * GHA1A1).transpose() << std::endl;
  std::cout << "GhphysA1A1 =" << GhphysA1A1  << std::endl;
  std::cout << "0.5 * GhphysA1A1 = "  << 0.5 * GhphysA1A1  << std::endl;
+ }
  //From table 4 of arXiv::1201.2671 for mh = 126 GeV
  double GamSM = 4.085e-03; 
 
@@ -96,10 +99,12 @@ for(int j=0; j<=4; j++){
                                       Re(GhphysA1A1(0)));
  double GamTot = GamSM + GamhA1A1;
  double BRhA1A1 = GamhA1A1 / GamTot;
+ if(speak){
  std::cout << "GamhA1A1 = " << GamhA1A1 << std::endl;
  std::cout << "GamTot = " << GamTot << std::endl;
  std::cout << "BRhA1A1 =" << BRhA1A1 << std::endl;
- bool BenchMark =true;
+ } 
+bool BenchMark =false;
  if(BenchMark) {
     cout << "BenchMark Point." << endl;
     cout << "\\begin{tabular}{| c || c | c |}"  << std::endl;
@@ -196,7 +201,7 @@ for(int j=0; j<=4; j++){
 
  }
 
-
+ cout << "   "  << BRhA1A1 << std::endl;
 
 
 }
@@ -204,9 +209,12 @@ for(int j=0; j<=4; j++){
 
 int main(int argc, const char *argv[])
 {
+   bool speak = false;
+   if(speak){
    INFO("=============================");
    INFO("running higgs_decay_example()");
    INFO("=============================");
+   }
    GetSpec gs;
    NE6SSM<Two_scale> ne6ssm;
    // NE6SSM<Two_scale> ne6ssm;
@@ -214,9 +222,9 @@ int main(int argc, const char *argv[])
 
    gs.findSpectrum(argc,argv,ne6ssm, slha);
    
-   higgs_decay_example(ne6ssm);
+   higgs_decay_example(ne6ssm,speak);
    
-   std::cout << "End of calculation."  << std::endl;
+   if(speak) std::cout << "End of calculation."  << std::endl;
    
    return 0;
 }
