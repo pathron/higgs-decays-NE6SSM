@@ -62,7 +62,7 @@ Block TuIN
 Block HMIXIN
     30     0.0              # XiF 
     31     0.0              # muPhi
-    32     0.03             # kappaPr
+    32     0.019             # kappaPr
     33     0.1              # sigPr
     34     0.0              # LXiF
 Block ESIXRUNIN
@@ -71,7 +71,7 @@ Block ESIXRUNIN
     12    5384.32672        # vsbar  
     13    6000              # vphi
 #   28    27.9              # TkappaPr
-    28    30.5              # TkappaPr	
+    28    20                # TkappaPr	
     29    120.              # Tsigma  
     30    0.0               # BMuPhi  
     # 0        10000              # mu'         
