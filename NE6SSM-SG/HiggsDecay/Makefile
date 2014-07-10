@@ -1,7 +1,7 @@
 # Package information
 PKGNAME         := FlexibleSUSY
 VERSION         := 1.0.1
-ABSBASEDIR      := /home/peter/Papers/NE6SSM/NE6SSM-SpecGen
+ABSBASEDIR      := /home/peter/Papers/NE6SSM/NE6SSM-SG
 
 # Switches
 ENABLE_FFLITE    := no
