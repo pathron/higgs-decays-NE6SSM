@@ -92,12 +92,113 @@ for(int j=0; j<=4; j++){
 // than the term in the Lagrangian which Roman calculates
 // and coupling \xi_{hAA} which is written in Eq C28a and C28b on p530 
 // of Baer & Tata weak scale supersymmetry 
- double GamhA1A1 = Gamma_2body_scalar( mhiggs_pole(0), mAhiggs_pole(A), Re(GhphysA1A1(0)));
+ double GamhA1A1 = Gamma_2body_scalar(mhiggs_pole(0), mAhiggs_pole(A), 
+                                      Re(GhphysA1A1(0)));
  double GamTot = GamSM + GamhA1A1;
  double BRhA1A1 = GamhA1A1 / GamTot;
  std::cout << "GamhA1A1 = " << GamhA1A1 << std::endl;
  std::cout << "GamTot = " << GamTot << std::endl;
  std::cout << "BRhA1A1 =" << BRhA1A1 << std::endl;
+ bool BenchMark =true;
+ if(BenchMark) {
+    cout << "BenchMark Point." << endl;
+    cout << "\\begin{tabular}{| c || c | c |}"  << std::endl;
+    //just output parameters in  long collumn
+    std::cout << "\\lambda                    & \t";  
+    std::cout <<   ne6ssm.get_Lambdax() << std::endl;
+    
+    std::cout << "\\sigma                    & \t";  
+    std::cout <<   ne6ssm.get_Sigmax() << std::endl;
+
+    std::cout << "\\kappa                    & \t";  
+    std::cout <<   ne6ssm.get_KappaPr() << std::endl;
+    
+    std::cout << "a_{\\lambda} (GeV) \t  & \t";  
+    std::cout <<   ne6ssm.get_TLambdax() << std::endl;
+
+    std::cout << "a_{\\sigma} (GeV) \t & \t";  
+    std::cout <<   ne6ssm.get_TSigmax() << std::endl;
+    
+    std::cout << "a_{\\kappa} (GeV) \t & \t";  
+    std::cout <<   ne6ssm.get_TKappaPr() << std::endl;
+
+    std::cout << "\\varphi                    & \t";
+    std::cout <<   ne6ssm.get_vphi() << std::endl;
+    
+    std::cout << "s                   \t & \t";
+    std::cout <<   Sqrt(Sqr(ne6ssm.get_vsb()) + Sqr(ne6ssm.get_vs())) << std::endl;
+
+    std::cout << "\\tan\\theta                    & \t";
+    std::cout <<   ne6ssm.get_vsb() / ne6ssm.get_vs() << std::endl;
+
+    std::cout << "M_1 = M_1^\prime (GeV) \t & \t";
+    std::cout <<   ne6ssm.get_MassB() << std::endl;
+
+    std::cout << "m_{\\chi_1^0} (GeV)                    & \t";
+    std::cout <<   ne6ssm.get_physical().MChi(0) << std::endl;
+    
+    std::cout << "m_S^2 (GeV)                    & \t";
+    std::cout <<   ne6ssm.get_ms2() << std::endl;
+
+     std::cout << "m_\\overline{S}^2 (GeV)                    & \t";
+    std::cout <<   ne6ssm.get_msbar2() << std::endl;
+
+     std::cout << "m_\\phi^2 (GeV)                    & \t";
+    std::cout <<   ne6ssm.get_mphi2() << std::endl;
+    
+     std::cout << "m_{H_d}^2 (GeV)                    & \t";
+    std::cout <<   ne6ssm.get_mHd2() << std::endl;
+    
+    std::cout << "m_{H_u}^2 (GeV)                    & \t";
+    std::cout <<   ne6ssm.get_mHu2() << std::endl;
+    
+    std::cout << "m_{Z^\\prime} (GeV)                    & \t";
+    std::cout <<   ne6ssm.get_physical().MVZp << std::endl;
+
+    std::cout << "m_{H^\\pm} (GeV)                    & \t";
+    std::cout <<   ne6ssm.get_physical().MHpm(1) << std::endl;
+
+    std::cout << "m_{A_1} (GeV)                    & \t";
+    std::cout <<   ne6ssm.get_physical().MAh(2) << std::endl;
+
+    std::cout << "m_{A_2} (GeV)                    & \t";
+    std::cout <<   ne6ssm.get_physical().MAh(3) << std::endl;
+
+    std::cout << "m_{A_3} (GeV)                    & \t";
+    std::cout <<   ne6ssm.get_physical().MAh(3) << std::endl;
+    
+    std::cout << "m_{h_1} (GeV)                    & \t";
+    std::cout <<   ne6ssm.get_physical().MAh(0) << std::endl;
+
+    std::cout << "m_{h_2} (GeV)                    & \t";
+    std::cout <<   ne6ssm.get_physical().MAh(1) << std::endl;
+
+    std::cout << "m_{h_3} (GeV)                    & \t";
+    std::cout <<   ne6ssm.get_physical().MAh(2) << std::endl;
+
+     std::cout << "m_{h_4} (GeV)                    & \t";
+    std::cout <<   ne6ssm.get_physical().MAh(3) << std::endl;
+
+    std::cout << "m_{h_5} (GeV)                    & \t";
+    std::cout <<   ne6ssm.get_physical().MAh(4) << std::endl;
+
+    std::cout << "G (GeV)                    & \t";
+    std::cout <<   0.5 *  Re(GhphysA1A1(0)) << std::endl;
+
+    std::cout << "BR(h_1\\longarrow A_1A_1)  & \t";
+    std::cout << BRhA1A1 << std::endl;
+
+    std::cout << "\\Gamma(h_1\\longarrow A_1A_1) (GeV) & \t";
+    std::cout <<  GamhA1A1 << std::endl;
+
+    std::cout << "\\Gamma_{total} (GeV) & \t";
+    std::cout <<  GamTot << std::endl;
+
+ }
+
+
+
+
 }
 
 
