@@ -209,23 +209,28 @@ return BRhA1A1;
 
 bool scanKappaTKappa(int argc, const char *argv[]){
   
-  
+    GetSpec gs;
+    NE6SSM<Two_scale> ne6ssm;
+    // NE6SSM<Two_scale> ne6ssm;
+    NE6SSM_slha_io slha;
+    NE6SSM_input_parameters input_pars;
+    int read = gs.input_slha(argc, argv,input_pars);
+    if(read != 0) {
+       std::cerr << "Fail reading SLHA file." <<std::endl;
+       return false;
+    }
   double minKapPr=0.01; double maxKapPr=0.1; int stepsKap =300;
   double stepKapPr = (maxKapPr - minKapPr) / (stepsKap-1);
   double minTK=1; double maxTK=50; int stepsTK =300;
   double stepTK = (maxTK - minTK) / (stepsTK-1);
   for(int i=0; i<stepsKap; i++){
      for(int j=0; j<stepsTK; j++){
-         GetSpec gs;
-         NE6SSM<Two_scale> ne6ssm;
-         // NE6SSM<Two_scale> ne6ssm;
-         NE6SSM_slha_io slha;
-         NE6SSM_input_parameters input_pars;
-         int read = gs.input_slha(argc, argv,input_pars);
-         if(read != 0) {
-            std::cerr << "Fail reading SLHA file." <<std::endl;
-            return false;
-         }
+        int read = gs.input_slha(argc, argv,input_pars);
+        if(read != 0) {
+           std::cerr << "Fail reading SLHA file." <<std::endl;
+           return false;
+        }
+        
          input_pars.KappaPrInput = minKapPr + i * stepKapPr;
          input_pars.TKappaPrInput = minTK + j * stepTK;
          int exit_code = gs.getSpectrum(ne6ssm, input_pars);
@@ -250,7 +255,10 @@ bool scanKappaTKappa(int argc, const char *argv[]){
               << std::setw(12) << std::left <<  pole_masses.Mhh(0)<< ' '
               << std::setw(12) << std::left << BRhA1A1 << std::endl;
          
+         ne6ssm.clear();
+    
          }
+     
   }
   return true;
 }
@@ -258,6 +266,19 @@ bool scanKappaTKappa(int argc, const char *argv[]){
 
 bool scanMQ3MU3At(int argc, const char *argv[]){
    
+   GetSpec gs;
+   NE6SSM<Two_scale> ne6ssm;
+   // NE6SSM<Two_scale> ne6ssm;
+   NE6SSM_slha_io slha;
+   NE6SSM_input_parameters input_pars;
+   int read = gs.input_slha(argc, argv,input_pars);
+   if(read != 0) {
+      std::cerr << "Fail reading SLHA file." <<std::endl;
+      return false;
+   }
+   gs.findSpectrum2(argc,argv,ne6ssm, slha);
+   double mHu2 =  ne6ssm.get_mHu2();
+   double yt =  ne6ssm.get_Yu(2,2);
    
    double minMQ3sq=1.0e+05; double maxMQ3sq=1.0e+08; int stepsMQ3sq =30;
    double stepMQ3sq = log(maxMQ3sq - minMQ3sq) / (stepsMQ3sq-1);
@@ -270,21 +291,11 @@ bool scanMQ3MU3At(int argc, const char *argv[]){
    for(int i=0; i<stepsMQ3sq; i++){
       for(int j=0; j<stepsTYu; j++){
          for(int k=0; k<stepsMU3sq; k++){
-            GetSpec gs;
-            NE6SSM<Two_scale> ne6ssm;
-            // NE6SSM<Two_scale> ne6ssm;
-            NE6SSM_slha_io slha;
-            NE6SSM_input_parameters input_pars;
             int read = gs.input_slha(argc, argv,input_pars);
             if(read != 0) {
                std::cerr << "Fail reading SLHA file." <<std::endl;
                return false;
             }
-            gs.findSpectrum2(argc,argv,ne6ssm, slha);
-            double mHu2 =  ne6ssm.get_mHu2();
-            double yt =  ne6ssm.get_Yu(2,2);
-
-
             input_pars.mq2Input(2,2) = exp(log(minMQ3sq) + i * stepMQ3sq);
             input_pars.TYuInput(2,2) = minTYu + j * stepTYu;
             input_pars.mu2Input(2,2) = exp(log(minMU3sq) + i * stepMU3sq);
@@ -326,7 +337,8 @@ bool scanMQ3MU3At(int argc, const char *argv[]){
                    << std::setw(12) << std::left <<  pole_masses.Mhh(0)<< ' '
                    << std::setw(12) << std::left << BRhA1A1 << std::endl;
            }
-      
+            
+            ne6ssm.clear();
          }
       }
    }
