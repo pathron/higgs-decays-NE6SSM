@@ -21,7 +21,7 @@ double Gamma_2body_scalar(double m1, double m2, double coup) {
    return rt*pf;
 }
 
-void higgs_decay_example(NE6SSM<Two_scale>& ne6ssm, bool speak) {
+double higgs_decay_example(NE6SSM<Two_scale>& ne6ssm, bool speak) {
    //print to see what we have
    if(speak) ne6ssm.print(std::cout);
 
@@ -200,34 +200,62 @@ bool BenchMark =false;
     std::cout << "\\Gamma_{total} (GeV) & \t";
     std::cout <<  GamTot << std::endl;
 
+   
+
  }
-
- const NE6SSM_physical& pole_masses = ne6ssm.get_physical();
-
- const double mHu2 =  ne6ssm.get_mHu2();
- const double yt =  ne6ssm.get_Yu(2,2);
- const double at =  ne6ssm.get_TYu(2,2);
- const double mQ3sq =  ne6ssm.get_mq2(2,2);
- const double mU3sq =  ne6ssm.get_mu2(2,2);
- //this must be positive to evade colour or cahrge breaking minima
- const double ccbfac =  Sqr(yt)*(mQ3sq + mU3sq + mHu2)- Sqr(at);
+return BRhA1A1;
  
- cout << "   "  << BRhA1A1 << std::endl;
- cout << "  "
-      << std::setw(12) << std::left <<ne6ssm.get_KappaPr() << ' '
-        << std::setw(12) << std::left << ne6ssm.get_TKappaPr()  << ' '
-        << std::setw(12) << std::left << ccbfac << ' '
-        << std::setw(12) << std::left << mHu2 << ' '
-        << std::setw(12) << std::left << mAhiggs_pole(A) << ' '
-         << std::setw(12) << std::left <<  mhiggs_pole(0);
+}
 
-
+bool scan(int argc, const char *argv[]){
+   GetSpec gs;
+   NE6SSM<Two_scale> ne6ssm;
+   // NE6SSM<Two_scale> ne6ssm;
+   NE6SSM_slha_io slha;
+   NE6SSM_input_parameters input_pars;
+   int read = gs.input_slha(argc, argv,input_pars);
+  if(read != 0) {
+     std::cerr << "Fail reading SLHA file." <<std::endl;
+     return false;
+  }
+  double minKapPr=0.027; double maxKapPr=0.028; int stepsKap =10;
+  double stepKapPr = (maxKapPr - minKapPr) / (stepsKap-1);
+  double minTK=27; double maxTK=29; int stepsTK =10;
+  double stepTK = (maxTK - minTK) / (stepsTK-1);
+  for(int i=0; i<stepsKap; i++){
+     for(int j=0; j<stepsTK; j++){
+     input_pars.KappaPrInput = minKapPr + i * stepKapPr;
+     input_pars.TKappaPrInput = minTK + j * stepTK;
+     int exit_code = gs.getSpectrum(ne6ssm, input_pars);
+     if(exit_code != 0) continue;
+     double BRhA1A1 = higgs_decay_example(ne6ssm,false);
+     const NE6SSM_physical& pole_masses = ne6ssm.get_physical();
+     
+     const double mHu2 =  ne6ssm.get_mHu2();
+     const double yt =  ne6ssm.get_Yu(2,2);
+     const double at =  ne6ssm.get_TYu(2,2);
+     const double mQ3sq =  ne6ssm.get_mq2(2,2);
+     const double mU3sq =  ne6ssm.get_mu2(2,2);
+     //this must be positive to evade colour or cahrge breaking minima
+     const double ccbfac =  Sqr(yt)*(mQ3sq + mU3sq + mHu2)- Sqr(at);
+         
+     cout << "  "
+          << std::setw(12) << std::left <<ne6ssm.get_KappaPr() << ' '
+          << std::setw(12) << std::left << ne6ssm.get_TKappaPr()  << ' '
+          << std::setw(12) << std::left << ccbfac << ' '
+          << std::setw(12) << std::left << mHu2 << ' '
+          << std::setw(12) << std::left << pole_masses.MAh(2) << ' '
+          << std::setw(12) << std::left <<  pole_masses.Mhh(0)<< ' '
+          << std::setw(12) << std::left << BRhA1A1 << std::endl;
+    
+     }
+  }
 }
 
 
 int main(int argc, const char *argv[])
 {
-   bool speak = false;
+   bool speak = true;
    if(speak){
    INFO("=============================");
    INFO("running higgs_decay_example()");
@@ -238,11 +266,13 @@ int main(int argc, const char *argv[])
    // NE6SSM<Two_scale> ne6ssm;
    NE6SSM_slha_io slha;
 
-   gs.findSpectrum(argc,argv,ne6ssm, slha);
+   gs.findSpectrum2(argc,argv,ne6ssm, slha);
    
    higgs_decay_example(ne6ssm,speak);
    
    if(speak) std::cout << "End of calculation."  << std::endl;
    
+   scan(argc, argv);
+
    return 0;
 }
