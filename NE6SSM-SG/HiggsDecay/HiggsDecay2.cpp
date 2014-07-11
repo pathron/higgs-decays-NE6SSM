@@ -263,7 +263,7 @@ bool scanMQ3MU3At(int argc, const char *argv[]){
    double stepMQ3sq = log(maxMQ3sq - minMQ3sq) / (stepsMQ3sq-1);
    double minMU3sq=1.0e+05; double maxMU3sq=1.0e+08; int stepsMU3sq =10;
    double stepMU3sq = log(maxMU3sq - minMU3sq) / (stepsMU3sq-1);
-   double minTYu=1000; double maxTYu= 3000; int stepsTYu =200;
+   double minTYu=-3000; double maxTYu= -1000; int stepsTYu =200;
    double stepTYu = (maxTYu - minTYu) / (stepsTYu-1);
    ofstream mHu2points;
    mHu2points.open("mHu2points.dat");
