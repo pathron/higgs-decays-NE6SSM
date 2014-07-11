@@ -207,7 +207,7 @@ return BRhA1A1;
  
 }
 
-bool scan(int argc, const char *argv[]){
+bool scanKappaTKappa(int argc, const char *argv[]){
    GetSpec gs;
    NE6SSM<Two_scale> ne6ssm;
    // NE6SSM<Two_scale> ne6ssm;
@@ -238,7 +238,7 @@ bool scan(int argc, const char *argv[]){
      const double mU3sq =  ne6ssm.get_mu2(2,2);
      //this must be positive to evade colour or cahrge breaking minima
      const double ccbfac =  Sqr(yt)*(mQ3sq + mU3sq + mHu2)- Sqr(at);
-         
+     
      cout << "  "
           << std::setw(12) << std::left <<ne6ssm.get_KappaPr() << ' '
           << std::setw(12) << std::left << ne6ssm.get_TKappaPr()  << ' '
@@ -250,6 +250,83 @@ bool scan(int argc, const char *argv[]){
     
      }
   }
+  return true;
+}
+
+
+bool scanMQ3MU3At(int argc, const char *argv[]){
+   GetSpec gs;
+   NE6SSM<Two_scale> ne6ssm;
+   // NE6SSM<Two_scale> ne6ssm;
+   NE6SSM_slha_io slha;
+   NE6SSM_input_parameters input_pars;
+   int read = gs.input_slha(argc, argv,input_pars);
+  if(read != 0) {
+     std::cerr << "Fail reading SLHA file." <<std::endl;
+     return false;
+  }
+  gs.findSpectrum2(argc,argv,ne6ssm, slha);
+  double mHu2 =  ne6ssm.get_mHu2();
+  double yt =  ne6ssm.get_Yu(2,2);
+
+  double minMQ3sq=1.0e+05; double maxMQ3sq=1.0e+08; int stepsMQ3sq =30;
+  double stepMQ3sq = log(maxMQ3sq - minMQ3sq) / (stepsMQ3sq-1);
+  double minMU3sq=1.0e+05; double maxMU3sq=1.0e+08; int stepsMU3sq =10;
+  double stepMU3sq = log(maxMU3sq - minMU3sq) / (stepsMU3sq-1);
+  double minTYu=-3000; double maxTYu= -1000; int stepsTYu =200;
+  double stepTYu = (maxTYu - minTYu) / (stepsTYu-1);
+  ofstream mHu2points;
+  mHu2points.open("mHu2points.dat");
+  for(int i=0; i<stepsMQ3sq; i++){
+     for(int j=0; j<stepsTYu; j++){
+        for(int k=0; k<stepsMU3sq; k++){
+           input_pars.mq2Input(2,2) = exp(log(minMQ3sq) + i * stepMQ3sq);
+           input_pars.TYuInput(2,2) = minTYu + j * stepTYu;
+           input_pars.mu2Input(2,2) = exp(log(minMU3sq) + i * stepMU3sq);
+           const double at =  input_pars.TYuInput(2,2);
+           const double mQ3sq = input_pars.mq2Input(2,2) ;
+           const double mU3sq =input_pars.mu2Input(2,2)  ;
+            //this must be positive to evade colour or cahrge breaking minima
+           //use 1e+06 for mHu2 to be conservative here.
+           double ccbfac =  Sqr(yt)*(mQ3sq + mU3sq+mHu2)- Sqr(at);
+           if(ccbfac < 0) continue;
+           int exit_code = gs.getSpectrum(ne6ssm, input_pars);
+           if(exit_code != 0) continue;
+           double BRhA1A1 = higgs_decay_example(ne6ssm,false);
+           const NE6SSM_physical& pole_masses = ne6ssm.get_physical();
+           //update with correct yt and mHu2
+           mHu2 =  ne6ssm.get_mHu2();
+           yt =  ne6ssm.get_Yu(2,2);
+            ccbfac =  Sqr(yt)*(mQ3sq + mU3sq+mHu2)- Sqr(at);
+    
+           if(mHu2 < 0){    
+              mHu2points << "  "
+                         << std::setw(12) << std::left <<mQ3sq << ' ' 
+                         << std::setw(12) << std::left <<mU3sq << ' '
+                         << std::setw(12) << std::left << at  << ' '
+                         << std::setw(12) << std::left << ccbfac << ' '
+                         << std::setw(12) << std::left << mHu2 << ' '
+                         << std::setw(12) << std::left << pole_masses.MAh(2) << ' '
+                         << std::setw(12) << std::left <<  pole_masses.Mhh(0)<< ' '
+                         << std::setw(12) << std::left << BRhA1A1 << std::endl;
+           }
+           else{
+              cout << "  "   
+                   << std::setw(12) << std::left <<mQ3sq << ' ' 
+                   << std::setw(12) << std::left <<mU3sq << ' '
+                   << std::setw(12) << std::left << at  << ' '
+                   << std::setw(12) << std::left << ccbfac << ' '
+                   << std::setw(12) << std::left << mHu2 << ' '
+                   << std::setw(12) << std::left << pole_masses.MAh(2) << ' '
+                   << std::setw(12) << std::left <<  pole_masses.Mhh(0)<< ' '
+                   << std::setw(12) << std::left << BRhA1A1 << std::endl;
+           }
+      
+        }
+     }
+  }
+  mHu2points.close();
+  return true;
 }
 
 
@@ -261,18 +338,18 @@ int main(int argc, const char *argv[])
    INFO("running higgs_decay_example()");
    INFO("=============================");
    }
-   GetSpec gs;
-   NE6SSM<Two_scale> ne6ssm;
+   // GetSpec gs;
    // NE6SSM<Two_scale> ne6ssm;
-   NE6SSM_slha_io slha;
+   // // NE6SSM<Two_scale> ne6ssm;
+   // NE6SSM_slha_io slha;
 
-   gs.findSpectrum2(argc,argv,ne6ssm, slha);
+   // gs.findSpectrum2(argc,argv,ne6ssm, slha);
    
-   higgs_decay_example(ne6ssm,speak);
+   // higgs_decay_example(ne6ssm,speak);
    
-   if(speak) std::cout << "End of calculation."  << std::endl;
+   // if(speak) std::cout << "End of calculation."  << std::endl;
    
-   scan(argc, argv);
+   scanMQ3MU3At(argc, argv);
 
    return 0;
 }
