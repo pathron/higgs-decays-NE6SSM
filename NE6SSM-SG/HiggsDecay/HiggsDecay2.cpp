@@ -218,9 +218,9 @@ bool scan(int argc, const char *argv[]){
      std::cerr << "Fail reading SLHA file." <<std::endl;
      return false;
   }
-  double minKapPr=0.027; double maxKapPr=0.028; int stepsKap =10;
+  double minKapPr=0.01; double maxKapPr=0.1; int stepsKap =300;
   double stepKapPr = (maxKapPr - minKapPr) / (stepsKap-1);
-  double minTK=27; double maxTK=29; int stepsTK =10;
+  double minTK=1; double maxTK=50; int stepsTK =300;
   double stepTK = (maxTK - minTK) / (stepsTK-1);
   for(int i=0; i<stepsKap; i++){
      for(int j=0; j<stepsTK; j++){
