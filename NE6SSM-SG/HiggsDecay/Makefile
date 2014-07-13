@@ -1,7 +1,7 @@
 # Package information
 PKGNAME         := FlexibleSUSY
 VERSION         := 1.0.1
-ABSBASEDIR      := /home/peter/Papers/NE6SSM/NE6SSM-SG
+ABSBASEDIR      := /home/pathron/Papers/higgs-decays-NE6SSM/NE6SSM-SG
 
 # Switches
 ENABLE_FFLITE    := no
@@ -41,15 +41,15 @@ CXX_DEP_GEN     := g++
 CXXFLAGS_DEP_GEN:= -std=c++11
 FC              := gfortran
 FFLAGS          := -O2 -frecursive
-FLIBS           := -L/usr/lib/gcc/x86_64-linux-gnu/4.6/ -lgfortran -lm
+FLIBS           :=-L/usr/lib/gcc/x86_64-redhat-linux/4.8.2/ -lgfortran -lm 
 FOR_DEP_GEN     := gfortran
-BOOSTTESTLIBS   := -lboost_unit_test_framework
-BOOSTTHREADLIBS := 
-BOOSTFLAGS      := 
-EIGENFLAGS      := -I/usr/include/eigen3
-GSLLIBS         := -L/usr/lib -lgsl -lgslcblas -lm
-GSLFLAGS        := -I/usr/include
-LAPACKLIBS      := -llapack
+BOOSTTESTLIBS      := -L/home/software/boostbuild/lib -lboost_unit_test_framework
+BOOSTTHREADLIBS    := 
+BOOSTFLAGS         := -I/home/software/boostbuild/include
+EIGENFLAGS         := -I/home/software/sharedincludes/eigen3
+GSLLIBS            := -lgsl -lgslcblas -lm
+GSLFLAGS           := -I/usr/include
+LAPACKLIBS         := -L/home/software/sharedlibs -llapack
 LOOPTOOLSFLAGS  := 
 LOOPTOOLSLIBS   := 
 THREADLIBS      := -lpthread
