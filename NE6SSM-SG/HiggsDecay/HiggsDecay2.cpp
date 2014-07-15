@@ -40,6 +40,21 @@ double higgs_decay_example(NE6SSM<Two_scale>& ne6ssm, bool speak) {
    Eigen::Array<double,5,1> mhiggs_pole;
    Eigen::Array<double,5,1> mAhiggs_pole;
    Eigen::Matrix<double,5,5> Uhiggs_pole;
+    Eigen::Matrix<double,5,5> UAh_pole;
+   //tan beta rotation
+   Eigen::Matrix<double,5,5> UTb;
+   UTb(0,0) = cos(atan(ne6ssm.get_vu() / ne6ssm.get_vd()));
+   UTb(0,1) = sin(atan(ne6ssm.get_vu() / ne6ssm.get_vd()));
+   UTb(1,0) = - UTb(0,1);
+   UTb(1,1) = UTb(0,0);
+   UTb(0,2) = UTb(0,3) = UTb(0,4) = 0;
+   UTb(1,2) = UTb(1,3) = UTb(1,4) = 0;
+   UTb(2,2) = 1;
+   UTb(2,0) = UTb(2,1) = UTb(2,3) = UTb(2,4) = 0; 
+   UTb(3,3) = 1;
+   UTb(3,0) = UTb(3,1) = UTb(3,2) = UTb(3,4) = 0; 
+   UTb(4,0) = UTb(4,1) = UTb(4,2) = UTb(4,3) = 0; 
+   UTb(4,4) = 1;
    int A = 2;  //index for lightest physical pseudo scalar
    //(0 and 1 are goldstones)
    mhiggs = ne6ssm.get_Mhh();
@@ -50,6 +65,13 @@ double higgs_decay_example(NE6SSM<Two_scale>& ne6ssm, bool speak) {
    mhiggs_pole = ne6ssm.get_physical().Mhh;
    mAhiggs_pole = ne6ssm.get_physical().MAh;
    Uhiggs_pole =  ne6ssm.get_physical().ZH;
+   UAh_pole =  ne6ssm.get_physical().ZA;
+
+   //obtaion the mixing between tan beta rotated SM-like h state and the physical state
+   Eigen::Matrix<double,5,5> URoman = Uhiggs_pole* UTb.transpose();
+   std::cout << " URoman = "  <<  URoman <<std::endl;
+
+
    if(speak){
    std::cout << "mhiggs = " << mhiggs << std::endl;
    std::cout << "mAhiggs = " << mAhiggs << std::endl;
@@ -89,9 +111,20 @@ for(int j=0; j<=4; j++){
  std::cout << "GhphysA1A1 =" << GhphysA1A1  << std::endl;
  std::cout << "0.5 * GhphysA1A1 = "  << 0.5 * GhphysA1A1  << std::endl;
  }
+ 
+ 
+ const double at =  ne6ssm.get_TYu(2,2);
+ const double yt =  ne6ssm.get_Yu(2,2);
+ const double mQ3sq = ne6ssm.get_mq2(2,2);
+ const double mU3sq =ne6ssm.get_mu2(2,2) ;
+ const double mHu2 =ne6ssm.get_mHu2() ;
+
+ //this must be positive to evade colour or cahrge breaking minima
+ //use 1e+06 for mHu2 to be conservative here.
+ double ccbfac =  3.0*Sqr(yt)*(mQ3sq + mU3sq + mHu2)- Sqr(at);
+
  //From table 4 of arXiv::1201.2671 for mh = 126 GeV
  double GamSM = 4.085e-03; 
-
 // Note the GHA1A1 is the Feynman rule -- which is a factor two larger
 // than the term in the Lagrangian which Roman calculates
 // and coupling \xi_{hAA} which is written in Eq C28a and C28b on p530 
@@ -101,11 +134,12 @@ for(int j=0; j<=4; j++){
  double GamTot = GamSM + GamhA1A1;
  double BRhA1A1 = GamhA1A1 / GamTot;
  if(speak){
- std::cout << "GamhA1A1 = " << GamhA1A1 << std::endl;
- std::cout << "GamTot = " << GamTot << std::endl;
- std::cout << "BRhA1A1 =" << BRhA1A1 << std::endl;
+    std::cout << "ccb = "  << ccbfac << std::endl;
+    std::cout << "GamhA1A1 = " << GamhA1A1 << std::endl;
+    std::cout << "GamTot = " << GamTot << std::endl;
+    std::cout << "BRhA1A1 =" << BRhA1A1 << std::endl;
  } 
-bool BenchMark =false;
+bool BenchMark =true;
  if(BenchMark) {
     cout << "BenchMark Point." << endl;
     cout << "\\begin{tabular}{| c || c | c |}"  << std::endl;
@@ -174,22 +208,31 @@ bool BenchMark =false;
     std::cout <<   ne6ssm.get_physical().MAh(3) << std::endl;
     
     std::cout << "m_{h_1} (GeV)                    & \t";
-    std::cout <<   ne6ssm.get_physical().MAh(0) << std::endl;
+    std::cout <<   ne6ssm.get_physical().Mhh(0) << std::endl;
 
     std::cout << "m_{h_2} (GeV)                    & \t";
-    std::cout <<   ne6ssm.get_physical().MAh(1) << std::endl;
+    std::cout <<   ne6ssm.get_physical().Mhh(1) << std::endl;
 
     std::cout << "m_{h_3} (GeV)                    & \t";
-    std::cout <<   ne6ssm.get_physical().MAh(2) << std::endl;
+    std::cout <<   ne6ssm.get_physical().Mhh(2) << std::endl;
 
      std::cout << "m_{h_4} (GeV)                    & \t";
-    std::cout <<   ne6ssm.get_physical().MAh(3) << std::endl;
+    std::cout <<   ne6ssm.get_physical().Mhh(3) << std::endl;
 
     std::cout << "m_{h_5} (GeV)                    & \t";
-    std::cout <<   ne6ssm.get_physical().MAh(4) << std::endl;
+    std::cout <<   ne6ssm.get_physical().Mhh(4) << std::endl;
 
     std::cout << "G (GeV)                    & \t";
     std::cout <<   0.5 *  Re(GhphysA1A1(0)) << std::endl;
+    
+    std::cout << "R_{ZZh_1}                 & \t";
+    std::cout << URoman(0,0)  << std::endl;
+
+    std::cout << "R_{ZA_1h_1}                 & \t";
+    std::cout <<  Uhiggs_pole(0,0) * UAh_pole(2,0)   << std::endl;
+
+
+       
 
     std::cout << "BR(h_1\\longarrow A_1A_1)  & \t";
     std::cout << BRhA1A1 << std::endl;
@@ -360,18 +403,18 @@ int main(int argc, const char *argv[])
    INFO("running higgs_decay_example()");
    INFO("=============================");
    }
-   // GetSpec gs;
+   GetSpec gs;
+   NE6SSM<Two_scale> ne6ssm;
    // NE6SSM<Two_scale> ne6ssm;
-   // // NE6SSM<Two_scale> ne6ssm;
-   // NE6SSM_slha_io slha;
+   NE6SSM_slha_io slha;
 
-   // gs.findSpectrum2(argc,argv,ne6ssm, slha);
+   gs.findSpectrum2(argc,argv,ne6ssm, slha);
    
-   // higgs_decay_example(ne6ssm,speak);
+   higgs_decay_example(ne6ssm,speak);
    
-   // if(speak) std::cout << "End of calculation."  << std::endl;
+    if(speak) std::cout << "End of calculation."  << std::endl;
    
-   scanMQ3MU3At(argc, argv);
+    // scanMQ3MU3At(argc, argv);
 
    return 0;
 }
