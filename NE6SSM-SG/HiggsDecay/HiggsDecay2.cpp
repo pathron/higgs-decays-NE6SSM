@@ -139,7 +139,7 @@ for(int j=0; j<=4; j++){
     std::cout << "GamTot = " << GamTot << std::endl;
     std::cout << "BRhA1A1 =" << BRhA1A1 << std::endl;
  } 
-bool BenchMark =true;
+bool BenchMark =false;
  if(BenchMark) {
     cout << "BenchMark Point." << endl;
     cout << "\\begin{tabular}{| c || c | c |}"  << std::endl;
@@ -252,16 +252,22 @@ return BRhA1A1;
 
 bool scanKappaTKappa(int argc, const char *argv[]){
   
-    GetSpec gs;
-    NE6SSM<Two_scale> ne6ssm;
-    // NE6SSM<Two_scale> ne6ssm;
-    NE6SSM_slha_io slha;
-    NE6SSM_input_parameters input_pars;
-    int read = gs.input_slha(argc, argv,input_pars);
-    if(read != 0) {
-       std::cerr << "Fail reading SLHA file." <<std::endl;
-       return false;
-    }
+  GetSpec gs;
+  NE6SSM<Two_scale> ne6ssm;
+  // NE6SSM<Two_scale> ne6ssm;
+  NE6SSM_slha_io slha;
+  NE6SSM_input_parameters input_pars;
+  int read = gs.input_slha(argc, argv,input_pars);
+  if(read != 0) {
+    std::cerr << "Fail reading SLHA file." <<std::endl;
+    return false;
+  }
+  //get spectrum for default point before starting.
+  gs.findSpectrum2(argc,argv,ne6ssm, slha);
+  ofstream mHu2points;
+  mHu2points.open("mHu2Neg_ccbNeg.dat");
+  ofstream ccbNegPoints;
+  ccbNegPoints.open("ccbNeg.dat");
   double minKapPr=0.01; double maxKapPr=0.1; int stepsKap =300;
   double stepKapPr = (maxKapPr - minKapPr) / (stepsKap-1);
   double minTK=1; double maxTK=50; int stepsTK =300;
@@ -288,7 +294,43 @@ bool scanKappaTKappa(int argc, const char *argv[]){
          const double mU3sq =  ne6ssm.get_mu2(2,2);
          //this must be positive to evade colour or cahrge breaking minima
          const double ccbfac =  Sqr(yt)*(mQ3sq + mU3sq + mHu2)- Sqr(at);
-         
+	 if(ccbfac < 0){
+	     ccbNegPoints << "  " 
+			  << std::setw(12) << std::left 
+			  <<ne6ssm.get_KappaPr() << ' '
+			  << std::setw(12) << std::left 
+			  << ne6ssm.get_TKappaPr()  << ' '
+			  << std::setw(12) << std::left 
+			  << ccbfac << ' '
+			  << std::setw(12) << std::left 
+			  << mHu2 << ' '
+			  << std::setw(12) << std::left 
+			  << pole_masses.MAh(2) << ' '
+			  << std::setw(12) << std::left 
+			  <<  pole_masses.Mhh(0)<< ' '
+			  << std::setw(12) << std::left 
+			  << BRhA1A1 << std::endl;
+
+	   }
+	    if(mHu2 < 0) { 
+	     ccbNegPoints << "  " 
+			  << std::setw(12) << std::left 
+			  <<ne6ssm.get_KappaPr() << ' '
+			  << std::setw(12) << std::left 
+			  << ne6ssm.get_TKappaPr()  << ' '
+			  << std::setw(12) << std::left 
+			  << ccbfac << ' '
+			  << std::setw(12) << std::left 
+			  << mHu2 << ' '
+			  << std::setw(12) << std::left 
+			  << pole_masses.MAh(2) << ' '
+			  << std::setw(12) << std::left 
+			  <<  pole_masses.Mhh(0)<< ' '
+			  << std::setw(12) << std::left 
+			  << BRhA1A1 << std::endl;
+	   
+	    }
+	 
          cout << "  "
               << std::setw(12) << std::left <<ne6ssm.get_KappaPr() << ' '
               << std::setw(12) << std::left << ne6ssm.get_TKappaPr()  << ' '
@@ -303,6 +345,8 @@ bool scanKappaTKappa(int argc, const char *argv[]){
          }
      
   }
+  mHu2points.close();
+  ccbNegPoints.close();
   return true;
 }
 
@@ -397,7 +441,7 @@ bool scanMQ3MU3At(int argc, const char *argv[]){
 
 int main(int argc, const char *argv[])
 {
-   bool speak = true;
+   bool speak = false;
    if(speak){
    INFO("=============================");
    INFO("running higgs_decay_example()");
@@ -408,13 +452,13 @@ int main(int argc, const char *argv[])
    // NE6SSM<Two_scale> ne6ssm;
    NE6SSM_slha_io slha;
 
-   gs.findSpectrum2(argc,argv,ne6ssm, slha);
+   // gs.findSpectrum2(argc,argv,ne6ssm, slha);
    
-   higgs_decay_example(ne6ssm,speak);
+   // higgs_decay_example(ne6ssm,speak);
    
-    if(speak) std::cout << "End of calculation."  << std::endl;
+   //  if(speak) std::cout << "End of calculation."  << std::endl;
    
-    // scanMQ3MU3At(argc, argv);
-
+   // scanMQ3MU3At(argc, argv);
+   scanKappaTKappa(argc, argv);
    return 0;
 }
