@@ -1,0 +1,1863 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amssymb,amsmath}
+\usepackage[dvips]{lscape,graphicx}
+
+\voffset=0mm
+\hoffset=0mm
+\oddsidemargin=0mm
+\textwidth=160mm
+\headheight=0mm
+\topmargin=0mm
+\headsep=0mm
+\textheight=246mm
+\footskip=13mm
+\binoppenalty=10000
+\relpenalty=10000
+
+%\parindent=0mm
+
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}.}
+\renewcommand{\baselinestretch}{1.30}
+\newcommand{\cen}{\centerline}
+\newcommand{\bc}{\begin{center}}
+\newcommand{\ec}{\end{center}}
+\newcommand{\bd}{\begin{displaymath}}
+\newcommand{\ed}{\end{displaymath}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bt}{\begin{tabular}}
+\newcommand{\et}{\end{tabular}}
+\newcommand{\un}{\underline}
+\newcommand{\ov}{\overline}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\rre}{\mathrm{Re}}
+\newcommand{\iim}{\mathrm{Im}}
+
+\sloppy
+
+
+\begin{document}
+
+\title{
+%\hfill
+\textbf{Nonstandard Higgs decays\\ in the $U(1)$ extension of the MSSM\\[4mm]}}
+
+\date{}
+\author{
+P.~Athron${}^{a}$,
+M.~M\"{u}hlleitner$^{b}$,
+R.~Nevzorov${}^{a}$\footnote{On leave of absence from the Theory Department, SSC RF ITEP of NRC "Kurchatov Institute", Moscow, Russia.},
+A.~G.~Williams${}^{a}$\\[9mm]
+{\small\it $^a$ ARC Centre of Excellence for Particle Physics at the Terascale and CSSM,}\\
+{\small\it School of Chemistry and Physics, The University of Adelaide, Adelaide SA 5005, Australia}\\[3mm]
+{\small\it $^b$ Institute for Theoretical Physics, Karlsruhe Institute of Technology,} \\
+{\small\it 76128 Karlsruhe, Germany.}\\
+}
+
+\maketitle
+
+\begin{abstract}
+\noindent
+In $U(1)$ extensions of the minimal supersymmetric (SUSY) standard
+model (MSSM) there is a simple mechanism that leads to a heavy $Z'$
+with a mass which is substantially larger than the SUSY breaking
+scale. This mechanism may also result in a pseudoscalar state so light
+that the decays of the $125\,\mbox{GeV}$ SM-like Higgs boson into a
+pair of such pseudoscalars can be kinematically allowed.  We study
+these decays within $E_6$ inspired SUSY models with exact custodial
+symmetry that forbids tree-level flavor-changing transitions and the
+most dangerous baryon and lepton number violating operators. We argue
+that the branching ratio of the lightest Higgs boson decays into a
+pair of the light pseudoscalar states may not be negligibly small.
+\end{abstract}
+\thispagestyle{empty}
+\vfill
+\newpage
+\setcounter{page}{1}
+
+
+
+\section{Introduction}
+Searches for physics beyond the standard model (SM) with ATLAS and CMS
+have set rather stringent constraints on the masses of sparticles and
+$Z'$ bosons. Indeed, in the case of the $E_6$ inspired models the LHC
+data analysis excludes $Z'$ resonances with masses $M_{Z'}$ below
+$2.5\,\mbox{TeV}$ \cite{1,2}. In the simplest $U(1)$ extensions of the
+minimal supersymmetric (SUSY) standard model (MSSM) the extra $U(1)$
+gauge symmetry is normally broken by the vacuum expectation value
+(VEV) of the SM singlet superfield $S$ that carries non--zero $U(1)$
+charges. Since $\langle S\rangle$ and $M_{Z'}$ are determined by the
+SUSY breaking scale in these models the multi--TeV $Z'$ mass typically
+implies that other sparticles also have multi--TeV masses.
+
+ Since the third generation sfermions and Higgs bosons with sub–-TeV
+ masses have not been ruled out by the LHC experiments yet it is worth
+ to consider the phenomenological implications of the $U(1)$
+ extensions of the MSSM in which the $Z'$ boson can be substantially
+ heavier than the sparticles. Such scenarios may be realised when the
+ extra $U(1)$ gauge symmetry is broken by two VEVs of the SM singlet
+ superfields $S$ and $\overline{S}$ with opposite $U(1)$ charges.  In
+ this case the extra $U(1)$ D--term contribution to the scalar
+ potential may force the minimum of this potential to be along the
+ $D$--flat direction (see, for example, \cite{Kolda:1995iw}).  As a
+ consequence $\langle S\rangle$ and $\langle\overline{S}\rangle$ can
+ be much larger than the SUSY breaking scale.
+
+The simplest renormalizable superpotential of the SUSY model of the type discussed above
+can be written as
+\be
+W_S=\sigma \phi S \overline{S}\,,
+\label{hd1}
+\ee
+where $\phi$ is a scalar superfield that does not participate in gauge interactions. When
+$\sigma$ goes to zero the corresponding tree--level scalar potential takes a form
+\begin{equation}
+V_S = m^2_S |S|^2 + m^2_{\overline{S}} |\overline{S}|^2 + m^2_{\phi} |\phi|^2
++\ds\frac{Q_S^2 g^{'2}_1}{2}\left(|S|^2-|\overline{S}|^2\right)^2\,,
+\label{hd2}
+\end{equation}
+where $m_S^2$, $m^2_{\overline{S}}$ and $m^2_{\phi}$ are soft SUSY breaking
+parameters and $Q_S$ is a $U(1)'$ charge of the SM singlet superfields $S$. In Eq.~(\ref{hd2})
+the last term is associated with the extra $U(1)$ D--term contribution. In the limit
+$\langle S \rangle = \langle \overline{S} \rangle$ this quartic term vanishes. If
+$(m^2_S + m^2_{\overline{S}})<0$ then there is a run--away direction in this
+model, so that $\langle S \rangle = \langle \overline{S} \rangle \to \infty$.
+For small values $\sigma$ the interaction term in the superpotential (\ref{hd1}) stabilizes
+the run-away direction and the SM singlet superfields tend to acquire large VEVs,
+i.e
+\be
+\langle \phi \rangle \sim \langle S \rangle \simeq \langle \overline{S} \rangle
+\sim \dfrac{1}{\sigma}\sqrt{|m^2_S + m^2_{\overline{S}}|}\,,
+\label{hd3}
+\ee
+resulting in an extremely heavy $Z'$ boson.
+
+Although the SUSY model mentioned above looks rather simple and elegant it
+possess an additional accidental global $U(1)$ symmetry which can be
+associated with the Peccei-Quinn (PQ) symmetry \cite{Peccei:1977hh}.
+This symmetry is spontaneously broken by the VEVs of the SM singlet superfields
+resulting in massless axion \cite{axion}. To avoid the appearance of axion
+one needs to include in the superpotential (\ref{hd1}) polynomial terms with respect
+to the superfield $\phi$ which explicitly break the global $U(1)$ symmetry. If the PQ
+symmetry violating couplings are very small then the particle spectrum of this
+SUSY model should contain a pseudo--Goldstone boson which can be considerably
+lighter than all sparticles and Higgs bosons. In fact, the corresponding pseudoscalar
+Higgs state may be so light that the SM-like Higgs boson decays into a pair of
+these states can be kinematically allowed.
+
+In this article we consider such nonstandard Higgs decays within the
+well motivated $E_6$ inspired extensions of the MSSM. The breakdown of
+the $E_6$ symmetry at high energies may lead to the models based on
+rank--5 gauge groups with additional $U(1)'$ factor in comparison to
+the SM. In this case extra $U(1)'$ gauge symmetry is a linear
+combination of $U(1)_{\chi}$ and $U(1)_{\psi}$: \be
+U(1)'=U(1)_{\chi}\cos\theta+U(1)_{\psi}\sin\theta\,,
+\label{hd4}
+\ee
+which are defined by: $E_6\to SO(10)\times U(1)_{\psi},~SO(10)\to SU(5)\times U(1)_{\chi}$
+(for a review see \cite{Langacker:2008yv}--\cite{E6-review}).  With additional Abelian gauge
+symmetries it is important to ensure the cancellation of anomalies. In any model based on the
+subgroup of $E_6$ anomalies are cancelled automatically if the low energy spectrum involves
+complete $27$-plets. Consequently, in $E_6$ inspired SUSY models the particle spectrum is
+extended to fill out three complete 27-dimensional representations of $E_6$. Each $27$--plet
+contains one generation of ordinary matter; SM singlet field, $S_i$, that carries non--zero $U(1)'$
+charge; up and down type Higgs doublets, $H^{u}_{i}$ and $H^{d}_{i}$; charged
+$\pm 1/3$ exotic quarks $D_i$ and $\bar{D}_i$.
+
+Different aspects of the phenomenology of the $E_6$ inspired SUSY models have been
+extensively studied over the years \cite{E6-review}--\cite{E6}. A few years ago the Tevatron
+and early LHC $Z'$ mass limits in these models have been discussed in \cite{Accomando:2010fz}
+and collider signatures associated with the exotic quarks and squarks have been considered
+in \cite{Kang:2007ib}. Previously, the implications of $E_6$ inspired SUSY models with an
+additional $U(1)'$ gauge symmetry have been studied for electroweak (EW) symmetry breaking
+(EWSB) \cite{Langacker:1998tc}--\cite{Daikoku:2000ep}, neutrino physics \cite{Kang:2004ix}--\cite{Ma:1995xk},
+leptogenesis \cite{Hambye:2000bn}--\cite{King:2008qb},
+EW baryogenesis \cite{baryogen}, muon anomalous magnetic moment \cite{g-2}, electric
+dipole moment of electron \cite{Suematsu:1997tv} and tau lepton \cite{GutierrezRodriguez:2006hb},
+lepton flavour violating processes like $\mu\to e\gamma$ \cite{Suematsu:1997qt} and CP-violation in the
+Higgs sector \cite{Ham:2008fx}. The neutralino sector in $E_6$ inspired SUSY models was analysed
+in \cite{Keith:1997zb}, \cite{Suematsu:1997tv}--\cite{Suematsu:1997qt},
+\cite{Suematsu:1997au}--\cite{E6neutralino-higgs}.  Such models have also been proposed as
+the solution to the tachyon problems of anomaly mediated SUSY breaking, via $U(1)^\prime$ D-term
+contributions \cite{Asano:2008ju}, and used in combination with a generation symmetry to construct
+a model explaining fermion mass hierarchy and mixing \cite{Stech:2008wd}. The Higgs sector and
+the theoretical upper bound on the lightest Higgs boson mass in the $E_6$ inspired SUSY models
+were examined in \cite{Daikoku:2000ep}, \cite{E6neutralino-higgs}, \cite{King:2005jy}--\cite{E6-higgs}.
+
+Here we focus on the $E_6$ inspired SUSY extension of the SM based on
+the low--energy SM gauge group together with an extra $U(1)_{N}$ gauge
+symmetry in which right--handed neutrinos do not participate in the
+gauge interactions. This corresponds to $\theta=\arctan\sqrt{15}$.
+Only in this Exceptional Supersymmetric Standard Model (E$_6$SSM)
+\cite{King:2005jy}--\cite{King:2005my} right--handed neutrinos may be
+superheavy, shedding light on the origin of the mass hierarchy in the
+lepton sector and providing a mechanism for the generation of the
+baryon asymmetry in the Universe via leptogenesis
+\cite{Hambye:2000bn}--\cite{King:2008qb}. $E_6$ inspired SUSY models
+with an additional $U(1)_{N}$ gauge symmetry have been studied in
+\cite{Ma:1995xk} in the context of non--standard neutrino models with
+extra singlets, in \cite{Suematsu:1997au} from the point of view of
+$Z-Z'$ mixing, in \cite{Keith:1997zb} and
+\cite{Suematsu:1997au}--\cite{Keith:1996fv} where the neutralino
+sector was explored, in \cite{Keith:1997zb}, \cite{King:2007uj} where
+the renormalisation group (RG) flow of couplings was examined and in
+\cite{Suematsu:1994qm}--\cite{Daikoku:2000ep} where EWSB was
+studied. The presence of a $Z'$ boson and of exotic quarks predicted
+by the E$_6$SSM provides spectacular new physics signals at the LHC
+which were analysed in \cite{King:2005jy}--\cite{Accomando:2006ga},
+\cite{Howl:2007zi}. The presence of light exotic particles also lead
+to the nonstandard decays of the SM--like Higgs boson that were
+discussed in detail in \cite{Nevzorov:2013tta}--\cite{Hall:2010ix}.
+Recently the particle spectrum and collider signatures associated with
+it were studied within the constrained version of the E$_6$SSM
+\cite{cE6SSM}. The degree of fine tuning in the constrained version has has been examined recently \cite{Athron:2013ipa}. The threshold corrections to the running gauge and
+Yukawa couplings in the E$_6$SSM and cE$_6$SSM were studied in detail
+in \cite{Athron:2012pw}. Alternative boundary conditions which are shifted by D-terms from the highscale breakdown of the U(1) gauge symmetry which doesn't survive to low energies have been considered in the context of using a measuremet of the first or second generation sefermion masses to constrain the GUT scale parameters\cite{Miller:2012vn}. The renormalization of VEVs in the E$_6$SSM
+was considered in \cite{Sperling:2013eva}.
+
+The presence of exotic matter in the E$_6$SSM generically lead to non--diagonal flavour transitions and rapid proton
+decay. To suppress these processes one can impose a set of discrete symmetries \cite{King:2005jy}--\cite{King:2005my}.
+In this article we study the nonstandard Higgs decays mentioned above within the $E_6$ inspired SUSY models
+with the extra $U(1)_{N}$ factor in which a single discrete $\tilde{Z}^{H}_2$ symmetry forbids tree--level
+flavor--changing transitions and the most dangerous baryon and lepton number violating operators \cite{nevzorov}.
+In particular, we consider scenarios with approximate global $U(1)$ symmetry that leads to a pseudo--Goldstone
+boson in the particle spectrum. Since no indication for the presence of SUSY particles has been observed we
+assume that the SUSY breaking parameters are of the order of $1\,\mbox{TeV}$ or even larger. The pseudo--Goldstone
+state in these scenarios is mainly a linear superposition of the imaginary parts of the scalar components of the
+SM singlet superfields $\phi$, $S$ and $\overline{S}$. Although one can expect that the coupling of this state
+to the SM--like Higgs boson, which is predominantly a linear superposition of the neutral components of the Higgs
+doublets $H_u$ and $H_{d}$, is somewhat suppressed it can still lead to the non--negligible branching ratio of the
+lightest Higgs decays into a pair of pseudo--Goldstone bosons.
+
+In this context it is worth noting that the decay rate of the SM-like Higgs state into a pair of pseudoscalars were
+intensively studied within the simplest extension of the MSSM ---  Next--to--Minimal Supersymmetric Standard Model
+(NMSSM) (for the reviews of nonstandard Higgs boson decays see \cite{Chang:2008cw}). The NMSSM superpotential
+is given by \cite{review-nmssm}:
+\begin{equation}
+W_{NMSSM}=\lambda S(H_d H_u)+\dfrac{\kappa}{3} S^3 + W_{MSSM}(\mu=0)\,.
+\label{hd5}
+\end{equation}
+In the limit $\kappa= 0$ the Lagrangian of the NMSSM is invariant under the transformations of the
+PQ symmetry that leads to the massless axion when it is spontaneously broken by the VEV $\langle S\rangle$.
+If $\kappa$ is rather small then the NMSSM particle spectrum involves one light scalar and one light pseudoscalar
+states. In addition if $\kappa\to 0$ and the SUSY breaking scale is of the order of $\mbox{TeV}$
+the lightest SUSY particle (LSP) is the lightest neutralino $\tilde{\chi}^0_1$ which is predominantly singlino.
+In this case the LSP couplings to the SM particles are quite small resulting in a relatively small annihilation cross
+section for $\tilde{\chi}^0_1\tilde{\chi}^0_1\to \mbox{SM particles}$ which gives rise to a relic density that is
+typically much larger than its measured value. As a consequence it seems to be rather problematic to find
+phenomenologically viable scenarios with light pseudoscalar in the case of the NMSSM with approximate PQ symmetry.
+Nevertheless the sufficiently light pseudoscalar can be always obtained by tuning the parameters of the NMSSM.
+
+In contrast with the NMSSM the mass of the lightest neutralino in the
+SUSY model considered here does not become small when the PQ symmetry
+violating couplings vanish. Moreover, even when all PQ symmetry
+violating couplings are negligibly small, the LSP can be
+higgsino--like, which allows a reasonable value for the dark matter
+density to be obtained if LSP has a mass below $1\,\mbox{TeV}$ (see,
+for example \cite{ArkaniHamed:2006mb}). Thus the approximate PQ
+symmetry can lead to phenomenologically viable scenarios with light
+pseudoscalar in this model.
+
+The paper is organised as follows. In the next section we briefly review the $E_6$ inspired SUSY models with exact
+custodial $\tilde{Z}^{H}_2$ symmetry. In section 3 the breakdown of gauge symmetry and Higgs phenomenology
+are studied. In section 4 we discuss a set of benchmark scenarios that leads to the decays of the lightest Higgs boson
+into a pair of pseudoscalar states. Our results are summarised in section 5. In Appendix A the spectrum of neutralino
+states is examined.
+
+
+
+\section{$E_6$ inspired SUSY models with exact $\tilde{Z}^{H}_2$ symmetry}
+
+In this section, we briefly review the $E_6$ inspired SUSY models with
+exact custodial $\tilde{Z}^{H}_2$ symmetry \cite{nevzorov}, which we
+use to demonstrate how light pseudoscalar states can appear in SUSY
+models with an extra $U(1)'$ gauge symmetry and what kind of Higgs
+decay rates they can lead to.  These models imply that $E_6$ or its
+subgroup is broken down to $SU(3)_C\times SU(2)_W\times U(1)_Y\times
+U(1)_{\psi}\times U(1)_{\chi}$ near the Grand Unification scale $M_X$
+(GUT scale). Below scale $M_X$ the particle content of these SUSY
+models involves three copies of $27_i$--plets and a set of $M_{l}$ and
+$\overline{M}_l$ supermultiplets from the incomplete $27'_l$ and
+$\overline{27'}_l$ representations of $E_6$. All components of the
+complete $27_i$--plets are odd under $\tilde{Z}^{H}_2$ discrete
+symmetry, while the supermultiplets $\overline{M}_l$ can be either odd
+or even. The supermultiplets $M_{l}$ are even under the
+$\tilde{Z}^{H}_2$ symmetry and as a consequence they can be used for
+the breakdown of gauge symmetry. To ensure that the $SU(2)_W\times
+U(1)_Y\times U(1)_{\psi}\times U(1)_{\chi}$ symmetry is broken down to
+$U(1)_{em}$ associated with the electromagnetism the set of multiplets
+$M_{l}$ should involve $H_u$, $H_d$, $S$ and $N^c_H$.  Just below the
+GUT scale $U(1)_{\psi}\times U(1)_{\chi}$ gauge symmetry is expected
+to be broken by the VEVs of $N^c_H$ and $\overline{N}_H^c$ down to
+$U(1)_{N}\times Z_{2}^{M}$ in these $E_6$ inspired models, where
+$Z_{2}^{M}=(-1)^{3(B-L)}$ is a matter parity. This is possible because
+matter parity is a discrete subgroup of $U(1)_{\psi}$ and
+$U(1)_{\chi}$. Due to such breakdown of $U(1)_{\psi}$ and
+$U(1)_{\chi}$ gauge symmetries all exotic states which originate from
+$27_i$ representations of $E_6$ as well as ordinary quark and lepton
+states survive to low energies. In general the large VEVs $\langle
+N^c_H \rangle \sim \langle \overline{N}_H^c \rangle \lesssim M_X$ also
+induce the large Majorana masses for right-handed neutrinos allowing
+them to be used for the see--saw mechanism.  Since $N^c_H$ and
+$\overline{N}_H^c$ acquire VEVs both supermultiplets should be even
+under the imposed $\tilde{Z}^{H}_2$ symmetry.
+
+At the TeV scale the superfields $H_u$, $H_d$ and $S$ play the role of
+Higgs fields. The VEVs of these superfields break the $SU(2)_W\times
+U(1)_Y\times U(1)_{N}$ gauge symmetry down to $U(1)_{em}$.  Because of
+this the supermultiplets $H_u$, $H_d$ and $S$ should be also even
+under the $\tilde{Z}^{H}_2$ symmetry.  In contrast, in the simplest
+scenario $\overline{H}_u$ and $\overline{H}_d$ are expected to be odd
+under this custodial symmetry so that they can get combined with the
+superposition of the corresponding components from the $27_i$, forming
+vectorlike states that gain masses of order of $M_X$.  The superfield
+$\overline{S}$ may also acquire non--zero VEV breaking $U(1)_{N}$
+symmetry. If this is a case then $\overline{S}$ has to be even under
+the $\tilde{Z}^{H}_2$ symmetry. When $\overline{S}$ is odd under the
+$\tilde{Z}^{H}_2$ symmetry then it can get combined with the
+superposition of the appropriate components of $27_i$ resulting in
+formation of superheavy vectorlike states with masses $\sim M_X$.  The
+custodial $\tilde{Z}^{H}_2$ symmetry allows the Yukawa interactions in
+the superpotential that originate from $27'_l \times 27'_m \times
+27'_n$ and $27'_l \times 27_i \times 27_k$. It is easy to check that
+the corresponding set of operators does not contain any that lead to
+the rapid proton decay. Since the set of multiplets $M_{l}$ contains
+only one pair of doublets $H_d$ and $H_u$ the down-type quarks and
+charged leptons couple to just one Higgs doublet $H_d$, whereas the
+up-type quarks couple to $H_u$ only. As a result the flavor--changing
+processes are forbidden at the tree level.
+
+Nonetheless if the set of $\tilde{Z}^{H}_2$ even supermultiplets
+$M_{l}$ involve only $H_u$, $H_d$, $S$ and $N^c_H$ then the Lagrangian
+of the model is invariant not only with respect to $U(1)_B$ but also
+under $U(1)_D$ symmetry transformations \be D\to e^{i\alpha}
+D\,,\qquad\qquad \overline{D}\to e^{-i\alpha}\overline{D}\,.
+\label{hd6}
+\ee
+The $U(1)_D$ symmetry ensures that the lightest exotic quark is very long--lived.
+Indeed, as $U(1)_B$ the $U(1)_D$ global symmetry is expected to be broken by a set of non--renormalizable
+operators which are suppressed by inverse power of $M_X$ or $M_{Pl}$. These operators allow the lightest
+exotic quark to decay. However its lifetime tends to be considerably larger than the age of the Universe.
+So long--lived exotic quarks would have been produced during the very early epochs of the Big Bang.
+Those lightest exotic quark states which survive annihilation would subsequently have been confined
+in heavy hadrons forming nuclear isotopes that should be present in terrestrial matter. Various theoretical
+estimations \cite{43} show that if such stable relics in the mass range from $1\,\mbox{GeV}$ to $10\,\mbox{TeV}$
+would exist in nature today their concentration is expected to be at the level of $10^{-10}$ per nucleon.
+At the same time different experiments set strong upper limits on the relative concentrations of such
+nuclear isotopes from $10^{-15}$ to $10^{-30}$ per nucleon \cite{42}. Therefore $E_6$ inspired models
+with very long--lived exotic quarks are ruled out.
+
+To ensure that the lightest exotic quarks decay within a reasonable time in the simplest scenario
+the set of $\tilde{Z}^{H}_2$ even supermultiplets $M_{l}$ is supplemented by $L_4$, where $L_4$ and
+$\overline{L}_4$ are lepton $SU(2)_W$ doublet supermultiplets that originate from a pair of additional
+$27'_{L}$ and $\overline{27'}_L$. The supermultiplets $L_4$ and $\overline{L}_4$ should form TeV scale
+vectorlike states to render the lightest exotic quark unstable\footnote{The appropriate mass term
+$\mu_L L_4\overline{L}_4$ in the superpotential can be induced within SUGRA models just after the
+breakdown of local SUSY if the K\"ahler potential contains an extra term $(Z_L (L_4\overline{L}_4)+h.c)$\cite{45}.}.
+Therefore $L_4$ and $\overline{L}_4$ have to be both even under the $\tilde{Z}^{H}_2$ symmetry.
+In this case the baryon and lepton number conservation implies that exotic quarks are leptoquarks.
+
+Here we assume that in addition to $H_u$, $H_d$, $S$, $L_4$,
+$\overline{L}_4$ $N^c_H$ and $\overline{N}_H^c$ the particle spectrum
+below scale $M_X$ involves $\tilde{Z}^{H}_2$ even superfields
+$\overline{S}$ and $\phi$, where superfield $\phi$ does not
+participate in the $SU(3)_C\times SU(2)_W\times U(1)_Y\times
+U(1)_{\psi}\times U(1)_{\chi}$ gauge interactions but acquires
+non--zero VEVs. Taking into account that the components of the
+superfields $\overline{S}$ and $\phi$ are expected to gain
+$\mbox{TeV}$ scale masses whereas the right--handed neutrino
+superfields are superheavy, the low energy matter content in the $E_6$
+inspired SUSY models discussed above involves: \be \ba{c}
+3\left[(Q_i,\,u^c_i,\,d^c_i,\,L_i,\,e^c_i)\right]
++3(D_i,\,\bar{D}_i)+3(S_{i})+2(H^u_{\alpha})+2(H^d_{\alpha})\\[2mm]
++L_4+\overline{L}_4+S+\overline{S}+H_u+H_d+\phi\,, \ea
+\label{hd7}
+\ee
+where $\alpha=1,2$ and $i=1,2,3$. Neglecting all suppressed non-renormalisable interactions
+the low-energy effective superpotential of these models can be written as
+\be
+\ba{rcl}
+W &=& \lambda S (H_u H_d) - \sigma \phi S \overline{S} + \dfrac{\kappa}{3}\phi^3+\dfrac{\mu}{2}\phi^2+\Lambda\phi\\[2mm]
+&&+ \lambda_{\alpha\beta} S (H^d_{\alpha} H^u_{\beta})+ \kappa_{ij} S (D_{i} \overline{D}_{j}) + \tilde{f}_{i\alpha} S_{i} (H^d_{\alpha} H_u)
++ f_{i\alpha} S_{i} (H_d H^u_{\alpha}) \\[2mm]
+&&+ g^D_{ij} (Q_i L_4) \overline{D}_j+ h^E_{i\alpha} e^c_{i} (H^d_{\alpha} L_4) + \mu_L L_4\overline{L}_4+
+\tilde{\sigma} \phi L_4\overline{L}_4+ W_{MSSM}(\mu=0)\,.
+\ea
+\label{hd8}
+\ee
+
+The gauge group and field content of the $E_6$ inspired SUSY models under consideration
+can originate from the 5D and 6D orbifold GUT models in which the splitting of GUT
+multiplets can be naturally achieved \cite{nevzorov}. In these orbifold GUT models
+all GUT relations between the Yukawa couplings can get spoiled while the approximate
+unification of the SM gauge couplings should take place. From Eq.~(\ref{hd7}) it follows
+that extra matter beyond the MSSM fill in complete $SU(5)$ representations in these
+models. As a consequence the gauge coupling unification remains almost exact in the
+one--loop approximation. It was also shown that in the two--loop approximation the unification
+of the gauge couplings in the SUSY models under consideration can be achieved for any
+phenomenologically acceptable value of $\alpha_3(M_Z)$, consistent with the central
+measured low energy value \cite{nevzorov}, \cite{King:2007uj}.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+                   &  $27_i$          &   $27_i$              &$27'_{H_u}$&$27'_{S}$&
+$\overline{27'}_{H_u}$&$\overline{27'}_{S}$&$27'_N$&$27'_{L}$&$1$\\
+& & &$(27'_{H_d})$& &$(\overline{27'}_{H_d})$& &$(\overline{27'}_N)$&$(\overline{27'}_L)$&\\
+\hline
+                   &$Q_i,u^c_i,d^c_i,$&$\overline{D}_i,D_i,$  & $H_u$     & $S$     &
+$\overline{H}_u$&$\overline{S}$&$N^c_H$&$L_4$&$\phi$\\
+                   &$L_i,e^c_i,N^c_i$ &  $H^d_{i},H^u_{i},S_i$& $(H_d)$   &         &
+$(\overline{H}_d)$&&$(\overline{N}_H^c)$&$(\overline{L}_4)$&\\
+\hline
+$\tilde{Z}^{H}_2$  & $-$              & $-$                   & $+$       & $+$     &
+$-$&$\pm$&$+$&$+$&$+$\\
+\hline
+$Z_{2}^{M}$        & $-$              & $+$                   & $+$       & $+$     &
+$+$&$+$&$-$&$-$&$+$\\
+\hline
+$Z_{2}^{E}$        & $+$              & $-$                   & $+$       & $+$     &
+$-$&$\pm$&$-$&$-$&$+$\\
+\hline
+\end{tabular}
+\caption{Transformation properties of different components of $E_6$ multiplets
+under $\tilde{Z}^H_2$, $Z_{2}^{M}$ and $Z_{2}^{E}$ discrete symmetries.}
+\label{tab-hd1}
+\end{table}
+
+For the analysis of the phenomenological implications of SUSY models discussed
+above it is convenient to introduce $Z_{2}^{E}$ symmetry which is defined so that
+$\tilde{Z}^{H}_2 = Z_{2}^{M}\times Z_{2}^{E}$. The transformation properties
+of different components of $27_i$, $27'_l$ and $\overline{27'}_l$ supermultiplets under
+the $\tilde{Z}^{H}_2$, $Z_{2}^{M}$ and $Z_{2}^{E}$ symmetries are summarized
+in Table~\ref{tab-hd1}. Since the low--energy effective Lagrangian of the $E_6$ inspired
+SUSY models studied here is invariant under the transformations of $Z_{2}^{M}$ and
+$\tilde{Z}^{H}_2$ symmetries, the $Z_{2}^{E}$ symmetry associated with the exotic
+states is also conserved. The invariance of the Lagrangian under the $Z_{2}^{E}$ symmetry
+implies that in collider experiments the exotic particles, which are odd under this symmetry,
+can only be created in pairs and the lightest exotic state should be absolutely stable.
+Using the method proposed in \cite{Hesselbach:2007te} it was argued that the masses
+of the lightest inert neutralino states\footnote{We use the terminology ``Inert Higgs'' to
+denote Higgs--like doublets and SM singlets that do not develop VEVs. The fermionic components
+of these supermultiplets form inert neutralino and chargino states.}, which are predominantly linear
+superpositions of the fermion components of the superfields $S_i$ from complete $27_i$
+representations of $E_6$, do not exceed $60-65\,\mbox{GeV}$ \cite{Hall:2010ix}.
+Because of this the corresponding states tend to be the lightest exotic particles in the spectrum.
+
+The presence of lightest exotic particles with masses below $60\,\mbox{GeV}$ gives rise to
+new decay channels of the SM--like Higgs boson. Moreover if these states are heavier
+than $5-10\,\mbox{GeV}$ then the SM--like Higgs state decays predominantly into the
+lightest inert neutralinos while the total branching ratio into SM particles gets strongly suppressed.
+Nowadays such scenarios are basically ruled out. On the other hand if the lightest exotic particles
+have masses below $5\,\mbox{GeV}$ their couplings to the SM--like Higgs state, gauge bosons,
+quarks and leptons are very small. This allows to avoid problems with nonstandard Higgs
+decays but it results in the cold dark matter density which is much larger than its measured value
+because the corresponding annihilation cross section tends to be rather small.
+The simplest phenomenologically viable scenarios imply that the lightest inert neutralinos
+are substantially lighter than $1\,\mbox{eV}$\footnote{The presence of very light neutral fermions
+in the particle spectrum might have interesting implications for the neutrino physics (see, for
+example \cite{Frere:1996gb}).}. This can be achieved if $f_{\alpha\beta}\sim \tilde{f}_{\alpha\beta}\lesssim 10^{-6}$
+In this case the lightest exotic particles form hot dark matter (dark radiation) in the Universe
+but give only a very minor contribution to the dark matter density.
+
+The $Z_{2}^{M}$ symmetry conservation ensures that $R$--parity is also conserved in the SUSY models
+discussed above. Because the lightest exotic state is the lightest $R$--parity odd state either the lightest
+$R$--parity even exotic state or the lightest $R$--parity odd state with $Z_{2}^{E}=+1$ must be
+stable. In the $E_6$ inspired models studied here most commonly the lightest ordinary neutralino state
+($Z_{2}^{E}=+1$) tend to be absolutely stable. As in the MSSM this state may account for all or some
+of the observed cold dark matter density.
+
+As mentioned before, in the simplest case the sector responsible for the breakdown of the
+$SU(2)_W\times U(1)_Y\times U(1)_{N}$ gauge symmetry involves $H_u$, $H_d$ and $S$. In this case
+the Higgs sector of the $E_6$ inspired SUSY models with the extra $U(1)_{N}$ factor was explored in \cite{King:2005jy}.
+If CP--invariance is preserved then the Higgs spectrum in these models contains three CP--even, one CP--odd
+and two charged states.  The singlet dominated CP--even state is always almost degenerate with the $Z'$ gauge
+boson. In contrast with the MSSM, the lightest Higgs boson in these models can be heavier than $110-120\,\mbox{GeV}$
+even at tree level. In the two--loop approximation the lightest Higgs boson mass does not exceed $150-155\,\mbox{GeV}$
+\cite{King:2005jy}. Recently, the RG flow of the Yukawa couplings and the theoretical upper bound on
+the lightest Higgs boson mass in these models were analysed in the vicinity of the quasi--fixed point \cite{Nevzorov:2013ixa}
+that appears as a result of the intersection of the invariant and quasi--fixed lines \cite{Nevzorov:2001vj}.
+It was argued that near the quasi--fixed point the upper bound on the mass of the SM--like Higgs boson is
+rather close to $125\,\mbox{GeV}$ \cite{Nevzorov:2013ixa}.
+
+The qualitative pattern of the Higgs spectrum
+in the $E_6$ inspired SUSY models with the extra $U(1)_{N}$ gauge symmetry and minimal Higgs sector
+is determined by the Yukawa coupling $\lambda$. When $\lambda < g'_1$, where $g'_1$ is a gauge coupling
+associated with the $U(1)_{N}$ gauge symmetry, the singlet dominated CP--even state is very heavy and
+decouple from the rest of the spectrum making it indistinguishable from the one in the MSSM. If $\lambda\gtrsim g'_1$
+the Higgs spectrum has extremely hierarchical structure which is rather similar to the one that arises in the NMSSM
+with the approximate PQ symmetry \cite{Miller:2005qua}--\cite{Nevzorov:2004ge}. As a consequence
+the mass matrix of the CP--even Higgs sector can be diagonalized using the perturbation theory
+\cite{Nevzorov:2004ge}--\cite{Nevzorov:2001um}. In this case the mass of the second lightest CP--even
+Higgs state is set by the $Z'$ boson mass while the heaviest CP--even, CP--odd and charged states
+are almost degenerate and lie beyond the multi TeV range.
+
+
+\section{Higgs sector}
+\subsection{The Higgs potential and gauge symmetry breaking}
+
+As it was mentioned in the previous section the sector responsible for the breakdown of gauge symmetry in the SUSY
+model under consideration includes two Higgs doublets $H_u$ and $H_d$ as well as the SM singlet fields $S$,
+$\overline{S}$ and $\phi$. The interactions between these fields are determined by the structure of the gauge
+interactions and by the superpotential in Eq.~(\ref{hd8}). The resulting Higgs effective potential is the sum
+of four pieces:
+\be
+\ba{rcl}
+V&=&V_F+V_D+V_{soft}+\Delta V\, ,\\[2mm]
+V_F&=&\lambda^2|S|^2(|H_d|^2+|H_u|^2) + \left|\lambda (H_d H_u) - \sigma \phi \overline{S}\right|^2
++ \sigma^2 |\phi|^2 |S|^2 + \\[2mm]
+& + &\left| - \sigma (S \overline{S}) + \kappa \phi^2 + \mu \phi + \Lambda \right|^2\,,\\[2mm]
+V_D&=&\ds\frac{g_2^2}{8}\left(H_d^\dagger \sigma_a H_d+H_u^\dagger \sigma_a H_u\right)^2
++\frac{{g'}^2}{8}\left(|H_d|^2-|H_u|^2\right)^2+\\[2mm]
+&&+\ds\frac{g^{'2}_1}{2}\left(\tilde{Q}_{H_d} |H_d|^2+\tilde{Q}_{H_u} |H_u|^2+\tilde{Q}_S |S|^2 - \tilde{Q}_S |\overline{S}|^2 \right)^2\,,\\[2mm]
+V_{soft}&=&m_{S}^2 |S|^2 + m_{\overline{S}}^2 |\overline{S}|^2 + m_1^2|H_d|^2 + m_2^2|H_u|^2 +
+m^2_{\varphi}|\phi|^2+ \biggl[\lambda A_{\lambda} S (H_u H_d) \\[2mm]
+&-& \sigma A_{\sigma} \phi (S \overline{S}) + \dfrac{\kappa}{3} A_{\kappa} \phi^3 + B\dfrac{\mu}{2} \phi^2 + \xi \Lambda \phi + h.c.\biggr]\,,
+\ea
+\label{hd9}
+\ee
+where $H_d^T=(H_d^0,\,H_d^{-})$, $H_u^T=(H_u^{+},\,H_u^{0})$ and $(H_d H_u)=H_u^{+}H_d^{-}-H_u^{0}H_d^{0}$,
+while $\tilde{Q}_{H_d}$, $\tilde{Q}_{H_u}$ and $\tilde{Q}_S$ are effective $U(1)$ charges of $H_d$, $H_u$ and $S$.
+At tree--level the Higgs potential in Eq.~(\ref{hd9}) is described by the sum of the first three terms. $V_F$ and $V_D$ contain
+$F$--term and $D$--term contributions that do not violate SUSY. The terms in the expression for $V_D$ are proportional to
+the $SU(2)_W$, $U(1)_Y$ and $U(1)_{N}$ gauge couplings, i.e. $g_2,\,g'$ and $g'_1$ respectively. The values of the gauge couplings
+$g_2$ and $g'$ at the EW scale are well known, whereas the low--energy value of the extra $U(1)_{N}$ coupling $g'_1$ and the effective
+$U(1)_{N}$ charges of $H_d$, $H_u$ and $S$ can be calculated assuming gauge coupling unification \cite{King:2005jy}.
+The soft SUSY breaking terms are collected in $V_{soft}$. A set of soft SUSY breaking parameters in the tree--level Higgs boson
+potential includes the soft masses $m_1^2,\,m_2^2,\,m_{S}^2$,\, $m_{\overline{S}}^2$ and $m^2_{\varphi}$; the trilinear
+couplings $A_{\lambda}$, $A_{\sigma}$ and $A_{\kappa}$; the bilinear coupling $B$ and linear coupling $\xi$.
+The term $\Delta V$ in Eq.~(\ref{hd9}) is associated with the contribution of loop corrections to the Higgs effective potential.
+In SUSY models the most significant contribution to $\Delta V$ comes from the loops involving the top--quark and its superpartners.
+
+At the physical minimum of the scalar potential (\ref{hd9}) the Higgs fields develop VEVs
+\be
+\ba{c}
+<H_d>=\ds\frac{1}{\sqrt{2}}\left(
+\begin{array}{c}
+v_1\\ 0
+\end{array}
+\right) , \qquad
+<H_u>=\ds\frac{1}{\sqrt{2}}\left(
+\begin{array}{c}
+0\\ v_2
+\end{array}
+\right) ,\\[5mm]
+<S>=\ds\frac{s_1}{\sqrt{2}},\qquad
+<\overline{S}>=\ds\frac{s_2}{\sqrt{2}},\qquad
+<\phi>=\ds\frac{\varphi}{\sqrt{2}}\,.
+\ea
+\label{hd10}
+\ee
+The equations for the extrema of the Higgs boson potential (\ref{hd9}) in the directions (\ref{hd10}) read:
+\be
+\ba{rcl}
+\dfrac{\partial V}{\partial s_1}&=& m_{S}^2\, s_1 - \dfrac{\lambda A_{\lambda}}{\sqrt{2}} v_1 v_2
+- \dfrac{\sigma A_{\sigma}}{\sqrt{2}} \varphi s_2
++ \left(\dfrac{\sigma}{2} s_1 s_2 - \dfrac{\kappa}{2} \varphi^2 - \dfrac{\mu}{\sqrt{2}}\varphi - \Lambda\right)\sigma s_2 \\[2mm]
+&+& \dfrac{\sigma^2}{2} \varphi^2 s_1 +
+\dfrac{g^{'2}_1}{2}\biggl(\tilde{Q}_{H_d} v_1^2+\tilde{Q}_{H_u} v_2^2+\tilde{Q}_S s_1^2 - \tilde{Q}_S s_2^2 \biggr)\tilde{Q}_S s_1 \\[2mm]
+&+& \dfrac{\lambda^2}{2} (v_1^2+v_2^2) s_1 + \dfrac{\partial\Delta V}{\partial s_1}=0\,,\\[2mm]
+\dfrac{\partial V}{\partial s_2}&=& m_{\overline{S}}^2\, s_2 - \dfrac{\sigma A_{\sigma}}{\sqrt{2}} \varphi s_1
++ \left(\dfrac{\sigma}{2} s_1 s_2 - \dfrac{\kappa}{2} \varphi^2 - \dfrac{\mu}{\sqrt{2}}\varphi - \Lambda\right)\sigma s_1 \\[2mm]
+&+& \dfrac{\sigma^2}{2} \varphi^2 s_2 -
+\dfrac{g^{'2}_1}{2}\biggl(\tilde{Q}_{H_d} v_1^2+\tilde{Q}_{H_u} v_2^2+\tilde{Q}_S s_1^2 - \tilde{Q}_S s_2^2 \biggr)\tilde{Q}_S s_2 \\[2mm]
+&+& \dfrac{\lambda \sigma}{2} v_1 v_2 \varphi + \dfrac{\partial\Delta V}{\partial s_2}=0\,,\\[2mm]
+\dfrac{\partial V}{\partial \varphi}&=& m_{\varphi}^2\, \varphi - \dfrac{\sigma A_{\sigma}}{\sqrt{2}} s_1 s_2 + B\mu \varphi + \sqrt{2}\xi\Lambda
++ \dfrac{\kappa A_{\kappa}}{\sqrt{2}} \varphi^2 + \dfrac{\sigma^2}{2}(s_1^2+s_2^2)\varphi\\[2mm]
+&-& 2 \left(\dfrac{\sigma}{2} s_1 s_2 - \dfrac{\kappa}{2} \varphi^2 - \dfrac{\mu}{\sqrt{2}}\varphi - \Lambda\right)\left(\kappa \varphi +\dfrac{\mu}{\sqrt{2}}\right)
++ \dfrac{\lambda \sigma}{2} v_1 v_2 s_2 + \dfrac{\partial\Delta V}{\partial \varphi}=0\,,\\[2mm]
+\ds\frac{\partial V}{\partial v_1}&=& m_1^2\, v_1 - \dfrac{\lambda A_{\lambda}}{\sqrt{2}}s_1 v_2 + \dfrac{\lambda \sigma}{2} v_2 s_2 \varphi
++\dfrac{\lambda^2}{2}(v_2^2+s_1^2)v_1+\dfrac{\bar{g}^2}{8}\biggl(v_1^2-v_2^2\biggr)v_1+\\[2mm]
+&+&\dfrac{g^{'2}_1}{2}\biggl(\tilde{Q}_{H_d} v_1^2+\tilde{Q}_{H_u} v_2^2+\tilde{Q}_S s_1^2 - \tilde{Q}_S s_2^2 \biggr)\tilde{Q}_{H_d} v_1
++\dfrac{\partial\Delta V}{\partial v_1}=0\,,\\[2mm]
+\ds\frac{\partial V}{\partial v_2}&=& m_2^2 v_2-\dfrac{\lambda A_{\lambda}}{\sqrt{2}}s_1 v_1 + \dfrac{\lambda \sigma}{2} v_1 s_2 \varphi
++\dfrac{\lambda^2}{2}(v_1^2+s_1^2)v_2+\dfrac{\bar{g}^2}{8}\biggl(v_2^2-v_1^2\biggr)v_2+\\[2mm]
+&&+\ds\frac{g^{'2}_1}{2}\biggl(\tilde{Q}_{H_d}v_1^2+\tilde{Q}_{H_u}v_2^2+\tilde{Q}_S s_1^2 - \tilde{Q}_S s_2^2 \biggr)\tilde{Q}_{H_u} v_2
++ \ds\frac{\partial\Delta V}{\partial v_2}=0\,,
+\ea
+\label{hd11}
+\ee
+where $\bar{g}=\sqrt{g_2^2+g'^2}$. Instead of $v_1$, $v_2$, $s_1$ and $s_2$ it is more convenient to use $\tan\beta=v_2/v_1$,
+$v=\sqrt{v_1^2+v_2^2}=246\,\mbox{GeV}$, $s=\sqrt{s_1^2+s_2^2}$ and $\tan\theta=s_2/s_1$.
+
+Initially the Higgs sector involves fourteen degrees of freedom. However four of them are massless Goldstone modes.
+They are swallowed by the $W^{\pm}$, $Z$ and $Z'$ gauge bosons. The charged $W^{\pm}$ bosons gain masses
+via the interaction with the neutral components of the Higgs doublets $H_u$ and $H_d$ just in the same way as in the
+MSSM resulting in $M_W=\dfrac{g_2}{2}v$. On the other hand the mechanism of the neutral gauge boson mass
+generation differs substantially. Letting $Z'$ and $Z$ states be the gauge bosons associated with $U(1)_{N}$ and
+SM--like $Z$ boson the $Z-Z'$ mass squared matrix is given by
+\be
+M^2_{ZZ'}=\left(
+\ba{cc}
+\dfrac{\bar{g}^2}{4} v^2  & \Delta^2 \\[2mm]
+\Delta^2  & g^{'2}_1v^2\biggl(\tilde{Q}_{H_d}^2\cos^2\beta+\tilde{Q}_{H_u}^2\sin^2\beta\biggr) + g^{'2}_1 \tilde{Q}^2_S s^2
+\ea
+\right)\,,
+\label{hd12}
+\ee
+where
+$$
+\Delta^2=\ds\frac{\bar{g}g'_1}{2}v^2\biggl(\tilde{Q}_{H_d}\cos^2\beta-\tilde{Q}_{H_u}\sin^2\beta\biggr)\,.
+$$
+Since fields $S$ and $\overline{S}$ must acquire large VEVs, i.e. $s_1\simeq s_2 \gg 1\,\mbox{TeV}$ to ensure
+that the extra $U(1)_{N}$ gauge boson is heavy enough, the mass of the lightest neutral gauge boson $Z_1$ is very close
+to $M_Z=\bar{g}v/2$ whereas the mass of $Z_2$ is set by $g'_1\tilde{Q}_S\, s$.
+
+\subsection{Higgs boson spectrum}
+
+For the analysis of the Higgs boson spectrum we use the equations for the extrema (\ref{hd11}) to express the soft masses
+$m_1^2,\,m_2^2,\,m_{S}^2$,\, $m_{\overline{S}}^2$ and $m^2_{\varphi}$ in terms of $s,\,v,\,\varphi,\, \beta,\, \theta$
+and other parameters. Because of the electric--charge conservation the charged components of the Higgs doublets are not
+mixed with neutral Higgs fields. They form a separate sector whose spectrum is described by a $2\times 2$ mass matrix.
+The determinant of this matrix has zero value resulting in the appearance of two Goldstone states
+\be
+G^{-}=H_d^{-}\cos\beta-H_u^{+*}\sin\beta\,,
+\label{hd13}
+\ee
+which are absorbed into the longitudinal degrees of freedom of the $W^{\pm}$ gauge boson, and two physical states
+\be
+H^{+}=H_d^{-*}\sin\beta+H_u^{+}\cos\beta
+\label{hd14}
+\ee
+with mass
+\be
+m^2_{H^{\pm}}=\dfrac{\sqrt{2}\lambda s}{\sin 2\beta}\left(A_{\lambda} \cos\theta - \dfrac{\sigma \varphi}{\sqrt{2}}\sin\theta\right)
+-\frac{\lambda^2}{2}v^2+\frac{g_2^2}{4}v^2+\Delta_{\pm}\,,
+\label{hd15}
+\ee
+where $\Delta_{\pm}$ is a contribution of loop corrections to $m^2_{H^{\pm}}$.
+
+The imaginary parts of the neutral components of the Higgs doublets and imaginary parts of the SM singlet fields
+$S$, $\overline{S}$ and $\phi$ compose two Goldstone states
+\be
+\ba{l}
+G=\sqrt{2}(\mbox{Im}\,H_d^0\cos\beta - \mbox{Im}\, H_u^0\sin\beta)\,,\\[1mm]
+G'=\sqrt{2}(\mbox{Im}\,S \cos\theta - \mbox{Im}\,\overline{S}\sin\theta)\cos\gamma - \sqrt{2}(\mbox{Im}\,H_u^0\cos\beta + \mbox{Im}\,H_d^0\sin\beta)\sin\gamma\,,
+\ea
+\label{hd16}
+\ee
+which are swallowed by the $Z$ and $Z'$ bosons, as well as three physical states.
+In Eq.~(\ref{hd16}) $\tan\gamma=\dfrac{v}{2s}\sin 2\beta$.
+In the field basis $(P_1,\,P_2,\,P_3)$
+\be
+\ba{l}
+P_1=\sqrt{2}(\mbox{Im}\,H_u^0\cos\beta + \mbox{Im}\,H_d^0\sin\beta)\cos\gamma + \sqrt{2}(\mbox{Im}\,S \cos\theta - \mbox{Im}\,\overline{S}\sin\theta)\sin\gamma\,, \\[1mm]
+P_2=\sqrt{2}\left(\mbox{Im}\,S\sin\theta + \mbox{Im}\,\overline{S}\cos\theta\right)\,,\\[1mm]
+P_3=\sqrt{2} \mbox{Im}\,\phi\,,
+\ea
+\label{hd17}
+\ee
+the mass matrix of the CP--odd Higgs sector takes the form
+\be
+\tilde{M}^2=
+\left(
+\ba{ccc}
+\tilde{M}_{11}^2 & \tilde{M}_{12}^2 & \tilde{M}_{13}^2\\
+\tilde{M}_{21}^2 & \tilde{M}_{22}^2 & \tilde{M}_{23}^2\\
+\tilde{M}_{31}^2 & \tilde{M}_{32}^2 & \tilde{M}_{33}^2
+\ea
+\right)\,,
+\label{hd18}
+\ee
+where
+\be
+\ba{rcl}
+\tilde{M}_{11}^2&=&\dfrac{\sqrt{2}\lambda s}{\sin 2\beta \cos^2 \gamma}\left(A_{\lambda} \cos\theta - \dfrac{\sigma \varphi}{\sqrt{2}}\sin\theta\right)+\tilde{\Delta}_{11}\,,\\[3mm]
+\tilde{M}_{12}^2&=&\tilde{M}_{21}^2=\dfrac{\lambda v}{\sqrt{2}\cos\gamma}\left(A_{\lambda} \sin\theta + \dfrac{\sigma \varphi}{\sqrt{2}}\cos\theta\right)+\tilde{\Delta}_{12}\,,\\[3mm]
+\tilde{M}_{22}^2&=&\dfrac{2\sigma\varphi}{\sin 2\theta}\left(\dfrac{A_{\sigma}}{\sqrt{2}}+\dfrac{\kappa}{2}\varphi+\dfrac{\mu}{\sqrt{2}}+\dfrac{\Lambda}{\varphi}\right)\\[3mm]
+&+&\dfrac{\lambda v^2 \sin 2\beta}{\sqrt{2} s \sin 2\theta}\left(A_{\lambda}\sin^3\theta-\dfrac{\sigma\varphi}{\sqrt{2}}\cos^3\theta\right)+\tilde{\Delta}_{22}\,,\\[3mm]
+\tilde{M}_{23}^2&=&\tilde{M}_{32}^2=\sigma s \left(\dfrac{A_{\sigma}}{\sqrt{2}}-\kappa \varphi -\dfrac{\mu}{\sqrt{2}} \right) -\dfrac{\lambda\sigma}{4}v^2 \sin 2\beta \cos\theta
++\tilde{\Delta}_{23}\,,\\[3mm]
+\tilde{M}_{13}^2&=&\tilde{M}_{31}^2=\dfrac{\lambda\sigma v s}{2\cos \gamma}\sin\theta+\tilde{\Delta}_{13}\,,\\[3mm]
+\tilde{M}_{33}^2&=&\dfrac{\sigma s^2}{2\sqrt{2}\varphi} A_{\sigma} \sin 2\theta - 2 B\mu -3\dfrac{\kappa A_{\kappa}}{\sqrt{2}}\varphi
+- \sqrt{2}(\xi+\mu)\dfrac{\Lambda}{\varphi} + \sigma\kappa s^2 \sin 2\theta - \dfrac{\kappa\mu}{\sqrt{2}}\varphi \\[3mm]
+&-&4\kappa\Lambda + \dfrac{\sigma\mu s^2}{2\sqrt{2}\varphi} \sin 2\theta - \dfrac{\lambda\sigma s}{4\varphi} v^2 \sin\theta \sin 2\beta+\tilde{\Delta}_{33}\,.
+\ea
+\label{hd19}
+\ee
+In Eqs.~(\ref{hd19}) $\tilde{\Delta}_{ij}$ correspond to the contribution of loop corrections. Because in the models under consideration $s$ must be much larger
+than $v$, $\gamma$ goes to zero. Moreover since in phenomenologically acceptable SUSY models the supersymmetry breaking scale also tends
+to be considerably larger than $v$ the mixing between $P_1$ and pseudoscalar states which are mainly the linear superpositions of the imaginary
+parts of the SM singlet fields $S$, $\overline{S}$ and $\phi$, i.e. $P_2$ and $P_3$, is somewhat suppressed. In other words the off--diagonal entries
+$\tilde{M}_{12}^2,\, \tilde{M}_{13}^2\ll \tilde{M}_{11}^2$ that allows to diagonalize the mass matrix (\ref{hd18})--(\ref{hd19}) analytically.
+In particular, the mass of the one of the CP--odd Higgs eigenstate, which is predominantly $P_1$, is set by $\tilde{M}_{11}^2$. As a consequence
+this CP--odd state and the charged physical Higgs states are nearly degenerate in general.
+
+The mass matrix (\ref{hd18})--(\ref{hd19}) can be diagonalized by means of unitary transformation that relates the components of the CP--odd
+Higgs basis (\ref{hd17}) to the corresponding Higgs mass eigenstates:
+\be
+\left(
+\begin{array}{c}
+P_1\\ P_2\\ P_3
+\end{array}
+\right)=
+U
+\left(
+\begin{array}{c}
+A_1 \\ A_2\\ A_3
+\end{array}
+\right)\,,
+\label{hd20}
+\ee
+where the pseudoscalar mass eigenstates are labeled according to increasing absolute value of mass, with $A_1$ being the lightest
+CP--odd Higgs state and $A_3$ the heaviest. In the limit when the couplings $\kappa$, $\mu$ and $\Lambda$, which violate the global $U(1)$
+symmetry discussed previously, vanish, the mass of the lightest CP--odd Higgs boson goes to zero. Neglecting all terms proportional to $\lambda v$
+and $\tilde{\Delta}_{ij}$ one obtains
+\be
+\ba{lcl}
+m^2_{A_3} & \simeq & \mbox{max} \biggl\{\dfrac{\sqrt{2}\sigma A_{\sigma} \varphi}{\sin 2\theta \cos^2 \delta}\,,\quad
+\dfrac{\sqrt{2}\lambda s}{\sin 2\beta}\left(A_{\lambda} \cos\theta - \dfrac{\sigma \varphi}{\sqrt{2}}\sin\theta\right) \biggr\}\,,\\[3mm]
+m^2_{A_2} & \simeq & \mbox{min} \biggl\{\dfrac{\sqrt{2}\sigma A_{\sigma} \varphi}{\sin 2\theta \cos^2 \delta}\,,\quad
+\dfrac{\sqrt{2}\lambda s}{\sin 2\beta}\left(A_{\lambda} \cos\theta - \dfrac{\sigma \varphi}{\sqrt{2}}\sin\theta\right)\biggr\}\,,\\[3mm]
+m^2_{A_1} & \simeq & \cos^2 \delta \left[- 2 B\mu -3\dfrac{\kappa A_{\kappa}}{\sqrt{2}}\varphi
+- \sqrt{2}\xi \dfrac{\Lambda}{\varphi} + \dfrac{9}{4} \sigma\kappa s^2 \sin 2\theta \right.\\[3mm]
+&&\left. + \sqrt{2} \dfrac{\sigma\mu s^2}{\varphi} \sin 2\theta + \dfrac{\sigma s^2 \Lambda}{2 \varphi^2} \sin 2\theta\right]\,,
+\ea
+\label{hd21}
+\ee
+where $\tan\delta \simeq \dfrac{s}{2\varphi}\sin 2\theta$. In this case the lightest CP--odd mass eigenstate is a linear combination of
+$P_2$ and $P_3$
+ \be
+A_1 \simeq  - P_2 \sin\delta + P_3 \cos\delta\,.
+\label{hd22}
+\ee
+
+The CP--even Higgs sector involves
+$\mbox{Re}\,H_d^0$, $\mbox{Re}\,H_u^0$, $\mbox{Re}\,S$, $\mbox{Re}\,\overline{S}$ and $\mbox{Re}\,\phi$.
+In the field space basis $(S_1,\,S_2,\,S_3,\,S_4,\,S_5)$, where
+\be
+\ba{lcl}
+\mbox{Re}\,S & = & (S_1\,\cos\theta + S_2\sin\theta + s_1)/\sqrt{2}\,, \\[2mm]
+\mbox{Re}\,\overline{S} & = & (-S_1\,\sin\theta + S_2\cos\theta + s_2)/\sqrt{2}\,, \\[2mm]
+\mbox{Re}\,\phi & = & (S_3 + \varphi)/\sqrt{2}\,,\\[2mm]
+\mbox{Re}\,H_d^0 & = &(S_5 \cos\beta - S_4 \sin\beta+v_1)/\sqrt{2}\,, \\[2mm]
+\mbox{Re}\,H_u^0 & = &(S_5 \sin\beta + S_4 \cos\beta+v_2)/\sqrt{2} \\[2mm]
+\ea
+\label{hd23}
+\ee
+the mass matrix of the CP--even Higgs sector takes the form
+\be
+M^2=\left(
+\ba{ccccc}
+M_{11}^2 & M_{12}^2 & M_{13}^2 & M_{14}^2 & M_{15}^2\\
+M_{21}^2 & M_{22}^2 & M_{23}^2 & M_{24}^2 & M_{25}^2\\
+M_{31}^2 & M_{32}^2 & M_{33}^2 & M_{34}^2 & M_{35}^2\\
+M_{41}^2 & M_{42}^2 & M_{43}^2 & M_{44}^2 & M_{45}^2\\
+M_{51}^2 & M_{52}^2 & M_{53}^2 & M_{54}^2 & M_{55}^2\\
+\ea
+\right)\,.
+\label{hd24}
+\ee
+where
+\be
+\ba{rcl}
+M_{11}^2& = & g^{'2}_1 \tilde{Q}_S^2 s^2 - \dfrac{\sigma^2 s^2}{2} \sin^2 2\theta + \sqrt{2} \sigma A_{\sigma} \varphi \sin 2\theta\\[2mm]
+& + &\biggl(\kappa \sigma \varphi^2 + \sqrt{2} \sigma \mu \varphi + 2\sigma \Lambda\biggr) \sin 2\theta
++ \dfrac{\lambda A_{\lambda}}{2\sqrt{2} s} v^2 \cos\theta \sin 2\beta\\[2mm]
+& - & \dfrac{\lambda \sigma \varphi}{4 s} v^2 \sin\theta \sin 2\beta + \Delta_{11}\,,\\[2mm]
+M_{12}^2& = &M_{21}^2=\dfrac{\sigma^2 s^2}{4} \sin 4\theta - \sqrt{2} \sigma A_{\sigma} \varphi \cos 2\theta \\[2mm]
+& - & \biggl(\kappa \sigma \varphi^2 + \sqrt{2} \sigma \mu \varphi + 2\sigma \Lambda\biggr) \cos 2\theta
++ \dfrac{\lambda A_{\lambda}}{2\sqrt{2} s} v^2 \sin \theta \sin 2\beta \\[2mm]
+& + & \dfrac{\lambda \sigma \varphi}{4 s} v^2 \cos\theta \sin 2\beta + \Delta_{12}\,,\\[2mm]
+M_{13}^2& = & M_{31}^2= \sigma^2 \varphi s \cos 2\theta - \dfrac{\lambda\sigma}{4} v^2\sin\theta\sin 2\beta +  \Delta_{13}\,,\\[2mm]
+M_{22}^2& = & \dfrac{\sigma^2 s^2}{2} \sin^2 2\theta + \dfrac{\sqrt{2} \sigma A_{\sigma} \varphi}{\sin 2\theta} \cos^2 2\theta
++ \biggl(\kappa \sigma \varphi^2 + \sqrt{2} \sigma \mu \varphi + 2\sigma \Lambda\biggr) \dfrac{\cos^2 2\theta}{\sin 2\theta}\\[2mm]
+&+&\dfrac{\lambda A_{\lambda} v^2}{2\sqrt{2} s \cos\theta} \sin^2 \theta \sin 2\beta
+- \dfrac{\lambda \sigma \varphi v^2}{4 s \sin\theta} \cos^2 \theta \sin 2\beta + \Delta_{22}\,,\\[2mm]
+M_{23}^2& = & M_{32}^2=-\dfrac{\sigma A_{\sigma}}{\sqrt{2}}s+\sigma^2\varphi s \sin 2\theta
+- \sigma s \left(\kappa\varphi+\dfrac{\mu}{\sqrt{2}}\right)\\[2mm]
+&+ &\dfrac{\lambda\sigma}{4}v^2 \cos\theta \sin 2\beta + \Delta_{23}\,,\\[2mm]
+M_{33}^2& = &\dfrac{\sigma A_{\sigma} s^2}{2\sqrt{2}\varphi} \sin 2\theta - \sqrt{2}\xi\dfrac{\Lambda}{\varphi} + \dfrac{\kappa A_{\kappa}}{\sqrt{2}} \varphi
++\mu\left(\dfrac{\sigma s^2}{2\sqrt{2}\varphi}\sin 2\theta+3\dfrac{\kappa\varphi}{\sqrt{2}}-\dfrac{\sqrt{2}\Lambda}{\varphi}\right) \\[2mm]
+&+ &2 \kappa^2 \varphi^2 -\dfrac{\lambda\sigma s}{4\varphi} v^2 \sin\theta \sin 2\beta + \Delta_{33}\,,\\[2mm]
+M_{14}^2& = & M_{41}^2=\dfrac{g^{'2}_1}{2}\tilde{Q}_S(\tilde{Q}_{H_u}-\tilde{Q}_{H_d}) s v \sin 2\beta
+- \dfrac{\lambda A_{\lambda}}{\sqrt{2}} v \cos\theta \cos 2\beta\\[2mm]
+& - & \dfrac{\lambda\sigma}{2}\varphi v \sin\theta \cos 2\beta + \Delta_{14}\,,\\[2mm]
+M_{15}^2& = & M_{51}^2=g^{'2}_1 \tilde{Q}_S (\tilde{Q}_{H_d}\cos^2\beta+ \tilde{Q}_{H_u}\sin^2\beta) s v
+-\dfrac{\lambda A_{\lambda}}{\sqrt{2}} v \cos\theta \sin 2\beta\,,\\[2mm]
+&+ & \lambda^2 v s \cos^2 \theta - \dfrac{\lambda\sigma}{2} \varphi v \sin\theta \sin 2\beta + \Delta_{15}\,,\\[2mm]
+M_{24}^2& = & M_{42}^2=\left(-\dfrac{\lambda A_{\lambda}}{\sqrt{2}} v \sin\theta +
+\dfrac{\lambda\sigma}{2} \varphi v \cos\theta \right)\cos 2\beta + \Delta_{24}\,,\\[2mm]
+M_{25}^2& = & M_{52}^2=\dfrac{\lambda^2}{2} s v \sin 2\theta + \left(-\dfrac{\lambda A_{\lambda}}{\sqrt{2}} v \sin\theta +
+\dfrac{\lambda\sigma}{2} \varphi v \cos\theta \right)\sin 2\beta + \Delta_{25}\,,\\[2mm]
+M_{34}^2& = & M_{43}^2=\dfrac{\lambda\sigma}{2} s v \sin\theta \cos 2\beta + \Delta_{34}\,,\\[2mm]
+M_{35}^2& = & M_{53}^2=\dfrac{\lambda\sigma}{2} s v \sin\theta \sin 2\beta + \Delta_{35}\,,\\[2mm]
+M_{44}^2&=&\dfrac{\sqrt{2}\lambda s}{\sin 2\beta}\left(A_{\lambda} \cos\theta - \dfrac{\sigma \varphi}{\sqrt{2}}\sin\theta\right)+
+\left(\dfrac{\bar{g}^2}{4}-\dfrac{\lambda^2}{2}\right)v^2 \sin^2 2\beta\\[2mm]
+&+&\ds\frac{g^{'2}_1}{4}(\tilde{Q}_{H_u}-\tilde{Q}_{H_d})^2 v^2 \sin^2 2\beta+\Delta_{44}\,,\\[2mm]
+\ea
+\label{hd25}
+\ee
+$$
+\ba{rcl}
+M_{45}^2&=&M_{54}^2=\left(\dfrac{\lambda^2}{4}-\dfrac{\bar{g}^2}{8}\right)v^2 \sin 4\beta
++\dfrac{g^{'2}_1}{2}v^2(\tilde{Q}_{H_u}-\tilde{Q}_{H_d})\times\\[2mm]
+&\times &(\tilde{Q}_{H_d}\cos^2\beta+\tilde{Q}_{H_u}\sin^2\beta)\sin 2\beta+\Delta_{45}\, ,\\[2mm]
+M_{55}^2&=&\dfrac{\lambda^2}{2}v^2\sin^22\beta+\dfrac{\bar{g}^2}{4}v^2\cos^22\beta+g^{'2}_1 v^2(\tilde{Q}_{H_d}\cos^2\beta+
+\tilde{Q}_{H_u}\sin^2\beta)^2+\Delta_{55}\,.
+\ea
+$$
+In Eq.~(\ref{hd25}) $\Delta_{ij}$ represent the contribution of loop corrections. The components of the CP--even Higgs basis (\ref{hd23})
+are related to the physical CP--even Higgs eigenstates by virtue of a unitary transformation:
+\be
+\left(
+\begin{array}{c}
+S_1\\S_2\\ S_3\\ S_4\\ S_5
+\end{array}
+\right)=
+\tilde{U}
+\left(
+\begin{array}{c}
+h_1 \\ h_2\\ h_3 \\ h_4\\ h_5
+\end{array}
+\right)\,,
+\label{hd26}
+\ee
+where again the CP--even Higgs eigenstates are labeled according to increasing absolute value of mass,
+with $h_1$ being the lightest CP--even Higgs state and $h_5$ the heaviest.
+
+If all SUSY breaking parameters as well as $\lambda s \sim \sigma s \sim \sigma \varphi \sim M_{S}$
+are considerably larger than the EW scale, all masses of the CP--even Higgs states except the lightest Higgs
+boson mass are determined by the SUSY breaking scale $M_S$.
+Because the minimal eigenvalue of the mass matrix (\ref{hd24})--(\ref{hd25})
+is always less than its smallest diagonal element the lightest Higgs state in the CP--even sector (approximately $S_5$)
+remains always light irrespective of the SUSY breaking scale, i.e. $m^2_{h_1}\lesssim M_{55}^2$ like in the MSSM
+and NMSSM.  In the interactions with other SM particles this state manifests itself as a SM--like Higgs boson
+if $M_S \gg M_Z$.
+
+In the limit when $\lambda \sim \sigma \to 0 $  the off--diagonal entries $M_{24}^2$, $M_{25}^2$, $M_{34}^2$
+and $M_{35}^2$ of the mass matrix (\ref{hd24})--(\ref{hd25}) become negligibly small. At the same time
+according to Eq.~(\ref{hd3}) the diagonal entry $M_{11}^2$, which is set by the mass of the $Z'$ boson, tends
+to be substantially larger than $M_S^2$, i.e. $M_{11}^2\simeq M_{Z'}^2 \sim M_S^2/\sigma^2$, whereas
+$\cos 2\theta$ almost vanishes in this case. Indeed, combining the first and the second equations for the extrema
+(\ref{hd11}) one obtains the following tree-level expression for $\cos 2\theta$
+\be
+\cos 2\theta \simeq
+\dfrac{m_{\overline{S}}^2-m_{S}^2}{m_{\overline{S}}^2+m_S^2+\sigma^2\varphi^2+g^{'2}_1 \tilde{Q}_S^2 s^2}
+\sim \dfrac{M_S^2}{M_{Z'}^2}\sim \sigma^2\,,
+\label{hd27}
+\ee
+that becomes vanishingly small when $M_{Z'}\gg M_S$ and/or $\sigma\sim \lambda\to 0$. In this case the  hierarchical structure
+of the mass matrix (\ref{hd24})--(\ref{hd25}) implies that the masses of the $Z'$ boson and  heaviest CP--even Higgs particle
+associated with $S_1$ are almost degenerate. Thus the heaviest CP--even Higgs state can be integrated out. The masses of
+another CP--even state, which is predominantly $S_4$, CP--odd state, that corresponds to $P_1$, and charged Higgs states
+are also almost degenerate in this limit. Assuming that the Higgs state which is mainly $S_4$ is the second heaviest CP--even Higgs
+state and neglecting all terms which are proportional to the couplings $\kappa$, $\mu$ and $\Lambda$, that violate global $U(1)$
+symmetry, as well as setting $\cos 2\theta=0$ one obtains the following approximate analytic expressions for the tree-level
+masses of the three lightest CP--even Higgs bosons:
+\be
+\ba{lcl}
+m_{h_{3,2}}^2 & \simeq & \dfrac{\sigma^2 s^2}{4}\left[1+\dfrac{A_{\sigma}}{\sqrt{2}\sigma \varphi} \pm
+\biggl|1 - \dfrac{A_{\sigma}}{\sqrt{2}\sigma \varphi}\biggr|\sqrt{1+16\,\dfrac{\varphi^2}{s^2}}\right]\,,\\[2mm]
+m_{h_{1}}^2 & \simeq & \dfrac{\bar{g}^2}{4}v^2\cos^22\beta\simeq M_{Z}^2 \cos^2 2\beta\,.
+\ea
+\label{hd28}
+\ee
+Here it is worth pointing out that in the scenario under consideration the tree--level expression for the SM--like Higgs mass
+$m_{h_{1}}^2$ is basically the same as in the MSSM.
+
+
+
+\section{Nonstandard Higgs decays}
+
+Following our initial motivation, that was discussed in the Introduction, we now focus on the part of the parameter
+space which corresponds to the approximate global $U(1)$ symmetry mentioned above. Moreover since
+no signal or indication, which can be associated with possible presence of any kind of physics beyond the SM, has been
+detected at the LHC so far we assume that all SUSY breaking parameters are of the order of the TeV scale.
+In addition we also assume that SM singlet superfields $\overline{S}$, $S$ and $\phi$ acquire very large VEVs
+inducing multi-TeV masses of $Z'$ boson and all exotic particles except three lightest inert neutralino states which
+remains substantially lighter than $1\,\mbox{eV}$. In this case all superpartners of quarks and leptons gain
+TeV-scale masses as well. Our analysis of the Higgs sector performed in the previous section indicates that
+Higgs spectrum has in general a very hierarchical structure when all SUSY breaking parameters are sufficiently
+large, i.e. $\gtrsim 1\,\mbox{TeV}$. In this limit only SM--like Higgs boson and the lightest CP--odd Higgs state
+associated with spontaneously broken approximate global $U(1)$ symmetry can be considerably lighter than
+$1\,\mbox{TeV}$.
+
+The presence of light pseudoscalar Higgs state in the particle spectrum can result in the nonstandard decays of the lightest
+CP--even Higgs boson in the $U(1)$ extensions of the MSSM under consideration. Expanding
+the Higgs potential  (\ref{hd9}) about its physical minimum one can obtain the trilinear coupling that describes the interaction
+of the lightest CP--even Higgs scalar with the lightest Higgs pseudoscalar states. At the tree level, the corresponding part
+of the Lagrangian can be written as
+\begin{equation}
+\begin{array}{l}
+\mathcal{L}_{h_1 A_1 A_1}=-G h_1 A_1 A_1\,,
+\end{array}
+\label{hd29}
+\end{equation}
+where
+\begin{equation}
+\begin{array}{l}
+G=\tilde{U}_{51}\left\{U_{11}^2 \left[\dfrac{\lambda^2}{4}v\cos^2\gamma (1+\cos^2 2\beta) + \dfrac{\lambda^2}{2} v \sin^2 \gamma \cos^2 \theta
+-\dfrac{\bar{g}^2}{8} v \cos^2 \gamma \cos^2 2\beta \right.\right.\\[1mm]
+\left.\left.+\dfrac{1}{2}\left(\dfrac{\lambda A_{\lambda}}{\sqrt{2}} \cos\theta -
+\dfrac{\lambda \sigma}{2} \varphi \sin\theta\right)\sin 2\gamma+
+\dfrac{g_1^{'2}}{2}v\left(\tilde{Q}_{H_d}\cos^2\beta+\tilde{Q}_{H_u}\sin^2\beta\right)\times\right.\right.\\[1mm]
+\left.\left.\times\left(\tilde{Q}_{H_d}\sin^2\beta \cos^2\gamma +
+\tilde{Q}_{H_u}\cos^2\beta \cos^2\gamma +\tilde{Q}_{S}\sin^2\gamma \cos 2\theta\right)\right]\right.\\[1mm]
+\left.+ U_{11} U_{21} \left[\dfrac{\lambda^2}{2} v \sin 2\theta \sin \gamma + g_1^{'2} \tilde{Q}_S v \left(\tilde{Q}_{H_d}\cos^2\beta
++\tilde{Q}_{H_u}\sin^2\beta\right) \sin\gamma \sin 2\theta \right.\right.\\[1mm]
+\left.\left. + \left(\dfrac{\lambda A_{\lambda}}{\sqrt{2}}\sin\theta + \dfrac{\lambda \sigma}{2} \varphi \cos\theta\right) \cos\gamma\right]
++ \dfrac{\lambda\sigma}{2} \sin\theta\, U_{11} U_{31} (s\cos\gamma + v \sin 2\beta \sin\gamma)\right.\\[1mm]
+\left. + U_{21}^2\left[\dfrac{\lambda^2}{2}v\sin^2\theta - \dfrac{g_1^{'2}}{2} \tilde{Q}_S v \cos 2\theta
+\left(\tilde{Q}_{H_d}\cos^2\beta+\tilde{Q}_{H_u}\sin^2\beta\right)\right] \right.\\[1mm]
+\left.- \dfrac{\lambda\sigma}{2} v \sin 2\beta \cos\theta\, U_{21} U_{31} \right\}
++\tilde{U}_{41}\left\{U_{11}^2 \left[\left(-\dfrac{\lambda^2}{8}+\dfrac{\bar{g}^2}{16}\right)v\cos^2\gamma \sin 4\beta\right.\right.\\[1mm]
+\left.\left.+\dfrac{g_1^{'2}}{4}v\sin 2\beta (\tilde{Q}_{H_u}-\tilde{Q}_{H_d})\left(\tilde{Q}_{H_d}\sin^2\beta \cos^2\gamma +
+\tilde{Q}_{H_u}\cos^2\beta \cos^2\gamma \right.\right.\right.\\[1mm]
+\left.\left.\left.+\tilde{Q}_{S}\sin^2\gamma \cos 2\theta\right)\right]+\dfrac{g_1^{'2}}{2}\tilde{Q}_{S} (\tilde{Q}_{H_u}-\tilde{Q}_{H_d})
+v\sin 2\beta \sin\gamma \sin 2\theta\, U_{11} U_{21} \right.\\[1mm]
+\left.+ \dfrac{\lambda\sigma}{2}v\cos 2\beta \sin\gamma \sin\theta\, U_{11} U_{31} - \dfrac{g_1^{'2}}{4}\tilde{Q}_{S} (\tilde{Q}_{H_u}-\tilde{Q}_{H_d})
+v\sin 2\beta \cos 2\theta\, U_{21}^2 \right.\\[1mm]
+\left.- \dfrac{\lambda\sigma}{2}v\cos 2\beta \cos\theta\, U_{21} U_{31}\right\}
++\tilde{U}_{31}\left\{U_{11}^2 \left[-\dfrac{\lambda\sigma}{4}s\sin\theta \sin 2\beta \cos^2\gamma + \dfrac{\sigma^2}{2}\varphi\sin^2 \gamma  \right.\right.\\[1mm]
+\end{array}
+\label{hd30}
+\end{equation}
+$$
+\begin{array}{l}
+\left.\left.-\dfrac{\lambda\sigma}{4} v \sin 2\gamma \sin\theta
+- \dfrac{\sigma}{2}\sin 2\theta \sin^2\gamma\left(\dfrac{A_{\sigma}}{\sqrt{2}}+\kappa\varphi
++\dfrac{\mu}{\sqrt{2}}\right)\right] \right.\\[1mm]
+\left.+ U_{11} U_{21} \left[\dfrac{\lambda\sigma}{2}v\cos\theta\cos\gamma
++\sigma\left(\dfrac{A_{\sigma}}{\sqrt{2}}+\kappa\varphi+\dfrac{\mu}{\sqrt{2}}\right)\sin\gamma\cos 2\theta\right] \right.\\[1mm]
+\left.+U_{21}^2 \left[\dfrac{\sigma^2}{2}\varphi+\dfrac{\sigma}{2}\left(\dfrac{A_{\sigma}}{\sqrt{2}}+\kappa\varphi
++\dfrac{\mu}{\sqrt{2}}\right)\sin 2\theta\right]-\sigma\kappa s\, U_{21} U_{31}\right.\\[1mm]
+\left.+\kappa U_{31}^2 \left(\kappa\varphi
++\dfrac{\mu}{\sqrt{2}} - \dfrac{A_{\kappa}}{\sqrt{2}}\right)
+\right\}+\tilde{U}_{21}\left\{U_{11}^2 \left[-\dfrac{\lambda\sigma}{4}\varphi \sin 2\beta \cos^2\gamma \cos\theta \right.\right.\\[1mm]
+\left.\left.+ \dfrac{\lambda^2}{4}s\cos^2 \gamma \sin 2\theta + \dfrac{\lambda A_{\lambda}}{2\sqrt{2}}\sin 2\beta \cos^2 \gamma \sin\theta
++\dfrac{\sigma^2}{4}s \sin^2 \gamma \sin 2\theta\right]\right.\\[1mm]
+\left. + U_{11} U_{31}\left[\dfrac{\lambda\sigma}{2}v\cos\gamma\cos\theta+\sigma\left(\dfrac{A_{\sigma}}{\sqrt{2}}-\kappa\varphi
+-\dfrac{\mu}{\sqrt{2}}\right) \sin\gamma \cos 2\theta \right]\right.\\[1mm]
+\left. + \dfrac{\sigma^2}{4}s\sin 2\theta\, U_{21}^2+\sigma\left(\dfrac{A_{\sigma}}{\sqrt{2}}-\kappa\varphi
+-\dfrac{\mu}{\sqrt{2}}\right)\sin 2\theta\, U_{21} U_{31}+\dfrac{\sigma}{2}\left(\sigma s \sin 2\theta + \kappa s\right) U_{31}^2 \right\}\\[1mm]
++\tilde{U}_{11}\left\{U_{11}^2 \left[\dfrac{\lambda\sigma}{4}\varphi \sin 2\beta \cos^2\gamma \sin\theta
++ \dfrac{\lambda^2}{2}s\cos^2 \gamma \cos^2 \theta + \dfrac{\lambda A_{\lambda}}{2\sqrt{2}}\sin 2\beta \cos^2 \gamma \cos\theta\right.\right.\\[1mm]
+\left.\left.+\dfrac{g_1^{'2}}{2} \tilde{Q}_{S} s \left(\tilde{Q}_{H_d}\sin^2\beta \cos^2\gamma +
+\tilde{Q}_{H_u}\cos^2\beta \cos^2\gamma + \tilde{Q}_{S}\sin^2\gamma \cos 2\theta\right)\right]\right.\\[1mm]
+\left.+\left[-\dfrac{\lambda\sigma}{2}v\cos\gamma\sin\theta+\sigma\left(\kappa\varphi+\dfrac{\mu}{\sqrt{2}}
+-\dfrac{A_{\sigma}}{\sqrt{2}}\right)\sin\gamma \sin 2\theta \right] U_{11} U_{31} \right.\\[1mm]
+\left. + \left( g_1^{'2} \tilde{Q}_{S}^2 - \dfrac{\sigma^2}{2} \right) s \sin\gamma \sin 2\theta\, U_{11} U_{21} +
+\left[ \dfrac{\sigma^2}{2} - \dfrac{g_1^{'2}}{2} \tilde{Q}_{S}^2\right] s \cos 2\theta\, U_{21}^2\right.\\[1mm]
+\left.+ \sigma\left(\dfrac{A_{\sigma}}{\sqrt{2}}-\kappa\varphi-\dfrac{\mu}{\sqrt{2}}\right)\cos 2\theta\, U_{21} U_{31}
++\dfrac{\sigma^2}{2}s\cos 2\theta\, U_{31}^2\right\}\,.
+\end{array}
+$$
+The interaction Lagrangian (\ref{hd29})--(\ref{hd30}) gives rise to decays of the lightest CP--even Higgs boson into
+a pair of lightest pseudoscalars if these sates are lighter than $60\,\mbox{GeV}$. The corresponding partial decay width is given by
+\begin{equation}
+\Gamma(h_1\to A_1 A_1)=\dfrac{G^2}{8\pi m_{h_1}}\sqrt{1-\dfrac{4 m_{A_1}^2}{m_{h_1}^2}}\,.
+\label{hd31}
+\end{equation}
+
+In order to compare the partial widths associated with the nonstandard Higgs decays of the SM-like Higgs state (\ref{hd31})
+with the Higgs decay rates into the SM particles we specify a set of benchmark points (see Table~2).
+For each benchmark scenario we calculate the spectrum of neutralinos and Higgs bosons as well as the couplings
+and the branching ratios of the lightest CP-even Higgs state using code generated by FlexibleSUSY \cite{Athron:2014yba}.
+To simplify our analysis we set $B=\mu=\xi=0$ and $\Lambda=0$. We also fix $\sigma=0.1$ and $\tan\beta\simeq 10$.
+Then, in order to find an appropriate set of benchmark points we vary $\lambda$, $\kappa$, $A_{\kappa}$,
+$A_{\lambda}$, $A_{\sigma}$, $\varphi$, $s$ and $\theta$. As one can see from Table~2 in all benchmark scenarios
+$m_{S}^2$ and  $m_2^2$ are negative which ensures that Higgs fields $S$ and $H_u$ acquire VEVs
+resulting in the non--zero VEVs of other Higgs fields $H_d$, $S$ and $\varphi$. This should trigger the breakdown
+of $SU(2)_W\times U(1)_Y\times U(1)_{N}$ symmetry down to $U(1)_{em}$. The soft scalar masses associated with
+the superpartners of the left--handed and right--handed components of top quark and mixing in the stop sector are chosen
+so that the SM--like Higgs state has a mass around $125-126\,\mbox{GeV}$. In Table 2 the masses of the heavy Higgs states
+are computed in the leading one--loop approximation while in the case of the lightest Higgs boson mass the leading
+two--loop corrections are taken into account.
+
+To construct benchmark scenarios which are consistent with cosmological observations it is important to guarantee that
+they lead to relic densities $\Omega_{\mathrm{CDM}} h^2$ that are not larger than the result given by PLANCK \cite{Ade:2013zuv}:
+\be
+\Omega_{\mathrm{CDM}} h^2 = 0.1187 \pm 0.0017 \;.
+\label{hd32}
+\ee
+If a theory predicts a greater relic density of dark matter than this then it is basically ruled out, assuming standard pre-BBN
+cosmology. A theory that predicts less dark matter cannot be ruled out in the same way but then there would have to be
+other contributions to the dark matter relic density. Since the dark matter density is inversely proportional to the annihilation
+cross section at the freeze-out temperature, this cross section have to be sufficiently large. In the $E_6$ inspired SUSY models,
+that we consider here, the cold dark matter density is formed by the lightest neutralino states. From the first glance
+the neutralino sector in these models is more complicated than the one in the MSSM. Indeed, it contains eight states which is
+twice larger than in the MSSM. However the analysis of the corresponding neutralino mass matrix, which specified in the Appendix A,
+indicates that this matrix has rather simple structure. From Eq.~(\ref{a4}) it follows that the masses of two neutralino states,
+which are linear superpositions of $\tilde{B}'$ and $\tilde{S}\cos\theta-\tilde{\overline{S}}\sin\theta$, are controlled by
+the $Z'$ boson mass. In the limit when $\lambda$ is small and $M_{Z'}\gg M_S$ these states decouple from the rest of the
+sparticle spectrum. As follows from Eq.~(\ref{a4}) two other neutralino eigenstates are formed by the linear superpositions of
+$\tilde{S}\sin\theta+\tilde{\overline{S}}\cos\theta$ and $\tilde{\phi}$. In the case when $\kappa\ll \lambda$ and $\sigma$
+the masses of these eigenstates are closely approximated as
+\be
+m_{\chi^0_{5,6}}\simeq = \dfrac{\sigma\varphi}{2\sqrt{2}}\left(1 \pm \sqrt{1+4\,\dfrac{s^2}{\varphi^2}}\right)\sim M_S\,.
+\label{hd33}
+\ee
+When $\lambda$ is small and $M_S\gg M_Z$  the mixing of these states with the MSSM-like neutralino, i.e. $\tilde{H}^0_d$,\,
+$\tilde{H}^0_u$,\,$\tilde{W}_3$ and $\tilde{B}$, is also strongly suppressed. Thus if the corresponding neutralino states are
+not the lightest ones they can be ignored in the leading approximation. This permits us to reduce $8\times 8$ matrix
+(\ref{a2})--(\ref{a5}) to $4\times 4$ mass matrix which is rather similar to the one in the MSSM. In the limit  $M_S\gg M_Z$
+the masses of the MSSM-like neutralino states, which are predominantly bino, wino and higgsino, are set by $M_1$, $M_2$
+and $\dfrac{\lambda s \cos\theta}{\sqrt{2}}$ respectively\,.
+
+The qualitative pattern of the neutralino spectrum discussed above reveals that for sufficiently small values
+of $\lambda$ the lightest neutralino tends to be higgsino dominated state. If this higgsino--like state is lighter than $1\,\mbox{TeV}$
+then it leads to the cold dark matter density which is less than its measured value \cite{ArkaniHamed:2006mb}.
+Therefore in all benchmark scenarios specified in Table~2 the value of the coupling $\lambda$ is chosen so that the lightest
+neutralino is predominantly higgsino with mass below $1\,\mbox{TeV}$ .
+
+Since in all benchmark scenarios $m_{A_1}$ is so small that the decays of the SM--like Higgs state into a pair of the lightest Higgs
+pseudoscalars are kinematically allowed it is important to ensure that the lightest CP--odd Higgs boson could not be produced
+at the collider experiments before. In this context it is worth noting that in the case of the hierarchical structure of the Higgs spectrum
+which is caused by the large SUSY breaking scale the couplings of this state to the SM particles are naturally suppressed. Indeed,
+as it was pointed out in the Subsection 3.2 the lightest CP--odd Higgs boson is predominantly a superposition of the imaginary parts
+of the SM singlet fields $\overline{S}$, $S$ and $\phi$, that do not couple to the quarks, leptons and SM gauge boson directly, and
+the mixing between these singlet fields and the neutral components of Higgs doublets is rather small in this case. As a consequence
+in all benchmark scenarios presented in Table~2 the absolute value of the relative coupling of the lightest Higgs pseudoscalar to
+the Z-boson and the SM--like Higgs state $R_{Z A_1 h_1}$ is always smaller than $10^{-3}-10^{-4}$. All other couplings of
+the lightest CP--odd Higgs boson to the SM particles are extremely small as well. Thus this state cannot be observed in the past
+collider experiments.
+
+Due to the hierarchical structure of the Higgs spectrum the lightest SM--like Higgs state has basically the same couplings as in the SM.
+For example, in the case of all benchmark points specified in Table~2 the value of the relative coupling of this state to a $Z$ pair
+is about $0.99$ or even closer to unity. Therefore the partial decay widths that correspond to the decays of the lightest CP-even
+Higgs boson into the SM particles are basically the same as in the SM as well. Because of this, for the calculation of the Higgs decay
+rates into the SM particles we use the results presented in \cite{King:2012is} where these rates were computed within the SM for
+different values of the Higgs mass. When $m_{h_1}\simeq 125\,\mbox{GeV}$ the SM-like Higgs state decays predominantly
+into $b$-quark. In the SM the corresponding branching ratio is about $60\%$ whereas the branching ratios associated with
+Higgs decays into $WW$, $ZZ$ and $\gamma\gamma$ are about $20\%$, $2.1\%$ and $0.23\%$ respectively \cite{King:2012is}.
+The total decay width of the Higgs boson near 125 GeV is about $4\,\mbox{MeV}$.
+
+For the calculation of the SM--like Higgs decay rates into $A_1 A_1$ we use Eq.~(\ref{hd31}). The set of the benchmark points
+specified in Table~2 demonstrates that the branching ratio of these nonstandard Higgs decays can vary from $0.1\%$ to $20-30\%$
+The lightest CP-odd Higgs state, that originate from such decays of the SM--like Higgs boson, predominantly decay into
+either a pair of $b$--quarks (i.e. $b\bar{b}$) or $\tau$--leptons (i.e. $\tau\bar{\tau}$) giving rise to four fermion final state.
+From Table~2 one can see that the branching ratios of the decays of the lightest CP--even Higgs boson into a pair of lightest
+Higgs pseudoscalars depend rather strongly on the absolute value of coupling $\kappa$. Reasonably large branching ratios, ($\sim 1\%$)
+of these Higgs decays can be obtained when $\kappa\simeq 0.01$. However in order to get pseudoscalar with mass $40-60\,\mbox{GeV}$
+in this case a fine-tuning of order $1\%$ is needed. As follows from Eqs.~(\ref{hd21}) so small $m_{A_1}$ can be always obtained by
+means of tuning of the parameter $A_{\kappa}$. The degree of tuning is illustrated in Fig.~1, in which the region of the parameter space
+in the plane $(\kappa,\, A_{\kappa})$, that leads to the appropriately small $m_{A_1}$ and nonstandard Higgs decays, is shown.
+One can see that with decreasing of $\kappa$ the range of $A_{\kappa}$, which results in the sufficiently small $m_{A_1}$, becomes
+considerably wider that corresponds to smaller degree of fine-tuning.
+
+From Fig.~1 and Table~2 it is easy to see that the branching ratios of the decays of the SM--like
+Higgs boson into a pair of the pseudoscalar Higgs states become smaller when $\kappa$ decreases.
+This is not so surprising result. Indeed, if $\kappa=0$ the invariance of the Lagrangian with respect to
+a shift symmetry, i.e. $A_1\to A_1 + C$, where $C$ is a constant, forbids any interaction of the goldstone
+mode with the SM-like Higgs field of the type  (\ref{hd29})--(\ref{hd30}). Thus one can expect that small
+values of $\kappa$ lead to small branching ratios of the nonstandard Higgs decays mentioned above.
+When $\kappa\sim 0.001$ the pseudoscalar state with mass $40-60\,\mbox{GeV}$ can be obtained
+almost without fine-tuning. However in this case the branching ratio of the nonstandard Higgs decays
+tends to be of the order of $10^{-3}-10^{-4}$.
+
+\begin{table}
+  \noindent \begin{tabular}{| c || c | c |c| c| c| c |}
+\hline
+                                  &    BM1                 &  BM2         &     BM3          &    BM4            &     BM5         &   BM6           \\
+\hline
+$\lambda$                         &    0.1                  & 0.1          & 	0.1           &    0.1             &    0.1              & 	0.1   \\
+$\sigma$                          &    0.1                  & 0.1          &    0.1           &    0.12           & 	0.1              & 	0.1   \\
+$\kappa$                          &    0.03                 & 0.04         & 	0.01           &    0.03            & 	0.03             & 	0.02  \\
+$a_{\lambda}$ (GeV) 	          &    60.0                 & 60.0         & 	60.0            &   60.0             &  60.0             & 	60    \\
+$a_{\sigma}$ (GeV) 	          &    120                  & 120.0        & 	120.0           &   120.0            & 	140.0             & 	140    \\
+$a_{\kappa}$ (GeV) 	          &    30.4                 & 39.3         & 	10.8             &   35.8           &  	30.8             & 	21.2    \\
+\hline
+$\varphi$                         &    6000                 &  6000        & 	6000             &   6000          & 	6000             & 	6000   \\
+$s$                   	         &     8000                 &  8000        & 	8000             &   8000          &    8000             & 	8000   \\
+$\tan\theta$                     &      0.91                &  0.91        & 	0.91             &   0.91           & 	0.91             & 	0.91   \\
+\hline
+$M_1 = M_1^\prime$ (GeV) 	         &     600                  &   600         & 	600              &   600           & 	600    	 & 	600            \\
+$m_{\chi_1^0}$ (GeV)                &    420                   & 	420         & 	419               &   420          &    419         & 	419            \\
+\hline
+$m_S^2$ (GeV)$^2$                     &    -7.02$\cdot 10^5$             & 	-686000     & 	-735000           &  -836000        & 	-627000     & 	-643000        \\
+$m_{\overline{S}}^2$ (GeV)$^2$            &    1.30$\cdot 10^6$             &   1.32$\cdot 10^6$    & 	1.26 $\cdot 10^6$          &  1.16$\cdot 10^6$        &  1.40 $\cdot 10^6$    & 	1.38$\cdot 10^6$       \\
+$m_\phi^2$ (GeV)$^2$                   &     61500                &  30400        & 	110000            & -83000           & 	135000    & 	162000         \\
+$m_{H_d}^2$ (GeV)$^2$                  &   827000                 & 	827000       & 	827000             &  524000         & 	502000    & 	502000         \\
+$m_{H_u}^2$ (GeV)$^2$                  &   -2.42$\cdot 10^6$            & 	-2.42$\cdot 10^6$    & 	-2.42$\cdot 10^6$          & -2.42$\cdot 10^6$       & 	-2.99$\cdot 10^6$         & 	-2.99$\cdot 10^6$ \\
+\hline
+$m_{Z^\prime}$ (GeV)                 &  	2956                & 	2960         & 	2956               & 2957            & 2956         & 	2956          \\
+$m_{H^\pm}$ (GeV)                   &    	799                  & 	799          & 	799                & 577             & 556         & 	555           \\
+$m_{A_1}$ (GeV)                    &	35                & 	35.5        & 	27.2               & 33              & 	40                & 	19    \\
+$m_{A_2}$ (GeV)                    &	790.                 & 	791         & 	791                &  565            & 	543               & 	543   \\
+$m_{A_3}$ (GeV)                    &     1200               & 	1200         & 	1200               & 1200             & 1300              & 	1300   \\
+$m_{h_1}$ (GeV)                    &	126                & 	126         & 	127                & 127             & 	125               & 	126.6   \\
+$m_{h_2}$ (GeV)                    &	387                 & 	365          & 	436                & 565             & 	268               & 	300    \\
+$m_{h_3}$ (GeV)                    &	791               & 	791         & 	791                & 645             & 	543               & 	543    \\
+$m_{h_4}$ (GeV)                    &	936                & 	990         & 	833                & 875             & 	1016              & 	968     \\
+$m_{h_5}$ (GeV)                    &	3100                 & 	3104         & 	3088               & 3080.4          & 	3126              & 	3120   \\
+\hline
+G (GeV)                        &       -1.27               & 	-1.96        & 	-0.33              & 0.78            & 	-2.70            & 	-1.33  \\
+$R_{ZZh_1}$                      &     -0.998             &       -0.998       &  -0.999             & 0.9996          & -0.988            & 	-0.99  \\
+$R_{ZA_1h_1}$                       &  -0.0002            &      -0.0002        &  6$\cdot 10^{-5}$              & 0.0007          & -0.0004           & 	-0.0002 \\
+$BR(h_1\rightarrow A_1A_1)$       &    0.0935            &       0.198        &  0.0074             & 0.038           &  0.302            & 	0.12    \\
+$\Gamma(h_1\rightarrow A_1A_1)$ (GeV) &	0.00042           & 	0.0010       & 	3.1$\cdot 10^{-5}$           & 0.00016         & 0.0018             & 	0.00053 \\
+$\Gamma_{total}$ (GeV)           &     0.0045         	&   	0.0051 	     & 	0.0042              & 0.0042         & 0.0059              & 	0.0046  \\
+\hline
+\end{tabular}
+\caption{Parameters defining benchmark points, with the associated Higgs masses and branching ratios, calculated using code generated by FlexibleSUSY. We additionally fixed $\tan\beta = 10$, $\Lambda = 0$, $\mu = B = \xi = 0$, $\kappa_{ij} = 0.5 \, \delta_{ij}$,   soft stop masses are chosen to get $m_h \approx 125$ GeV,  $m_{Q_{3}}^2 = 3\cdot 10^6$ GeV$^2$,  $m_{u^c_{3}}^2 = 2\cdot 10^8$ GeV$^2$, $a_t = -1000$  GeV and other soft scalar masses  $m_{Q_{1,2}}^2 = m_{u^c_{1,2}}^2 = m_{d^c_{1,2,3}}^2 = m_{L_{1,2, 3}}^2 = m_{e^c_{1,2,3}}^2 = 1.0 \cdot 10^8$, GeV$^2$ and  $m_{D}^2 =  m_{\overline{D}}^2 = 4.0 \cdot 10^6$,  GeV$^2$ while all soft trilinears not specified here or in the table are set to zero. For simplicity we also take $f_{i\alpha} = \tilde{f}_{i\alpha} = g^D_{ij} = h^E_{ij} =0 \, \delta_{ij}$,  $A_{f_{i\alpha}} = A_{\tilde{f}_{i\alpha}} = A_{g^D_{ij}} = A_{h^E_{ij}} =0 \, \delta_{ij}$.}
+\end{table}
+
+
+
+\begin{table}\noindent \begin{tabular}{| c || c | c | c |}
+\hline
+                                  &    BM7                 &  BM8         &     BM9                 \\
+\hline
+$\lambda$                         &    0.1              & 	0.1                 & 	0.1                                 \\
+$\sigma$                          &    0.1              & 	0.1                 & 	0.1                                 \\
+$\kappa$                          &    0.03             & 	0.03                & 	0.01                                \\
+$a_{\lambda}$ (GeV) 	          &    60.0             & 	90.0                & 	90.0                                \\
+$a_{\sigma}$ (GeV) 	          &    80.0             & 	180                  & 	180.0                      \\
+$a_{\kappa}$ (GeV) 	          &    23.8             & 	59.1                 & 	21.4                       \\
+$\varphi$                         &    6000             & 	12000               & 	12000                                \\
+$s$                   	         &     8000             & 	16000               & 	16000                                \\
+$\tan\theta$                     &      0.91            & 	0.91                & 	0.91                                  \\
+$M_1 = M_1^\prime$ (GeV) 	         &     600             & 	600                  & 	600                                                   \\
+$m_{\chi_1^0}$ (GeV)                &     419              & 	599                    & 	599.4                                    \\
+$m_S^2$ (GeV)                     &    -7.5$\cdot 10^5$          & 	-2.04$\cdot 10^6$            & 	-2.17$\cdot 10^6$                             \\
+$m_{\overline{S}}^2$ (GeV)            &    1.2$\cdot 10^6$          & 	2.85$\cdot 10^6$              & 	2.69$\cdot 10^6$                                 \\
+$m_\phi^2$ (GeV)                   &    35400             & 	-174000               & 	5238                                   \\
+$m_{H_d}^2$ (GeV)                  &    967000            & 	1.11$\cdot 10^6$             & 	1.11$\cdot 10^6$                               \\
+$m_{H_u}^2$ (GeV)                  &   -2.60$\cdot 10^6$         & 	-2.36$\cdot 10^6$            & 	-2.36$\cdot 10^6$                              \\
+$m_{Z^\prime}$ (GeV)                 &    2950              & 	5925                    & 	5925                                      \\
+$m_{H^\pm}$ (GeV)                   &    883               & 	823                    & 	823                                      \\
+$m_{A_1}$ (GeV)                    &	38                & 	47                    & 	47                                    \\
+$m_{A_2}$ (GeV)                    &	874               & 	815                   & 	816                                   \\
+$m_{A_3}$ (GeV)                    &	940               & 	2000                   & 	2000                                  \\
+$m_{h_1}$ (GeV)                    &	125.3             & 	127.4                 & 	127.6                                  \\
+$m_{h_2}$ (GeV)                    &	304               & 	816                   & 	816                                    \\
+$m_{h_3}$ (GeV)                    &	801               & 	966                   & 	1057                                   \\
+$m_{h_4}$ (GeV)                    &	875               & 	1590                  & 	1339                                   \\
+$m_{h_5}$ (GeV)                    &	3060              & 	6123                  & 	6099                                   \\
+G (GeV)                          & 	1.70             & 	1.07                  & 	0.31                                   \\
+$R_{ZZh_1}$                        &     0.994             & 	0.9998                  & 	0.9998                                   \\
+$R_{ZA_1h_1}$                       & 	0.0001           & 	0.000671                 & 	0.00017                                \\
+$BR(h_1\rightarrow A_1A_1)$       & 	0.15          & 	0.056                   & 	0.0049                                 \\
+$\Gamma(h_1\rightarrow A_1A_1)$ (GeV)& 	0.00073           & 	0.00024                & 	2.0$\cdot10^{-5}$                                \\
+$\Gamma_{total}$ (GeV)            & 	0.0048             & 	0.0043                   & 	0.0041                                  \\
+\hline
+\end{tabular}
+
+\end{table}
+
+
+
+
+\begin{figure}[h!]
+\includegraphics[width=0.5\textwidth]{Kappa_vs_Akappa_vs_BR_low.eps}
+\includegraphics[width=0.5\textwidth]{logKappa_vs_Akappa_vs_logBR.eps}
+\caption{Left panel: colour contours of the branching ratio for $h_1\rightarrow A_1 A_1$ in the  
+$\kappa$-$A_\kappa$ plane for small $\kappa$. Right Panel: as on the left panel but with a wider 
+range of $\kappa$ and now plotting  both $\kappa$ and the branching ratio logarithmically (base 10).  
+An adapted version of FlexibleSUSY generated code was used to calculate mass spectrum and 
+the branching ratio.  All other parameters are fixed to the values BM1.  For each value of $\kappa$ 
+there is a lower limit on $A_\kappa$ where the the BR is zero because the pseudoscalar is too 
+heavy and an upper limit above which there is a pseudoscalar tachyon.   }
+\end{figure}
+
+
+
+\section{Conclusions}
+
+In this paper we considered the nonstandard decays of the SM--like Higgs state within the $U(1)$ extensions
+of the MSSM. In the simplest SUSY models with additional $U(1)$ gauge symmetry the mass of the $Z'$ boson
+associated with the extra $U(1)$ interaction tends to be of the order of SUSY breaking scale. The stringent
+lower bounds on the masses of different gauge bosons set by the LHC experiments imply that sparticle
+have multi--TeV masses in these models. It results in a significant degree of fine-tuning which is needed
+to stabilise the EW scale. This fine-tuning can be alleviated within the $U(1)$ SUSY extensions of the SM
+in which the extra $U(1)$ gauge symmetry is broken by two VEVs of the SM singlet fields $S$ and $\overline{S}$
+with opposite $U(1)$ charges. Because in this case $S$ and $\overline{S}$ can acquire very large VEVs along
+the $D$--flat direction the $Z'$--boson can be naturally substantially heavier than SUSY particles that
+allows to satisfy all the experimental constraints. Moreover such SUSY models can possess an approximate
+global $U(1)$ symmetry that gets spontaneously broken by the VEVs of $S$ and $\overline{S}$ leading
+to the pseudo--Goldstone boson in the particle spectrum. If the corresponding pseudoscalar state is considerably
+lighter than the lightest CP--even Higgs state then it may give rise to the decays of the SM-like Higgs particle
+into a pair of the pseudo--Goldstone bosons.
+
+Here we studied such decays within well motivated SUSY extensions of the SM based on the
+$SU(3)_C\times SU(2)_W\times U(1)_Y\times U(1)_{N}\times Z_{2}^{M}$ symmetry. The low energy matter
+content of these $E_6$ inspired models includes three $27$ representations of $E_6$, a pair of $SU(2)_W$ doublets
+$L_4$ and $\overline{L}_4$, a pair of the SM singlets $S$ and $\overline{S}$ with opposite $U(1)_{N}$ charges,
+as well as SM singlet $\phi$ that does not participate in the gauge interactions. The low--energy spectrum of the
+SUSY models being considered here, in particular, involves three families of Higgs--like doublets $H^{d}_{i}$ and
+$H^{u}_{i}$ and three families of exotic quarks $D_i$ and $\bar{D}_i$. To suppress flavour changing processes
+at the tree--level as well as the most dangerous baryon and lepton number violating operators an extra
+$\tilde{Z}^{H}_2$ discrete symmetry is imposed. Under this symmetry one pair of Higgs--like doublet
+supermultiplets ($H_u$ and $H_d$) as well as $L_4$, $\overline{L}_4$, $S$, $\overline{S}$ and $\phi$ are even
+while all other superfields are odd. Fields $H_u$, $H_d$, $S$, $\overline{S}$ and $\phi$ form a Higgs sector
+in these SUSY models. They acquire VEVs breaking gauge symmetry and inducing masses of the exotic particles.
+In the simplest phenomenologically viable scenarios the lightest SUSY states are expected to be substantially lighter
+than $1\,\mbox{eV}$ in these $E_6$ inspired SUSY models so that they form hot dark matter in the Universe.
+Since these states are so light they give only minor contribution to the dark matter density. Because of the conservation
+of the $Z^{M}_2$ and $\tilde{Z}^{H}_2$ symmetries the lightest neutralino can be also absolutely stable and
+may account for all or some of the observed cold dark matter density.
+
+We analysed the spectrum of the CP--even and CP--odd Higgs bosons in these $E_6$ inspired models
+assuming that all SUSY breaking parameters are of the order of the TeV scale. Expanding the Higgs potential
+we obtained analytical expression for the coupling of the lightest CP--even Higgs state to a pair of the lightest
+Higgs pseudoscalars. The dependence of the branching ratio of the nonstandard Higgs decays mentioned above
+on the parameters in these SUSY models was examined. For simplicity, we assumed that only one coupling
+in the superpotential which explicitly breaks global $U(1)$ symmetry has non--zero value. If this dimensionless
+coupling $\kappa$ varies from $0.1$ to $1$ the global symmetry is entirely broken. When $\kappa$ vanishes
+the global $U(1)$ symmetry is restored.
+
+In order to illustrate the results of our analysis we
+specified a set of the benchmark scenarios with the SM--like Higgs mass around $125-126\,\mbox{GeV}$.
+To ensure that the obtained benchmark points are consistent with the measured value of the cold dark matter
+density we chose the parameters so that the lightest neutralino is mainly higgsino with mass below $1\,\mbox{TeV}$.
+In this case the dark matter density tends to be smaller than its observed value. The results of our analysis indicate
+that the couplings of the lightest Higgs pseudoscalar to the SM particles are always quite small. As a consequence
+although this pseudoscalar state is rather light it could escape detection at former and present collider experiments.
+
+We argued that the branching ratio of the decays of the lightest CP--even Higgs boson into a pair of the lightest
+pseudoscalars depends rather strongly on the absolute value of coupling $\kappa$. When $\kappa\gtrsim 0.01$
+the branching ratio of the nonstandard Higgs decays can be larger than $1\%$. Nonetheless a fine tuning of at least
+$1\%$ is required in this case to get the lightest pseudoscalar state with mass $40-60\,\mbox{GeV}$.
+After being produced the lightest CP-odd Higgs states sequentially decay into a pair of either $b$--quarks or
+$\tau$--leptons. Thus these decays of the lightest CP--even Higgs boson result in the four fermion final state.
+
+For the absolute values of $\kappa$ which are substantially smaller than $0.01$ the branching ratio of the
+nonstandard Higgs decays decreases considerably. Indeed, in the limit when $\kappa$ goes to zero the
+global $U(1)$ symmetry is spontaneously broken and the Lagrangian of these $E_6$ inspired models should be
+invariant with respect to the shift symmetry transformations associated with the massless axion. As a result the
+couplings of the lightest Higgs pseudoscalar becomes extremely suppressed and the branching ratio of the
+nonstandard Higgs decays tends to be negligibly small. Therefore although for $\kappa\sim 0.001$ the lightest
+pseudoscalar with mass $40-60\,\mbox{GeV}$ can be obtained almost without fine-tuning the branching ratio
+of the SM--like Higgs decays into a pair of the  lightest CP--odd state is smaller than $10^{-3}-10^{-4}$.
+So small branching ratios of the nonstandard decays of the SM--like Higgs boson can be rather problematic
+to measure at the LHC.
+
+\vspace{-5mm}
+\section*{Acknowledgements}
+\vspace{-3mm}
+We are grateful to S.~F.~King and A.~W.~Thomas for  fruitful discussions.
+M.M. is supported by the DFG SFB/TR9 "Computational Particle Physics".
+This work was supported by the University of Adelaide and the Australian Research Council through the ARC
+Center of Excellence in Particle Physics at the Terascale. 
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\begin{appendix}
+\section{Neutralino mass matrix}
+\setcounter{equation}{0}
+\def\theequation{A.\arabic{equation}}
+
+After the breakdown of gauge symmetry in the $E_6$ inspired SUSY models under consideration
+all superpartners of the gauge and Higgs bosons get non--zero masses. Because extra vector
+superfield associated with the $Z'$ boson and extra SM singlet Higgs superfields
+$\overline{S}$, $S$ and $\phi$ are electromagnetically neutral they do not contribute any
+extra particles to the chargino spectrum. As a consequence the chargino mass matrix and
+its eigenvalues remain almost the same as in the MSSM, i.e.
+\be
+\ba{rcl}
+m^2_{\chi^{\pm}_{1,\,2}}&=&\ds\frac{1}{2}\biggl[M_2^2+\mu_{eff}^2+2 M^2_{W}\pm\biggl.\\[2mm]
+&&\biggr.\qquad\qquad\qquad\sqrt{(M_2^2+\mu^2_{eff}+2M^2_{W})^2-4(M_2\mu_{eff}-M^2_{W}\sin 2\beta)^2}
+\biggr]\,,
+\ea
+\label{a1}
+\ee
+where $M_2$ is the $SU(2)_W$ gaugino mass and $\mu_{eff}=\ds\frac{\lambda s \cos\theta}{\sqrt{2}}$.
+The non-observation of the lightest chargino at the collider experiments implies that
+$|M_2|$, $|\mu_{eff}|\gtrsim 100\,\mbox{GeV}$.
+
+The neutralino sector of the SUSY models under consideration involves four extra neutralinos besides
+the four MSSM ones. One of them $\tilde{B}'$ is an extra gaugino coming from the $Z'$ vector superfield.
+Three other states are fermion components $\tilde{S}$, $\tilde{\overline{S}}$ and $\tilde{\phi}$
+of the SM singlet Higgs superfields $\overline{S}$, $S$ and $\phi$. In the basis
+$(\tilde{H}^0_d,\,\tilde{H}^0_u,\,\tilde{W}_3,\,\tilde{B},\,\tilde{B}',\,\tilde{S}\cos\theta-\tilde{\overline{S}}\sin\theta,\,\tilde{S}\sin\theta+\tilde{\overline{S}}\cos\theta,\,\tilde{\phi})$
+the neutralino mass matrix can be written as
+\be
+M_{\tilde{\chi}^0}=
+\left(
+\ba{cc}
+A & C^{T}\\[2mm]
+C & B
+\ea
+\right)\,,
+\label{a2}
+\ee
+where
+\be
+A=
+\left(
+\ba{cccc}
+0 & -\dfrac{\lambda s \cos\theta}{\sqrt{2}} & \dfrac{gv}{2}\cos\beta & -\dfrac{g'v}{2}\cos\beta \\[3mm]
+-\dfrac{\lambda s \cos\theta}{\sqrt{2}} & 0 & -\dfrac{gv}{2}\sin\beta & \dfrac{g'v}{2}\sin\beta \\[3mm]
+\dfrac{gv}{2}\cos\beta & -\dfrac{gv}{2}\sin\beta & M_2 & 0\\[3mm]
+-\dfrac{g'v}{2}\cos\beta & \dfrac{g'v}{2}\sin\beta & 0 & M_1
+\ea
+\right)\,,
+\label{a3}
+\ee
+\vspace{3mm}
+\be
+B=
+\left(
+\ba{cccc}
+M'_1 & g'_1 \tilde{Q}_S s & 0 & 0 \\[3mm]
+g'_1 \tilde{Q}_S s & \dfrac{\sigma\varphi}{\sqrt{2}}\sin 2\theta & -\dfrac{\sigma\varphi}{\sqrt{2}}\cos 2\theta & 0 \\[3mm]
+0 & -\dfrac{\sigma\varphi}{\sqrt{2}}\cos 2\theta & -\dfrac{\sigma\varphi}{\sqrt{2}}\sin 2\theta & -\dfrac{\sigma s}{\sqrt{2}}\\[3mm]
+0 & 0 &  -\dfrac{\sigma s}{\sqrt{2}} & \sqrt{2}\kappa\varphi +\mu
+\ea
+\right)\,,
+\label{a4}
+\ee
+\vspace{3mm}
+\be
+C=
+\left(
+\ba{cccc}
+\tilde{Q}_{H_d} g'_1 v \cos\beta & \tilde{Q}_{H_u} g'_1 v \sin\beta & 0 & 0 \\[3mm]
+-\dfrac{\lambda v}{\sqrt{2}}\sin\beta\cos\theta & -\dfrac{\lambda v}{\sqrt{2}}\cos\beta\cos\theta & 0 & 0 \\[3mm]
+-\dfrac{\lambda v}{\sqrt{2}}\sin\beta\sin\theta & -\dfrac{\lambda v}{\sqrt{2}}\cos\beta\sin\theta & 0 & 0\\[3mm]
+0 & 0 &  0 & 0
+\ea
+\right)\,,
+\label{a5}
+\ee
+where $M_1$, $M_2$ and $M'_1$ are the soft gaugino masses for $\tilde{B}$,
+$\tilde{W}_3$ and $\tilde{B}'$ respectively. Here we neglect the Abelian
+gaugino mass mixing $M_{11}$ between $\tilde{B}$ and $\tilde{B}'$.
+The top--left $4\times 4$ block of the mass matrix (\ref{a2}) contains the
+neutralino mass matrix of the MSSM where the parameter $\mu$ is replaced
+by $\mu_{eff}$. The lower right $4\times 4$ submatrix represents extra
+neutralino states in this SUSY model.
+
+
+
+
+\end{appendix}
+
+
+
+
+
+
+
+\newpage
+\begin{thebibliography}{999}
+
+\bibitem{1}
+The ATLAS Collaboration,  ATLAS-CONF-2013-017.
+
+\bibitem{2}
+The CMS Collaboration,
+% “Search for supersymmetry with the razor variables at CMS”,
+CMS-PAS-EXO-12-061.
+
+\bibitem{Kolda:1995iw}
+C.~F.~Kolda and S.~P.~Martin,
+%``Low-energy supersymmetry with D term contributions to scalar masses,''
+Phys.\ Rev.\ D {\bf 53} (1996) 3871
+[hep-ph/9503445].
+
+\bibitem{Peccei:1977hh}
+R.~D.~Peccei and H.~R.~Quinn,
+%``CP Conservation In The Presence Of Instantons,''
+Phys.\ Rev.\ Lett.\  {\bf 38} (1977) 1440;
+%``Constraints Imposed By CP Conservation In The Presence Of Instantons,''
+Phys.\ Rev.\ D {\bf 16} (1977) 1791.
+
+\bibitem{axion}
+F.~Wilczek,
+%``Problem Of Strong P And T Invariance In The Presence Of Instantons,''
+Phys.\ Rev.\ Lett.\  {\bf 40} (1978) 279.
+
+\bibitem{Langacker:2008yv}
+P.~Langacker,
+%``The Physics of Heavy $Z^\prime$ Gauge Bosons,''
+Rev.\ Mod.\ Phys.\  {\bf 81} (2009) 1199
+[arXiv:0801.1345 [hep-ph]].
+
+\bibitem{E6-review}
+J.L.~Hewett, T.G.~Rizzo, Phys. Rept. {\bf 183} (1989) 193.
+
+\bibitem{E6}
+J.~F.~Gunion, H.~E.~Haber, G.~L.~Kane, S.~Dawson,
+``The Higgs Hunter's Guide'' (Westview Press, 2000) [Erratum arXiv:hep-ph/9302272];
+P.~Binetruy, S.~Dawson, I.~Hinchliffe, M.~Sher,
+%``Phenomenologically Viable Models From Superstrings?,''
+Nucl. \ Phys. \ B {\bf 273} (1986) 501;
+%%CITATION = NUPHA,B273,501;%%
+J.~R.~Ellis, K.~Enqvist, D.~V.~Nanopoulos, F.~Zwirner,
+%``Observables In Low-Energy Superstring Models,''
+Mod.\ Phys.\ Lett.\  A {\bf 1} (1986) 57.
+%%CITATION = MPLAE,A1,57;%%
+L.~E.~Ibanez, J.~Mas,
+%``Low-Energy Supergravity And Superstring Inspired Models,''
+Nucl. \ Phys. \ B {\bf 286} (1987) 107;
+%%CITATION = NUPHA,B286,107;%%
+J.~F.~Gunion, L.~Roszkowski, H.~E.~Haber,
+%``Z-Prime Mass Limits, Masses And Couplings Of Higgs Bosons, And Z-Prime Decays
+%In An E(6) Superstring Based Model,''
+Phys. \ Lett. \ B {\bf 189} (1987) 409;
+%%CITATION = PHLTA,B189,409;%%
+H.~E.~Haber, M.~Sher,
+%``Higgs Mass Bound In E(6) Based Supersymmetric Theories,''
+Phys. \ Rev. \ D {\bf 35} (1987) 2206;
+%%CITATION = PHRVA,D35,2206;%%
+J.~R.~Ellis, D.~V.~Nanopoulos, S.~T.~Petcov, F.~Zwirner,
+%``Gauginos And Higgs Particles In Superstring Models,''
+Nucl. \ Phys. \ B {\bf 283} (1987) 93;
+%%CITATION = NUPHA,B283,93;%%
+M.~Drees,
+%``Comment On 'Higgs Boson Mass Bound In E(6) Based Supersymmetric Theories. ',''
+Phys. \ Rev. \ D {\bf 35} (1987) 2910;
+%%CITATION = PHRVA,D35,2910;%%
+J.~F.~Gunion, L.~Roszkowski, H.~E.~Haber,
+%``Z-prime MASS LIMITS, MASSES AND COUPLINGS OF HIGGS BOSONS, AND Z-prime
+%DECAYS IN AN E(6) SUPERSTRING BASED MODEL,''
+Phys.\ Lett.\  B {\bf 189} (1987) 409;
+  %%CITATION = PHLTA,B189,409;%%
+H.~Baer, D.~Dicus, M.~Drees, X.~Tata,
+%``Higgs Boson Signals In Superstring Inspired Models At Hadron
+%Supercolliders,''
+Phys. \ Rev. \ D {\bf 36} (1987) 1363;
+%%CITATION = PHRVA,D36,1363;%%
+J.~F.~Gunion, L.~Roszkowski, H.~E.~Haber,
+%``Production And Detection Of The Higgs Bosons Of The Simplest E(6) Based Gauge
+%Theory,''
+Phys. \ Rev. \ D {\bf 38} (1988) 105.
+%%CITATION = PHRVA,D38,105;%%
+
+
+%\cite{Accomando:2010fz}
+\bibitem{Accomando:2010fz}
+E.~Accomando, A.~Belyaev, L.~Fedeli, S.~F.~King, C.~Shepherd-Themistocleous,
+%``Z' physics with early LHC data,''
+Phys.\ Rev.\  D {\bf 83} (2011) 075012
+[arXiv:1010.6058 [hep-ph]].
+
+%\cite{Kang:2007ib}
+\bibitem{Kang:2007ib}
+J.~Kang, P.~Langacker, B.~D.~Nelson,
+%``Theory and Phenomenology of Exotic Isosinglet Quarks and Squarks,''
+Phys.\ Rev.\  D {\bf 77} (2008) 035003
+[arXiv:0708.2701 [hep-ph]].
+%%CITATION = PHRVA,D77,035003;%%
+
+%\cite{Langacker:1998tc}
+\bibitem{Langacker:1998tc}
+P.~Langacker, J.~Wang,
+%``U(1)' symmetry breaking in supersymmetric E(6) models,''
+Phys.\ Rev.\  D {\bf 58} (1998) 115010.
+
+
+\bibitem{Cvetic:1997ky}
+M.~Cveti$\check{\rm c}$, P.~Langacker, Phys.\ Rev.\ D {\bf 54} (1996) 3570;
+M.~Cveti$\check{\rm c}$, P.~Langacker, Mod.\ Phys.\ Lett.\ A {\bf 11} (1996) 1247;
+M.~Cvetic, D.~A.~Demir, J.~R.~Espinosa, L.~L.~Everett and P.~Langacker,
+%``Electroweak breaking and the mu problem in supergravity models with an additional U(1),''
+Phys.\ Rev.\ D {\bf 56} (1997) 2861 [Erratum-ibid.\ D {\bf 58} (1998) 119905].
+
+
+%\cite{Suematsu:1994qm}
+\bibitem{Suematsu:1994qm}
+D.~Suematsu, Y.~Yamagishi,
+%``Radiative symmetry breaking in a supersymmetric model with an extra U(1),''
+Int.\ J.\ Mod.\ Phys.\  A {\bf 10} (1995) 4521.
+
+%\cite{Keith:1997zb}
+\bibitem{Keith:1997zb}
+E.~Keith, E.~Ma,
+%``Generic consequences of a supersymmetric U(1) gauge factor at the TeV
+%scale,''
+Phys.\ Rev.\  D {\bf 56} (1997) 7155.
+
+%\cite{Daikoku:2000ep}
+\bibitem{Daikoku:2000ep}
+Y.~Daikoku, D.~Suematsu,
+%``Mass bound of the lightest neutral Higgs scalar in the extra U(1)
+%models,''
+Phys.\ Rev.\  D {\bf 62} (2000) 095006.
+
+
+\bibitem{Kang:2004ix}
+J.~H.~Kang, P.~Langacker, T.~J.~Li,
+%``Neutrino masses in supersymmetric SU(3)C x SU(2)L x U(1)Y x U(1)'
+%models,''
+Phys.\ Rev.\  D {\bf 71} (2005) 015012.
+
+\bibitem{Ma:1995xk}
+E.~Ma,
+%``Neutrino masses in an extended gauge model with E(6) particle content,''
+Phys.\ Lett.\  B {\bf 380} (1996) 286.
+
+\bibitem{Hambye:2000bn}
+T.~Hambye, E.~Ma, M.~Raidal, U.~Sarkar,
+%``Allowable low-energy E(6) subgroups from leptogenesis,''
+Phys.\ Lett.\  B {\bf 512} (2001) 373.
+
+
+\bibitem{King:2008qb}
+S.~F.~King, R.~Luo, D.~J.~Miller, R.~Nevzorov,
+%``Leptogenesis in the Exceptional Supersymmetric Standard Model: flavour
+%dependent lepton asymmetries,''
+JHEP {\bf 0812} (2008) 042.
+
+\bibitem{baryogen}
+E.~Ma, M.~Raidal, J.\ Phys.\ G {\bf 28} (2002) 95;
+J.~Kang, P.~Langacker, T.-J.~Li, T.~Liu, Phys.\ Rev.\ Lett.\ {\bf 94} (2005) 061801.
+
+\bibitem{g-2}
+J.~A.~Grifols, J.~Sola, A.~Mendez,
+%``CONTRIBUTION TO THE MUON ANOMALY FROM SUPERSTRING INSPIRED MODELS,''
+Phys.\ Rev.\ Lett.\  {\bf 57} (1986) 2348;
+D.~A.~Morris,
+%``POTENTIALLY LARGE CONTRIBUTIONS TO THE MUON ANOMALOUS MAGNETIC MOMENT FROM
+%WEAK ISOSINGLET SQUARKS IN E(6) SUPERSTRING MODELS,''
+Phys.\ Rev.\  D {\bf 37} (1988) 2012.
+
+\bibitem{Suematsu:1997tv}
+D.~Suematsu,
+%``Effect on the electron EDM due to abelian gauginos in SUSY extra U(1)
+%models,''
+Mod.\ Phys.\ Lett.\  A {\bf 12} (1997) 1709.
+
+%\cite{GutierrezRodriguez:2006hb}
+\bibitem{GutierrezRodriguez:2006hb}
+A.~Gutierrez-Rodriguez, M.~A.~Hernandez-Ruiz and M.~A.~Perez,
+%``Limits on the Electromagnetic and Weak Dipole Moments of the Tau-Lepton in
+%E(6) Superstring Models,''
+Int.\ J.\ Mod.\ Phys.\  A {\bf 22}, 3493 (2007)
+[arXiv:hep-ph/0611235].
+%%CITATION = IMPAE,A22,3493;%%
+
+\bibitem{Suematsu:1997qt}
+D.~Suematsu,
+%``mu --> e gamma in supersymmetric multi U(1) models with an abelian  gaugino
+%mixing,''
+Phys.\ Lett.\  B {\bf 416} (1998) 108.
+
+%\cite{Ham:2008fx}
+\bibitem{Ham:2008fx}
+S.~W.~Ham, J.~O.~Im, E.~J.~Yoo and S.~K.~Oh,
+%``Higgs bosons of a supersymmetric $E_6$ model at the Large Hadron
+%Collider,''
+JHEP {\bf 0812}, 017 (2008)
+[arXiv:0810.4194 [hep-ph]].
+%%CITATION = JHEPA,0812,017;%%
+
+\bibitem{Suematsu:1997au}
+D.~Suematsu,
+%``Neutralino decay in the mu problem solvable extra U(1) models,''
+Phys.\ Rev.\  D {\bf 57} (1998) 1738.
+
+\bibitem{Keith:1996fv}
+E.~Keith, E.~Ma,
+%``Efficacious Extra U(1) Factor for the Supersymmetric Standard Model,''
+Phys.\ Rev.\  D {\bf 54} (1996) 3587.
+
+\bibitem{Hesselbach:2001ri}
+S.~Hesselbach, F.~Franke, H.~Fraas,
+%``Neutralinos in E(6) inspired supersymmetric U(1)' models,''
+Eur.\ Phys.\ J.\  C {\bf 23} (2002) 149;
+V.~Barger, P.~Langacker, H.~S.~Lee,
+%``Lightest neutralino in extensions of the MSSM,''
+Phys.\ Lett.\  B {\bf 630} (2005) 85;
+S.~Y.~Choi, H.~E.~Haber, J.~Kalinowski, P.~M.~Zerwas,
+%``The neutralino sector in the U(1)-extended supersymmetric standard model,''
+Nucl.\ Phys.\  B {\bf 778} (2007) 85;
+V.~Barger, P.~Langacker, I.~Lewis, M.~McCaskey, G.~Shaughnessy and B.~Yencho,
+%``Recoil detection of the lightest neutralino in MSSM singlet extensions,''
+Phys.\ Rev.\  D {\bf 75} (2007) 115002.
+
+\bibitem{Gherghetta:1996yr}
+T.~Gherghetta, T.~A.~Kaeding, G.~L.~Kane,
+%``Supersymmetric contributions to the decay of an extra $Z$ boson,''
+Phys.\ Rev.\ D {\bf 57} (1998) 3178
+[hep-ph/9701343].
+
+\bibitem{E6neutralino-higgs}
+V.~Barger, P.~Langacker, G.~Shaughnessy,
+%``TeV physics and the Planck scale,''
+New J.\ Phys.\  {\bf 9} (2007) 333.
+
+%\cite{Asano:2008ju}
+\bibitem{Asano:2008ju}
+M.~Asano, T.~Kikuchi and S.~G.~Kim,
+%``D-term assisted Anomaly Mediation in E6 motivated models,''
+arXiv:0807.5084 [hep-ph].
+%%CITATION = ARXIV:0807.5084;%%
+
+%\cite{Stech:2008wd}
+\bibitem{Stech:2008wd}
+B.~Stech and Z.~Tavartkiladze,
+%``Generation Symmetry and E_6 Unification,''
+Phys.\ Rev.\  D {\bf 77}, 076009 (2008)
+[arXiv:0802.0894 [hep-ph]].
+
+\bibitem{King:2005jy}
+S.~F.~King, S.~Moretti, R.~Nevzorov,
+%``Theory and phenomenology of an exceptional supersymmetric standard
+%model,''
+Phys.\ Rev.\  D {\bf 73} (2006) 035009.
+
+\bibitem{King:2005my}
+S.~F.~King, S.~Moretti, R.~Nevzorov,
+%``Exceptional supersymmetric standard model,''
+Phys.\ Lett.\  B {\bf 634} (2006) 278.
+
+\bibitem{Accomando:2006ga}
+S.~F.~King, S.~Moretti, R.~Nevzorov,
+%``Spectrum of Higgs particles in the ESSM,''
+arXiv:hep-ph/0601269;
+S. Kraml {\it et al.} (eds.), {\it Workshop on CP studies and
+non-standard Higgs physics}, CERN--2006--009, hep-ph/0608079;
+S.~F.~King, S.~Moretti, R.~Nevzorov,
+%``E(6)SSM,''
+AIP Conf.\ Proc.\  {\bf 881} (2007) 138;
+%[arXiv:hep-ph/0610002].
+
+\bibitem{E6-higgs}
+V.~Barger, P.~Langacker, H.~S.~Lee, G.~Shaughnessy,
+%``Higgs Sector in Extensions of the MSSM,''
+Phys.\ Rev.\  D {\bf 73} (2006) 115010.
+
+%\cite{King:2007uj}
+\bibitem{King:2007uj}
+S.~F.~King, S.~Moretti, R.~Nevzorov,
+%``Gauge coupling unification in the exceptional supersymmetric standard
+%model,''
+Phys.\ Lett.\  B {\bf 650} (2007) 57
+[arXiv:hep-ph/0701064].
+
+\bibitem{Howl:2007zi}
+R.~Howl, S.~F.~King,
+%``Minimal E(6) Supersymmetric Standard Model,''
+JHEP {\bf 0801} (2008) 030
+[arXiv:0708.1451 [hep-ph]];
+P.~Athron, J.~P.~Hall, R.~Howl, S.~F.~King, D.~J.~Miller, S.~Moretti, R.~Nevzorov,
+%``Aspects of the exceptional supersymmetric standard model,''
+Nucl.\ Phys.\ Proc.\ Suppl.\  {\bf 200-202} (2010) 120.
+
+
+\bibitem{Nevzorov:2013tta}
+R.~Nevzorov, S.~Pakvasa,
+%``Exotic Higgs decays in the $E_6$ inspired SUSY models,''
+Phys.\ Lett.\ B {\bf 728} (2014) 210
+[arXiv:1308.1021 [hep-ph]].
+
+\bibitem{Hall:2010ix}
+J.~P.~Hall, S.~F.~King, R.~Nevzorov, S.~Pakvasa, M.~Sher,
+%``Novel Higgs Decays and Dark Matter in the E(6)SSM,''
+Phys.\ Rev.\  D {\bf 83} (2011) 075013
+[arXiv:1012.5114 [hep-ph]];
+J.~P.~Hall, S.~F.~King, R.~Nevzorov, S.~Pakvasa, M.~Sher,
+%``Nonstandard Higgs decays in the $E_6SSM$,''
+arXiv:1012.5365 [hep-ph];
+J.~P.~Hall, S.~F.~King, R.~Nevzorov, S.~Pakvasa, M.~Sher,
+%``Nonstandard Higgs Decays and Dark Matter in the E6SSM,''
+arXiv:1109.4972 [hep-ph].
+
+
+\bibitem{cE6SSM}
+P.~Athron, S.~F.~King, D.~J.~Miller, S.~Moretti, R.~Nevzorov,
+%``The Constrained E$_6$SSM,''
+arXiv:0810.0617 [hep-ph];
+P.~Athron, S.~F.~King, D.~J.~Miller, S.~Moretti, R.~Nevzorov,
+%``Predictions of the Constrained Exceptional Supersymmetric Standard Model,''
+Phys.\ Lett.\  B {\bf 681} (2009) 448
+[arXiv:0901.1192 [hep-ph]];
+P.~Athron, S.~F.~King, D.~J.~Miller, S.~Moretti, R.~Nevzorov,
+%``The Constrained Exceptional Supersymmetric Standard Model,''
+Phys.\ Rev.\  D {\bf 80} (2009) 035009
+[arXiv:0904.2169 [hep-ph]];
+P.~Athron, S.~F.~King, D.~J.~Miller, S.~Moretti, R.~Nevzorov,
+%``LHC Signatures of the Constrained Exceptional Supersymmetric Standard
+%Model,''
+Phys.\ Rev.\ D {\bf 84} (2011) 055006
+[arXiv:1102.4363 [hep-ph]];
+P.~Athron, S.~F.~King, D.~J.~Miller, S.~Moretti, R.~Nevzorov,
+%``Constrained Exceptional Supersymmetric Standard Model with a Higgs Near 125 GeV,''
+Phys.\ Rev.\ D {\bf 86} (2012) 095003
+[arXiv:1206.5028 [hep-ph]].
+
+%\cite{Athron:2013ipa}
+\bibitem{Athron:2013ipa}
+  P.~Athron, M.~Binjonaid and S.~F.~King,
+  %``Fine Tuning in the Constrained Exceptional Supersymmetric Standard Model,''
+  Phys.\ Rev.\ D {\bf 87}, no. 11, 115023 (2013)
+  [arXiv:1302.5291 [hep-ph]].
+  %%CITATION = ARXIV:1302.5291;%%
+  %10 citations counted in INSPIRE as of 23 May 2014
+
+\bibitem{Athron:2012pw}
+P.~Athron, D.~Stockinger,  A.~Voigt,
+%``Threshold Corrections in the Exceptional Supersymmetric Standard Model,''
+Phys.\ Rev.\ D {\bf 86} (2012) 095012
+[arXiv:1209.1470 [hep-ph]].
+%\cite{Miller:2012vn}
+
+\bibitem{Miller:2012vn}
+  D.~J.~Miller, A.~P.~Morais and P.~N.~Pandita,
+  %``Constraining Grand Unification using first and second generation sfermions,''
+  Phys.\ Rev.\ D {\bf 87}, 015007 (2013)
+  [arXiv:1208.5906 [hep-ph]].
+  %%CITATION = ARXIV:1208.5906;%%
+  %3 citations counted in INSPIRE as of 23 May 2014
+
+\bibitem{Sperling:2013eva}
+M.~Sperling, D.~Stöckinger, A.~Voigt,
+%``Renormalization of vacuum expectation values in spontaneously broken gauge theories,''
+JHEP {\bf 1307} (2013) 132
+[arXiv:1305.1548 [hep-ph]];
+  M.~Sperling, D.~Stöckinger and A.~Voigt,
+  %``Renormalization of vacuum expectation values in spontaneously broken gauge theories: Two-loop results,''
+  JHEP {\bf 1401}, 068 (2014)
+  [arXiv:1310.7629 [hep-ph]].
+  %%CITATION = ARXIV:1310.7629;%%
+  %5 citations counted in INSPIRE as of 23 May 2014
+
+\bibitem{nevzorov}
+R.~Nevzorov,
+%``E6 Inspired SUSY Models with Exact Custodial Symmetry,''
+Phys.\ Rev.\ D {\bf 87} (2013) 015029
+[arXiv:1205.5967 [hep-ph]].
+
+
+
+\bibitem{Chang:2008cw}
+S.~Chang, R.~Dermisek, J.~F.~Gunion, N.~Weiner,
+%``Nonstandard Higgs Boson Decays,''
+Ann.\ Rev.\ Nucl.\ Part.\ Sci.\  {\bf 58} (2008) 75
+[arXiv:0801.4554 [hep-ph]];
+R.~Dermisek,
+%``Unusual Higgs or Supersymmetry from Natural Electroweak Symmetry
+%Breaking,''
+Mod.\ Phys.\ Lett.\  A {\bf 24} (2009) 1631
+[arXiv:0907.0297 [hep-ph]].
+
+\bibitem{review-nmssm}
+M.~Maniatis,
+%``The Next-to-Minimal Supersymmetric extension of the Standard Model reviewed,''
+Int.\ J.\ Mod.\ Phys.\ A {\bf 25} (2010) 3505
+[arXiv:0906.0777 [hep-ph]];
+U.~Ellwanger, C.~Hugonie, A.~M.~Teixeira,
+%``The Next-to-Minimal Supersymmetric Standard Model,''
+Phys.\ Rept.\  {\bf 496} (2010) 1
+[arXiv:0910.1785 [hep-ph]];
+U.~Ellwanger,
+%``Higgs Bosons in the Next-to-Minimal Supersymmetric Standard Model at the LHC,''
+Eur.\ Phys.\ J.\ C {\bf 71} (2011) 1782
+[arXiv:1108.0157 [hep-ph]].
+
+\bibitem{ArkaniHamed:2006mb}
+N.~Arkani-Hamed, A.~Delgado and G.~F.~Giudice,
+%``The Well-tempered neutralino,''
+Nucl.\ Phys.\ B {\bf 741} (2006) 108
+[hep-ph/0601041];
+G.~Chalons, M.~J.~Dolan and C.~McCabe,
+%``Neutralino dark matter and the Fermi gamma-ray lines,''
+JCAP {\bf 1302} (2013) 016
+[arXiv:1211.5154 [hep-ph]].
+
+\bibitem{43} S.~Wolfram, Phys.\ Lett.\ B {\bf 82} (1979) 65;
+C.~B.~Dover, T.~K.~Gaisser, G.~Steigman, Phys.\ Rev.\ Lett. {\bf 42} (1979) 1117.
+
+\bibitem{42} J.~Rich, M.~Spiro, J.~Lloyd--Owen, Phys.\ Rept.  {\bf 151} (1987) 239;
+P.~F.~Smith, Contemp.\ Phys.  {\bf 29} (1988) 159; T.~K.~Hemmick et al. ,
+Phys.\ Rev.\  D {\bf 41} (1990) 2074.
+
+\bibitem{45}
+G.~F.~Giudice, A.~Masiero, Phys.\ Lett.\ B {\bf 206} (1988) 480;
+J.~A.~Casas, C.~Mu$\tilde{\rm n}$oz, Phys.\ Lett.\ B {\bf 306} (1993) 288.
+
+\bibitem{King:2007uj}
+S.~F.~King, S.~Moretti, R.~Nevzorov,
+%``Gauge coupling unification in the exceptional supersymmetric standard
+%model,''
+Phys.\ Lett.\  B {\bf 650} (2007) 57
+[arXiv:hep-ph/0701064].
+
+\bibitem{Hesselbach:2007te}
+S.~Hesselbach, D.~J.~.~Miller, G.~Moortgat-Pick, R.~Nevzorov and M.~Trusov,
+%``Theoretical upper bound on the mass of the LSP in the MNSSM,''
+Phys.\ Lett.\  B {\bf 662} (2008) 199
+[arXiv:0712.2001 [hep-ph]];
+S.~Hesselbach, D.~J.~.~Miller, G.~Moortgat-Pick, R.~Nevzorov and M.~Trusov,
+%``The lightest neutralino in the MNSSM,''
+arXiv:0710.2550 [hep-ph];
+S.~Hesselbach, G.~Moortgat-Pick, D.~J.~Miller, 2, R.~Nevzorov and M.~Trusov,
+%``Lightest Neutralino Mass in the MNSSM,''
+arXiv:0810.0511 [hep-ph].
+
+\bibitem{Frere:1996gb}
+J.~M.~Frere, R.~B.~Nevzorov and M.~I.~Vysotsky,
+%``Stimulated neutrino conversion and bounds on neutrino magnetic moments,''
+Phys.\ Lett.\  B {\bf 394}, 127 (1997)
+[arXiv:hep-ph/9608266].
+
+\bibitem{Nevzorov:2013ixa}
+R.~Nevzorov,
+%``Quasi-fixed point scenarios and the Higgs mass in the E6 inspired SUSY models,''
+Phys.\ Rev.\ D {\bf 89} (2014) 055010
+[arXiv:1309.4738 [hep-ph]].
+
+\bibitem{Nevzorov:2001vj}
+R.~B.~Nevzorov and M.~A.~Trusov,
+%``Infrared quasifixed solutions in the NMSSM,''
+Phys.\ Atom.\ Nucl.\  {\bf 64} (2001) 1299
+[Yad.\ Fiz.\  {\bf 64} (2001) 1375]
+[hep-ph/0110363].
+
+\bibitem{Miller:2005qua}
+D. J. Miller, S. Moretti, R. Nevzorov, {\it Proceedings to the 18th International
+Workshop on High-Energy Physics and Quantum Field Theory (QFTHEP 2004)},
+ed. by M.N. Dubinin, V.I. Savrin, Moscow, Moscow State Univ., 2004. p. 212; hep-ph/0501139
+
+\bibitem{Nevzorov:2004ge}
+D.~J.~.~Miller, R.~Nevzorov and P.~M.~Zerwas,
+%``The Higgs sector of the next-to-minimal supersymmetric standard model,''
+Nucl.\ Phys.\  B {\bf 681} (2004) 3
+[arXiv:hep-ph/0304049];
+R. Nevzorov, D. J.  Miller, {\it Proceedings to the 7th Workshop "What comes beyond
+the Standard Model"}, ed.  by N. S. Mankoc-Borstnik, H. B. Nielsen, C. D. Froggatt,
+D. Lukman, DMFA--Zaloznistvo, Ljubljana, 2004, p. 107; hep-ph/0411275.
+
+\bibitem{Nevzorov:2001um}
+P.~A.~Kovalenko, R.~B.~Nevzorov and K.~A.~Ter-Martirosian,
+%``Masses of Higgs bosons in supersymmetric theories,''
+Phys.\ Atom.\ Nucl.\  {\bf 61} (1998) 812
+[Yad.\ Fiz.\  {\bf 61} (1998) 898];
+R.~B.~Nevzorov and M.~A.~Trusov,
+%``Particle spectrum in the modified NMSSM in the strong Yukawa coupling
+%limit. (In Russian),''
+J.\ Exp.\ Theor.\ Phys.\  {\bf 91} (2000) 1079
+[Zh.\ Eksp.\ Teor.\ Fiz.\  {\bf 91} (2000) 1251]
+[arXiv:hep-ph/0106351];
+R.~B.~Nevzorov, K.~A.~Ter-Martirosyan and M.~A.~Trusov,
+%``Higgs bosons in the simplest SUSY models,''
+Phys.\ Atom.\ Nucl.\  {\bf 65} (2002) 285
+[Yad.\ Fiz.\  {\bf 65} (2002) 311]
+[arXiv:hep-ph/0105178].
+
+\bibitem{Athron:2014yba}
+P.~Athron, J.~-h.~Park, D.~Stöckinger and A.~Voigt,
+%``FlexibleSUSY -- A spectrum generator generator for supersymmetric models,''
+arXiv:1406.2319 [hep-ph].
+
+\bibitem{Ade:2013zuv}
+P.~A.~R.~Ade {\it et al.}  [Planck Collaboration],
+%``Planck 2013 results. XVI. Cosmological parameters,''
+arXiv:1303.5076 [astro-ph.CO].
+
+\bibitem{King:2012is}
+S.~F.~King, M.~Muhlleitner and R.~Nevzorov,
+%``NMSSM Higgs Benchmarks Near 125 GeV,''
+Nucl.\ Phys.\ B {\bf 860} (2012) 207
+[arXiv:1201.2671 [hep-ph]].
+%%CITATION = ARXIV:1201.2671;%%
+
+\end{thebibliography}
+
+\end{document}
