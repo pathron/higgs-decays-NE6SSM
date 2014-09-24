@@ -69,7 +69,7 @@ double higgs_decay_example(NE6SSM<Two_scale>& ne6ssm, bool speak) {
 
    //obtaion the mixing between tan beta rotated SM-like h state and the physical state
    Eigen::Matrix<double,5,5> URoman = Uhiggs_pole* UTb.transpose();
-   std::cout << " URoman = "  <<  URoman <<std::endl;
+   if(speak) std::cout << " URoman = "  <<  URoman <<std::endl;
 
 
    if(speak){
@@ -139,8 +139,8 @@ for(int j=0; j<=4; j++){
     std::cout << "GamTot = " << GamTot << std::endl;
     std::cout << "BRhA1A1 =" << BRhA1A1 << std::endl;
  } 
-bool BenchMark =false;
- if(BenchMark) {
+ //bool BenchMark =false;
+ if(speak) {
     cout << "BenchMark Point." << endl;
     cout << "\\begin{tabular}{| c || c | c |}"  << std::endl;
     //just output parameters in  long collumn
@@ -229,10 +229,7 @@ bool BenchMark =false;
     std::cout << URoman(0,0)  << std::endl;
 
     std::cout << "R_{ZA_1h_1}                 & \t";
-    std::cout <<  Uhiggs_pole(0,0) * UAh_pole(2,0)   << std::endl;
-
-
-       
+    std::cout <<  Uhiggs_pole(0,0) * UAh_pole(2,0)   << std::endl;       
 
     std::cout << "BR(h_1\\longarrow A_1A_1)  & \t";
     std::cout << BRhA1A1 << std::endl;
@@ -265,12 +262,14 @@ bool scanKappaTKappa(int argc, const char *argv[]){
   //get spectrum for default point before starting.
   gs.findSpectrum2(argc,argv,ne6ssm, slha);
   ofstream mHu2points;
-  mHu2points.open("mHu2Neg_ccbNeg.dat");
+  mHu2points.open("mHu2Neg_ccbNeg_LOWKap5.dat");
   ofstream ccbNegPoints;
-  ccbNegPoints.open("ccbNeg.dat");
-  double minKapPr=0.01; double maxKapPr=0.1; int stepsKap =300;
+  ccbNegPoints.open("ccbNeg_LOWKap5.dat");
+  // double minKapPr=0.08; double maxKapPr=0.1; int stepsKap =30;
+  double minKapPr=0.008; double maxKapPr=0.01; int stepsKap =40;
   double stepKapPr = (maxKapPr - minKapPr) / (stepsKap-1);
-  double minTK=1; double maxTK=50; int stepsTK =300;
+  // double minTK=69.0; double maxTK=83.0; int stepsTK =2000;
+  double minTK=8.0; double maxTK=11.0; int stepsTK =600;
   double stepTK = (maxTK - minTK) / (stepsTK-1);
   for(int i=0; i<stepsKap; i++){
      for(int j=0; j<stepsTK; j++){
@@ -301,6 +300,9 @@ bool scanKappaTKappa(int argc, const char *argv[]){
 			  << std::setw(12) << std::left 
 			  << ne6ssm.get_TKappaPr()  << ' '
 			  << std::setw(12) << std::left 
+			  << ne6ssm.get_TKappaPr() / 
+	       ne6ssm.get_KappaPr()  << ' '
+			  << std::setw(12) << std::left 
 			  << ccbfac << ' '
 			  << std::setw(12) << std::left 
 			  << mHu2 << ' '
@@ -313,11 +315,14 @@ bool scanKappaTKappa(int argc, const char *argv[]){
 
 	   }
 	    if(mHu2 < 0) { 
-	     ccbNegPoints << "  " 
+	      mHu2points << "  " 
 			  << std::setw(12) << std::left 
 			  <<ne6ssm.get_KappaPr() << ' '
 			  << std::setw(12) << std::left 
 			  << ne6ssm.get_TKappaPr()  << ' '
+			  << std::setw(12) << std::left 
+			  << ne6ssm.get_TKappaPr() / 
+	       ne6ssm.get_KappaPr()  << ' '
 			  << std::setw(12) << std::left 
 			  << ccbfac << ' '
 			  << std::setw(12) << std::left 
@@ -334,6 +339,7 @@ bool scanKappaTKappa(int argc, const char *argv[]){
          cout << "  "
               << std::setw(12) << std::left <<ne6ssm.get_KappaPr() << ' '
               << std::setw(12) << std::left << ne6ssm.get_TKappaPr()  << ' '
+	    << std::setw(12) << std::left << ne6ssm.get_TKappaPr() / ne6ssm.get_KappaPr()  << ' '
               << std::setw(12) << std::left << ccbfac << ' '
               << std::setw(12) << std::left << mHu2 << ' '
               << std::setw(12) << std::left << pole_masses.MAh(2) << ' '
@@ -376,7 +382,7 @@ bool scanMQ3MU3At(int argc, const char *argv[]){
    double minTYu=500; double maxTYu= 3000; int stepsTYu =300;
    double stepTYu = (maxTYu - minTYu) / (stepsTYu-1);
    ofstream mHu2points;
-   mHu2points.open("mHu2Neg_Atpos.dat");
+   mHu2points.open("mHu2.dat");
    for(int i=0; i<stepsMQ3sq; i++){
       for(int j=0; j<stepsTYu; j++){
          for(int k=0; k<stepsMU3sq; k++){
@@ -441,24 +447,24 @@ bool scanMQ3MU3At(int argc, const char *argv[]){
 
 int main(int argc, const char *argv[])
 {
-   bool speak = false;
-   if(speak){
-   INFO("=============================");
-   INFO("running higgs_decay_example()");
-   INFO("=============================");
-   }
-   GetSpec gs;
-   NE6SSM<Two_scale> ne6ssm;
-   // NE6SSM<Two_scale> ne6ssm;
-   NE6SSM_slha_io slha;
+  // bool speak = true;
+  //  if(speak){
+  //  INFO("=============================");
+  //  INFO("running higgs_decay_example()");
+  //  INFO("=============================");
+  //  }
+  //  GetSpec gs;
+  //  NE6SSM<Two_scale> ne6ssm;
+  //  // NE6SSM<Two_scale> ne6ssm;
+  //  NE6SSM_slha_io slha;
 
-   // gs.findSpectrum2(argc,argv,ne6ssm, slha);
+  //  gs.findSpectrum2(argc,argv,ne6ssm, slha);
    
-   // higgs_decay_example(ne6ssm,speak);
+  //  higgs_decay_example(ne6ssm,speak);
    
-   //  if(speak) std::cout << "End of calculation."  << std::endl;
+  //  if(speak) std::cout << "End of calculation."  << std::endl;
    
-   // scanMQ3MU3At(argc, argv);
-   scanKappaTKappa(argc, argv);
+    //  scanMQ3MU3At(argc, argv);
+    scanKappaTKappa(argc, argv);
    return 0;
 }
